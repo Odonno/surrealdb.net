@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>SurrealDb | The official SurrealDB library for .NET </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="SurrealDb | The official SurrealDB library for .NET ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="styles/config.css">
+      <link rel="stylesheet" href="styles/discord.css">
+      <link rel="stylesheet" href="styles/singulink.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="index.html">
+              <img src="images/logo.png" alt="" class="logomark">
+              <div class="brand-title">
+                <span>.NET SDK for</span>
+                <img inline="" src="images/surrealdb.svg" alt="SurrealDB" class="brand-title-img">
+              </div>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="index.html">
+                          <img src="images/logo.png" alt="" class="logomark">
+                          <div class="brand-title">
+                            <span>.NET SDK for</span>
+                            <img inline="" src="images/surrealdb.svg" alt="SurrealDB" class="brand-title-img">
+                          </div>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+                </div>
+                <div class="footer">
+  
+  <strong><a href='https://dotnet.github.io/docfx/'>DocFX</a> + <a href='https://www.singulink.com'>Singulink</a> = ♥</strong>
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/Odonno/surrealdb.net/blob/feat/generated-docs/docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="">
+<h1 id="surrealdb">SurrealDb</h1>
+
+<p>The official SurrealDB library for .NET</p>
+<p><a href="https://github.com/surrealdb/surrealdb.net"><img src="https://img.shields.io/badge/status-beta-ff00bb.svg?style=flat-square" alt=""></a> <a href="https://surrealdb.com/docs/integration/libraries/dotnet"><img src="https://img.shields.io/badge/docs-view-44cc11.svg?style=flat-square" alt=""></a> <a href="https://github.com/surrealdb/surrealdb.net"><img src="https://img.shields.io/badge/license-Apache_License_2.0-00bfff.svg?style=flat-square" alt=""></a></p>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="installation">Installation</h3>
+<pre><code class="lang-bash">dotnet add package SurrealDb
+</code></pre>
+<h3 id="how-to-use">How to use?</h3>
+<p>Supported protocols:</p>
+<ul>
+<li>✅ HTTP(S)</li>
+<li>✅ WS(S)</li>
+<li>🚧 and more to come...</li>
+</ul>
+<h4 id="construct-a-new-surrealdb-client">Construct a new SurrealDB client</h4>
+<h5 id="as-is">As-is</h5>
+<p>You can easily create a new SurrealDB client easily. All you have to do is define the <code>endpoint</code> to the SurrealDB instance.</p>
+<pre><code class="lang-csharp">var clientHttp = new SurrealDbClient(&quot;http://localhost:8000&quot;);
+var clientHttps = new SurrealDbClient(&quot;https://cloud.surrealdb.com&quot;);
+var clientWs = new SurrealDbClient(&quot;ws://localhost:8000/rpc&quot;);
+var clientWss = new SurrealDbClient(&quot;wss://cloud.surrealdb.com/rpc&quot;);
+
+// Signin &amp; Use ns/db
+</code></pre>
+<h5 id="static-constructor">Static constructor</h5>
+<p>There are some static constructors that you can use for specific contexts. The advantage of this syntax is that all you only need to do is define the <code>host</code> and not the <code>endpoint</code>.</p>
+<pre><code class="lang-csharp">var clientHttp = SurrealDbHttpClient.New(&quot;localhost:8000&quot;);
+var clientHttps = SurrealDbHttpsClient.New(&quot;cloud.surrealdb.com&quot;);
+var clientWs = SurrealDbWsClient.New(&quot;localhost:8000&quot;);
+var clientWss = SurrealDbWssClient.New(&quot;cloud.surrealdb.com&quot;);
+
+// Signin &amp; Use ns/db
+</code></pre>
+<h5 id="dependency-injection">Dependency injection</h5>
+<p>Last but not least, you can use Dependency Injection with the <code>services.AddSurreal()</code> function.</p>
+<h6 id="default-instance">Default instance</h6>
+<pre><code class="lang-csharp">var options = SurrealDbOptions
+	.Create()
+	.WithEndpoint(&quot;http://localhost:8000&quot;)
+	.WithNamespace(&quot;test&quot;)
+	.WithDatabase(&quot;test&quot;)
+	.WithUsername(&quot;root&quot;)
+	.WithPassword(&quot;root&quot;)
+	.Build();
+
+services.AddSurreal(options);
+</code></pre>
+<p>Then you will be able to use the <code>ISurrealDbClient</code> interface or <code>SurrealDbClient</code> class anywhere.</p>
+<pre><code class="lang-csharp">public class MyClass
+{
+	private readonly ISurrealDbClient _client;
+
+	public MyClass(ISurrealDbClient client)
+	{
+		_client = client;
+	}
+
+	// ...
+}
+</code></pre>
+<p>Note that the default lifetime of this service is <code>Singleton</code>. You can override this as follows:</p>
+<pre><code class="lang-csharp">services.AddSurreal(options, ServiceLifetime.Scoped);
+</code></pre>
+<h6 id="connection-string">Connection String</h6>
+<p>Consider the following <code>appsettings.json</code> file:</p>
+<pre><code class="lang-json">{
+	&quot;AllowedHosts&quot;: &quot;*&quot;,
+	&quot;Logging&quot;: {
+		&quot;LogLevel&quot;: {
+			&quot;Default&quot;: &quot;Information&quot;,
+			&quot;Microsoft.AspNetCore&quot;: &quot;Warning&quot;
+		}
+	},
+	&quot;ConnectionStrings&quot;: {
+		&quot;SurrealDB&quot;: &quot;Server=http://localhost:8000;Namespace=test;Database=test;Username=root;Password=root&quot;
+	}
+}
+</code></pre>
+<p>You can use the Connection String instead of having to deal with a <code>SurrealDbOptions</code>.</p>
+<pre><code class="lang-csharp">services.AddSurreal(configuration.GetConnectionString(&quot;SurrealDB&quot;));
+</code></pre>
+<p>It will automatically create a new SurrealDB using the <code>Server endpoint</code> and configure the client using the different values for <code>namespace</code>, <code>database</code>, <code>username</code> and <code>password</code>. Note that these values are optional but the <code>endpoint</code> is still required.</p>
+<h6 id="multiple-instances">Multiple instances</h6>
+<p>Having a default instance for a project is enough most of the time, but there may be times when you'd like to target multiple SurrealDB instances, either at different addresses or at the same address but inside different NS/DBs. You can use multiple instances as long as you provide 1 interface per client, as in the following example.</p>
+<pre><code class="lang-csharp">interface IBackupSurrealDbClient : ISurrealDbClient { }
+interface IMonitoringSurrealDbClient : ISurrealDbClient { }
+
+services.AddSurreal(configuration.GetConnectionString(&quot;SurrealDB.Main&quot;));
+services.AddSurreal&lt;IBackupSurrealDbClient&gt;(configuration.GetConnectionString(&quot;SurrealDB.Backup&quot;));
+services.AddSurreal&lt;IMonitoringSurrealDbClient&gt;(configuration.GetConnectionString(&quot;SurrealDB.Monitoring&quot;));
+</code></pre>
+<p>Here you will have 3 instances:</p>
+<ul>
+<li>the default one, you can keep using <code>ISurrealDbClient</code> interface or <code>SurrealDbClient</code> class anywhere</li>
+<li>a client for backup purpose, using the <code>IBackupSurrealDbClient</code> interface</li>
+<li>a client for monitoring purpose, using the <code>IMonitoringSurrealDbClient</code> interface</li>
+</ul>
+<h4 id="use-the-client">Use the client</h4>
+<pre><code class="lang-csharp">[ApiController]
+[Route(&quot;[controller]&quot;)]
+public class WeatherForecastController : ControllerBase
+{
+	private const string Table = &quot;weatherForecast&quot;;
+
+	private readonly ISurrealDbClient _surrealDbClient;
+
+	public WeatherForecastController(ISurrealDbClient surrealDbClient)
+	{
+		_surrealDbClient = surrealDbClient;
+	}
+
+	[HttpGet]
+	[Route(&quot;/&quot;)]
+	public Task&lt;List&lt;WeatherForecast&gt;&gt; GetAll(CancellationToken cancellationToken)
+	{
+		return _surrealDbClient.Select&lt;WeatherForecast&gt;(Table, cancellationToken);
+	}
+
+	[HttpGet]
+	[Route(&quot;/:id&quot;)]
+	public async Task&lt;IActionResult&gt; Get(string id, CancellationToken cancellationToken)
+	{
+		var weatherForecast = await _surrealDbClient.Select&lt;WeatherForecast&gt;(Table, id, cancellationToken);
+
+		if (weatherForecast is null)
+			return NotFound();
+
+		return Ok(weatherForecast);
+	}
+
+	[HttpPost]
+	[Route(&quot;/&quot;)]
+	public Task&lt;WeatherForecast&gt; Create(CreateWeatherForecast data, CancellationToken cancellationToken)
+	{
+		var weatherForecast = new WeatherForecast
+		{
+			Date = data.Date,
+			Country = data.Country,
+			TemperatureC = data.TemperatureC,
+			Summary = data.Summary
+		};
+
+		return _surrealDbClient.Create(Table, weatherForecast, cancellationToken);
+	}
+
+	[HttpPut]
+	[Route(&quot;/&quot;)]
+	public Task&lt;WeatherForecast&gt; Update(WeatherForecast data, CancellationToken cancellationToken)
+	{
+		return _surrealDbClient.Upsert(data, cancellationToken);
+	}
+
+	[HttpPatch]
+	[Route(&quot;/:id&quot;)]
+	public Task&lt;WeatherForecast&gt; Patch(string id, Dictionary&lt;string, object&gt; data, CancellationToken cancellationToken)
+	{
+		var thing = new Thing(Table, id);
+
+		return _surrealDbClient.Patch&lt;WeatherForecast&gt;(thing, data, cancellationToken);
+	}
+
+	[HttpDelete]
+	[Route(&quot;/&quot;)]
+	public Task DeleteAll(CancellationToken cancellationToken)
+	{
+		return _surrealDbClient.Delete(Table, cancellationToken);
+	}
+
+	[HttpDelete]
+	[Route(&quot;/:id&quot;)]
+	public async Task&lt;IActionResult&gt; Delete(string id, CancellationToken cancellationToken)
+	{
+		bool success = await _surrealDbClient.Delete(Table, id, cancellationToken);
+
+		if (!success)
+			return NotFound();
+
+		return Ok();
+	}
+}
+</code></pre>
+<h2 id="how-to-contribute">How to contribute?</h2>
+<p>This project was written following testing best practices:</p>
+<ul>
+<li>TDD, leveraging:
+<ul>
+<li>clean code/architecture</li>
+<li>regression testing</li>
+<li>adding new features and tests easily</li>
+</ul>
+</li>
+<li>xUnit and FluentAssertions libraries</li>
+<li>a vast majority of tests are integration tests, ensuring compatibility with a concrete SurrealDB version</li>
+<li>each integration test is using a separate SurrealDB instance</li>
+</ul>
+<h3 id="testing">Testing</h3>
+<p>Unit/Integration tests are written using <a href="https://xunit.net/">xUnit</a> and <a href="https://fluentassertions.com/">FluentAssertions</a>.</p>
+<p>You will need a local SurrealDB instance alongside the tests. Start one using the following command:</p>
+<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory
+</code></pre>
+<p>Once ready, go to the root directory of the project and run the following command:</p>
+<pre><code class="lang-bash">dotnet watch test --project SurrealDb.Tests
+</code></pre>
+<h3 id="benchmarking">Benchmarking</h3>
+<p>This project also contains <a href="https://benchmarkdotnet.org/">benchmarks</a> in order to detect possible performance regressions.</p>
+<p>You will need a local SurrealDB instance alongside the tests. Start one using the following command:</p>
+<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory
+</code></pre>
+<p>Once ready, go to the root directory of the project and run the following command:</p>
+<pre><code class="lang-bash">dotnet run -c Release --project SurrealDb.Benchmarks --filter '*'
+</code></pre>
+<h3 id="documentation">Documentation</h3>
+<p>The documentation website of this project is automatically generated using <a href="https://dotnet.github.io/docfx/">docfx</a>.</p>
+<p>If you want to contribute to the documentation, be sure to have .NET SDK on your computer (.NET 6.0 or higher) and then install the cli tool:</p>
+<pre><code class="lang-bash">dotnet tool update -g docfx
+</code></pre>
+<p>Then run the following command to start the web server:</p>
+<pre><code class="lang-bash">docfx docs\docfx.json --serve
+</code></pre>
+</article>
+                </div>
+
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="styles/docfx.js"></script>
+        <script type="text/javascript" src="styles/main.js"></script>
+        <script type="text/javascript" src="styles/singulink.js"></script>    </body>
+</html>
