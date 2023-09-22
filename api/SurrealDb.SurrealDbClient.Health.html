@@ -5,10 +5,10 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Method New
+      <title>Method Health
  | The official SurrealDB library for .NET </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Method New
+      <meta name="title" content="Method Health
  | The official SurrealDB library for .NET ">
       <meta name="generator" content="docfx ">
   
@@ -100,33 +100,33 @@
                         </div>
 
                          <div id="contribution">
-                               <a href="https://github.com/Odonno/surrealdb.net/new/feat/generated-docs/apiSpec/new?filename=SurrealDb_SurrealDbHttpClient_New_.md&amp;value=---%0Auid%3A%20SurrealDb.SurrealDbHttpClient.New*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                               <a href="https://github.com/Odonno/surrealdb.net/new/feat/generated-docs/apiSpec/new?filename=SurrealDb_SurrealDbClient_Health_.md&amp;value=---%0Auid%3A%20SurrealDb.SurrealDbClient.Health*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                          </div>
 
-                    <article class="content wrap" id="_content" data-uid="SurrealDb.SurrealDbHttpClient.New*">
+                    <article class="content wrap" id="_content" data-uid="SurrealDb.SurrealDbClient.Health*">
 
 
 
-<h1 id="SurrealDb_SurrealDbHttpClient_New_" data-uid="SurrealDb.SurrealDbHttpClient.New*">Method New
+<h1 id="SurrealDb_SurrealDbClient_Health_" data-uid="SurrealDb.SurrealDbClient.Health*">Method Health
 </h1>
 <div class="markdown level0 summary"></div>
 <div class="markdown level0 conceptual"></div>
 
 <span class="small pull-right mobile-hide">
   <span class="divider">|</span>
-  <a href="https://github.com/Odonno/surrealdb.net/new/feat/generated-docs/apiSpec/new?filename=SurrealDb_SurrealDbHttpClient_New_System_String_System_Net_Http_IHttpClientFactory_.md&amp;value=---%0Auid%3A%20SurrealDb.SurrealDbHttpClient.New(System.String%2CSystem.Net.Http.IHttpClientFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  <a href="https://github.com/Odonno/surrealdb.net/new/feat/generated-docs/apiSpec/new?filename=SurrealDb_SurrealDbClient_Health_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20SurrealDb.SurrealDbClient.Health(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
 </span>
 <span class="small pull-right mobile-hide">
-  <a href="https://github.com/Odonno/surrealdb.net/blob/feat/generated-docs/SurrealDb/SurrealDbHttpClient.cs/#L14">View Source</a>
+  <a href="https://github.com/Odonno/surrealdb.net/blob/feat/generated-docs/SurrealDb/SurrealDbClient.cs/#L109">View Source</a>
 </span>
-<a id="SurrealDb_SurrealDbHttpClient_New_" data-uid="SurrealDb.SurrealDbHttpClient.New*"></a>
-<h4 id="SurrealDb_SurrealDbHttpClient_New_System_String_System_Net_Http_IHttpClientFactory_" data-uid="SurrealDb.SurrealDbHttpClient.New(System.String,System.Net.Http.IHttpClientFactory)">New(string, IHttpClientFactory?)</h4>
-<div class="markdown level1 summary"><p>Creates a new SurrealDbClient using the HTTP protocol.</p>
+<a id="SurrealDb_SurrealDbClient_Health_" data-uid="SurrealDb.SurrealDbClient.Health*"></a>
+<h4 id="SurrealDb_SurrealDbClient_Health_System_Threading_CancellationToken_" data-uid="SurrealDb.SurrealDbClient.Health(System.Threading.CancellationToken)">Health(CancellationToken)</h4>
+<div class="markdown level1 summary"><p>Checks the status of the database server and storage engine.</p>
 </div>
 <div class="markdown level1 conceptual"></div>
 <h5 class="declaration">Declaration</h5>
 <div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public static ISurrealDbClient New(string host, IHttpClientFactory? httpClientFactory = null)</code></pre>
+  <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; Health(CancellationToken cancellationToken = default)</code></pre>
 </div>
 <h5 class="parameters">Parameters</h5>
 <table class="table table-bordered table-condensed">
@@ -139,15 +139,9 @@
   </thead>
   <tbody>
     <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-      <td><span class="parametername">host</span></td>
-      <td><p>The host name of the SurrealDB instance.</p>
-</td>
-    </tr>
-    <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.ihttpclientfactory">IHttpClientFactory</a></td>
-      <td><span class="parametername">httpClientFactory</span></td>
-      <td><p>An IHttpClientFactory instance, or none.</p>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
+      <td><span class="parametername">cancellationToken</span></td>
+      <td><p>The cancellationToken enables graceful cancellation of asynchronous operations</p>
 </td>
     </tr>
   </tbody>
@@ -162,11 +156,14 @@
   </thead>
   <tbody>
     <tr>
-      <td><a class="xref" href="SurrealDb.ISurrealDbClient.html">ISurrealDbClient</a></td>
-      <td></td>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
+      <td><p>Returns true if the database server and storage engine are healthy.</p>
+</td>
     </tr>
   </tbody>
 </table>
+<h5 class="implements">Implements</h5>
+    <div><a class="xref" href="SurrealDb.ISurrealDbClient.Health.html#SurrealDb_ISurrealDbClient_Health_System_Threading_CancellationToken_">ISurrealDbClient.Health(CancellationToken)</a></div>
 <h5 class="exceptions">Exceptions</h5>
 <table class="table table-bordered table-condensed">
   <thead>
@@ -177,14 +174,20 @@
   </thead>
   <tbody>
     <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
-      <td><p>Thrown when host is not valid.</p>
-</td>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a></td>
+      <td></td>
     </tr>
     <tr>
-      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-      <td><p>Thrown when port in host is provided but is value is out of range.</p>
-</td>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httprequestexception">HttpRequestException</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a class="xref" href="SurrealDb.Exceptions.SurrealDbException.html">SurrealDbException</a></td>
+      <td></td>
     </tr>
   </tbody>
 </table>

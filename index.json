@@ -2,7 +2,7 @@
   "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSurreal.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSurreal.html",
     "title": "Method AddSurreal | The official SurrealDB library for .NET",
-    "keywords": "Method AddSurreal | Improve this Doc View Source AddSurreal(IServiceCollection, string, ServiceLifetime) Registers SurrealDB services from a ConnectionString. Declaration public static IServiceCollection AddSurreal(this IServiceCollection services, string connectionString, ServiceLifetime lifetime = ServiceLifetime.Singleton) Parameters Type Name Description IServiceCollection services Service collection. string connectionString Connection string to a SurrealDB instance. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException | Improve this Doc View Source AddSurreal<T>(IServiceCollection, string, ServiceLifetime) Registers SurrealDB services from a ConnectionString. Declaration public static IServiceCollection AddSurreal<T>(this IServiceCollection services, string connectionString, ServiceLifetime lifetime = ServiceLifetime.Singleton) where T : ISurrealDbClient Parameters Type Name Description IServiceCollection services Service collection. string connectionString Connection string to a SurrealDB instance. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Type Parameters Name Description T Type of ISurrealDbClient to register. Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException | Improve this Doc View Source AddSurreal(IServiceCollection, SurrealDbOptions, ServiceLifetime) Registers SurrealDB services with the specified configuration. Declaration public static IServiceCollection AddSurreal(this IServiceCollection services, SurrealDbOptions configuration, ServiceLifetime lifetime = ServiceLifetime.Singleton) Parameters Type Name Description IServiceCollection services Service collection. SurrealDbOptions configuration Configuration options. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException | Improve this Doc View Source AddSurreal<T>(IServiceCollection, SurrealDbOptions, ServiceLifetime) Registers SurrealDB services with the specified configuration. Declaration public static IServiceCollection AddSurreal<T>(this IServiceCollection services, SurrealDbOptions configuration, ServiceLifetime lifetime = ServiceLifetime.Singleton) where T : ISurrealDbClient Parameters Type Name Description IServiceCollection services Service collection. SurrealDbOptions configuration Configuration options. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Type Parameters Name Description T Type of ISurrealDbClient to register. Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException"
+    "keywords": "Method AddSurreal | Edit this page View Source AddSurreal(IServiceCollection, string, ServiceLifetime) Registers SurrealDB services from a ConnectionString. Declaration public static IServiceCollection AddSurreal(this IServiceCollection services, string connectionString, ServiceLifetime lifetime = ServiceLifetime.Singleton) Parameters Type Name Description IServiceCollection services Service collection. string connectionString Connection string to a SurrealDB instance. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Exceptions Type Condition ArgumentException ArgumentOutOfRangeException ArgumentNullException | Edit this page View Source AddSurreal<T>(IServiceCollection, string, ServiceLifetime) Registers SurrealDB services from a ConnectionString. Declaration public static IServiceCollection AddSurreal<T>(this IServiceCollection services, string connectionString, ServiceLifetime lifetime = ServiceLifetime.Singleton) where T : ISurrealDbClient Parameters Type Name Description IServiceCollection services Service collection. string connectionString Connection string to a SurrealDB instance. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Type Parameters Name Description T Type of ISurrealDbClient to register. Exceptions Type Condition ArgumentException ArgumentOutOfRangeException ArgumentNullException | Edit this page View Source AddSurreal(IServiceCollection, SurrealDbOptions, ServiceLifetime) Registers SurrealDB services with the specified configuration. Declaration public static IServiceCollection AddSurreal(this IServiceCollection services, SurrealDbOptions configuration, ServiceLifetime lifetime = ServiceLifetime.Singleton) Parameters Type Name Description IServiceCollection services Service collection. SurrealDbOptions configuration Configuration options. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException | Edit this page View Source AddSurreal<T>(IServiceCollection, SurrealDbOptions, ServiceLifetime) Registers SurrealDB services with the specified configuration. Declaration public static IServiceCollection AddSurreal<T>(this IServiceCollection services, SurrealDbOptions configuration, ServiceLifetime lifetime = ServiceLifetime.Singleton) where T : ISurrealDbClient Parameters Type Name Description IServiceCollection services Service collection. SurrealDbOptions configuration Configuration options. ServiceLifetime lifetime Service lifetime to register services under. Default value is Singleton. Returns Type Description IServiceCollection Service collection Type Parameters Name Description T Type of ISurrealDbClient to register. Exceptions Type Condition ArgumentOutOfRangeException ArgumentNullException"
   },
   "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
@@ -12,37 +12,37 @@
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Create.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Create.html",
     "title": "Method Create | The official SurrealDB library for .NET",
-    "keywords": "Method Create | Improve this Doc View Source Create() Declaration public static SurrealDbOptionsBuilder Create() Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method Create | Edit this page View Source Create() Declaration public static SurrealDbOptionsBuilder Create() Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Database.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Database.html",
     "title": "Property Database | The official SurrealDB library for .NET",
-    "keywords": "Property Database | Improve this Doc View Source Database Default database to use when new ISurrealDbClient is generated. Declaration public string? Database { get; } Property Value Type Description string"
+    "keywords": "Property Database | Edit this page View Source Database Default database to use when new ISurrealDbClient is generated. Declaration public string? Database { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Endpoint.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Endpoint.html",
     "title": "Property Endpoint | The official SurrealDB library for .NET",
-    "keywords": "Property Endpoint | Improve this Doc View Source Endpoint Endpoint of the SurrealDB instance. Examples: http://localhost:8000 wss://cloud.surrealdb.com Declaration public string? Endpoint { get; } Property Value Type Description string"
+    "keywords": "Property Endpoint | Edit this page View Source Endpoint Endpoint of the SurrealDB instance. Examples: http://localhost:8000 wss://cloud.surrealdb.com Declaration public string? Endpoint { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Namespace.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Namespace.html",
     "title": "Property Namespace | The official SurrealDB library for .NET",
-    "keywords": "Property Namespace | Improve this Doc View Source Namespace Default namespace to use when new ISurrealDbClient is generated. Declaration public string? Namespace { get; } Property Value Type Description string"
+    "keywords": "Property Namespace | Edit this page View Source Namespace Default namespace to use when new ISurrealDbClient is generated. Declaration public string? Namespace { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Password.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Password.html",
     "title": "Property Password | The official SurrealDB library for .NET",
-    "keywords": "Property Password | Improve this Doc View Source Password Default password (Root auth) to use when new ISurrealDbClient is generated. Declaration public string? Password { get; } Property Value Type Description string"
+    "keywords": "Property Password | Edit this page View Source Password Default password (Root auth) to use when new ISurrealDbClient is generated. Declaration public string? Password { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Token.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Token.html",
     "title": "Property Token | The official SurrealDB library for .NET",
-    "keywords": "Property Token | Improve this Doc View Source Token Default token (User auth) to use when new ISurrealDbClient is generated. Declaration public string? Token { get; } Property Value Type Description string"
+    "keywords": "Property Token | Edit this page View Source Token Default token (User auth) to use when new ISurrealDbClient is generated. Declaration public string? Token { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Username.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.Username.html",
     "title": "Property Username | The official SurrealDB library for .NET",
-    "keywords": "Property Username | Improve this Doc View Source Username Default username (Root auth) to use when new ISurrealDbClient is generated. Declaration public string? Username { get; } Property Value Type Description string"
+    "keywords": "Property Username | Edit this page View Source Username Default username (Root auth) to use when new ISurrealDbClient is generated. Declaration public string? Username { get; } Property Value Type Description string"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptions.html",
@@ -52,42 +52,42 @@
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.Build.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.Build.html",
     "title": "Method Build | The official SurrealDB library for .NET",
-    "keywords": "Method Build | Improve this Doc View Source Build() Declaration public SurrealDbOptions Build() Returns Type Description SurrealDbOptions"
+    "keywords": "Method Build | Edit this page View Source Build() Declaration public SurrealDbOptions Build() Returns Type Description SurrealDbOptions"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.FromConnectionString.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.FromConnectionString.html",
     "title": "Method FromConnectionString | The official SurrealDB library for .NET",
-    "keywords": "Method FromConnectionString | Improve this Doc View Source FromConnectionString(string) Parses the connection string and set the configuration accordingly. Declaration public SurrealDbOptionsBuilder FromConnectionString(string connectionString) Parameters Type Name Description string connectionString Connection string to connect to a SurrealDB instance. Returns Type Description SurrealDbOptionsBuilder Exceptions Type Condition ArgumentException"
+    "keywords": "Method FromConnectionString | Edit this page View Source FromConnectionString(string) Parses the connection string and set the configuration accordingly. Declaration public SurrealDbOptionsBuilder FromConnectionString(string connectionString) Parameters Type Name Description string connectionString Connection string to connect to a SurrealDB instance. Returns Type Description SurrealDbOptionsBuilder Exceptions Type Condition ArgumentException ArgumentNullException"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithDatabase.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithDatabase.html",
     "title": "Method WithDatabase | The official SurrealDB library for .NET",
-    "keywords": "Method WithDatabase | Improve this Doc View Source WithDatabase(string?) Declaration public SurrealDbOptionsBuilder WithDatabase(string? db) Parameters Type Name Description string db Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithDatabase | Edit this page View Source WithDatabase(string?) Declaration public SurrealDbOptionsBuilder WithDatabase(string? db) Parameters Type Name Description string db Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithEndpoint.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithEndpoint.html",
     "title": "Method WithEndpoint | The official SurrealDB library for .NET",
-    "keywords": "Method WithEndpoint | Improve this Doc View Source WithEndpoint(string?) Declaration public SurrealDbOptionsBuilder WithEndpoint(string? endpoint) Parameters Type Name Description string endpoint Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithEndpoint | Edit this page View Source WithEndpoint(string?) Declaration public SurrealDbOptionsBuilder WithEndpoint(string? endpoint) Parameters Type Name Description string endpoint Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithNamespace.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithNamespace.html",
     "title": "Method WithNamespace | The official SurrealDB library for .NET",
-    "keywords": "Method WithNamespace | Improve this Doc View Source WithNamespace(string?) Declaration public SurrealDbOptionsBuilder WithNamespace(string? ns) Parameters Type Name Description string ns Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithNamespace | Edit this page View Source WithNamespace(string?) Declaration public SurrealDbOptionsBuilder WithNamespace(string? ns) Parameters Type Name Description string ns Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithPassword.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithPassword.html",
     "title": "Method WithPassword | The official SurrealDB library for .NET",
-    "keywords": "Method WithPassword | Improve this Doc View Source WithPassword(string?) Declaration public SurrealDbOptionsBuilder WithPassword(string? password) Parameters Type Name Description string password Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithPassword | Edit this page View Source WithPassword(string?) Declaration public SurrealDbOptionsBuilder WithPassword(string? password) Parameters Type Name Description string password Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithToken.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithToken.html",
     "title": "Method WithToken | The official SurrealDB library for .NET",
-    "keywords": "Method WithToken | Improve this Doc View Source WithToken(string?) Declaration public SurrealDbOptionsBuilder WithToken(string? token) Parameters Type Name Description string token Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithToken | Edit this page View Source WithToken(string?) Declaration public SurrealDbOptionsBuilder WithToken(string? token) Parameters Type Name Description string token Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithUsername.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.WithUsername.html",
     "title": "Method WithUsername | The official SurrealDB library for .NET",
-    "keywords": "Method WithUsername | Improve this Doc View Source WithUsername(string?) Declaration public SurrealDbOptionsBuilder WithUsername(string? username) Parameters Type Name Description string username Returns Type Description SurrealDbOptionsBuilder"
+    "keywords": "Method WithUsername | Edit this page View Source WithUsername(string?) Declaration public SurrealDbOptionsBuilder WithUsername(string? username) Parameters Type Name Description string username Returns Type Description SurrealDbOptionsBuilder"
   },
   "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.html": {
     "href": "api/Microsoft.Extensions.DependencyInjection.SurrealDbOptionsBuilder.html",
@@ -122,112 +122,117 @@
   "api/SurrealDb.ISurrealDbClient.Authenticate.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Authenticate.html",
     "title": "Method Authenticate | The official SurrealDB library for .NET",
-    "keywords": "Method Authenticate | Improve this Doc View Source Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Declaration Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default) Parameters Type Name Description Jwt jwt The JWT holder of the token. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Authenticate | Edit this page View Source Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Declaration Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default) Parameters Type Name Description Jwt jwt The JWT holder of the token. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Configure.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Configure.html",
     "title": "Method Configure | The official SurrealDB library for .NET",
-    "keywords": "Method Configure | Improve this Doc View Source Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Declaration void Configure(string? ns, string? db, string? username, string? password) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string username The username with root access. string password The password with root access. | Improve this Doc View Source Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Declaration void Configure(string? ns, string? db, string? token = null) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string token The value of the JWT token."
+    "keywords": "Method Configure | Edit this page View Source Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Declaration void Configure(string? ns, string? db, string? username, string? password) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string username The username with root access. string password The password with root access. | Edit this page View Source Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Declaration void Configure(string? ns, string? db, string? token = null) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string token The value of the JWT token."
   },
   "api/SurrealDb.ISurrealDbClient.Connect.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Connect.html",
     "title": "Method Connect | The official SurrealDB library for .NET",
-    "keywords": "Method Connect | Improve this Doc View Source Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Declaration Task Connect(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Connect | Edit this page View Source Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Declaration Task Connect(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Create.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Create.html",
     "title": "Method Create | The official SurrealDB library for .NET",
-    "keywords": "Method Create | Improve this Doc View Source Create<T>(T, CancellationToken) Creates the specific record in the database. Declaration Task<T> Create<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. | Improve this Doc View Source Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Declaration Task<T> Create<T>(string table, T? data = default, CancellationToken cancellationToken = default) Parameters Type Name Description string table The table name where the record will be stored. T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create."
+    "keywords": "Method Create | Edit this page View Source Create<T>(T, CancellationToken) Creates the specific record in the database. Declaration Task<T> Create<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Declaration Task<T> Create<T>(string table, T? data = default, CancellationToken cancellationToken = default) Parameters Type Name Description string table The table name where the record will be stored. T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Delete.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Delete.html",
     "title": "Method Delete | The official SurrealDB library for .NET",
-    "keywords": "Method Delete | Improve this Doc View Source Delete(string, CancellationToken) Deletes all records in a table from the database. Declaration Task Delete(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task | Improve this Doc View Source Delete(string, string, CancellationToken) Deletes the specified record from the database. Declaration Task<bool> Delete(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. | Improve this Doc View Source Delete(Thing, CancellationToken) Deletes the specified record from the database. Declaration Task<bool> Delete(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully."
+    "keywords": "Method Delete | Edit this page View Source Delete(string, CancellationToken) Deletes all records in a table from the database. Declaration Task Delete(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Delete(string, string, CancellationToken) Deletes the specified record from the database. Declaration Task<bool> Delete(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Delete(Thing, CancellationToken) Deletes the specified record from the database. Declaration Task<bool> Delete(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
+  },
+  "api/SurrealDb.ISurrealDbClient.Health.html": {
+    "href": "api/SurrealDb.ISurrealDbClient.Health.html",
+    "title": "Method Health | The official SurrealDB library for .NET",
+    "keywords": "Method Health | Edit this page View Source Health(CancellationToken) Checks the status of the database server and storage engine. Declaration Task<bool> Health(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the database server and storage engine are healthy. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Invalidate.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Invalidate.html",
     "title": "Method Invalidate | The official SurrealDB library for .NET",
-    "keywords": "Method Invalidate | Improve this Doc View Source Invalidate(CancellationToken) Invalidates the authentication for the current connection. Declaration Task Invalidate(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Invalidate | Edit this page View Source Invalidate(CancellationToken) Invalidates the authentication for the current connection. Declaration Task Invalidate(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Merge.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Merge.html",
     "title": "Method Merge | The official SurrealDB library for .NET",
-    "keywords": "Method Merge | Improve this Doc View Source Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Declaration Task<TOutput> Merge<TMerge, TOutput>(TMerge data, CancellationToken cancellationToken = default) where TMerge : Record Parameters Type Name Description TMerge data The data to merge with the current record. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<TOutput> The record updated. Type Parameters Name Description TMerge The type of the merge update. TOutput The type of the record updated. | Improve this Doc View Source Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Declaration Task<T> Merge<T>(Thing thing, Dictionary<string, object> data, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. Dictionary<string, object> data A list of key-value pairs that contains properties to change. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record updated. Type Parameters Name Description T The type of the record updated."
+    "keywords": "Method Merge | Edit this page View Source Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Declaration Task<TOutput> Merge<TMerge, TOutput>(TMerge data, CancellationToken cancellationToken = default) where TMerge : Record Parameters Type Name Description TMerge data The data to merge with the current record. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<TOutput> The record updated. Type Parameters Name Description TMerge The type of the merge update. TOutput The type of the record updated. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Declaration Task<T> Merge<T>(Thing thing, Dictionary<string, object> data, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. Dictionary<string, object> data A list of key-value pairs that contains properties to change. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record updated. Type Parameters Name Description T The type of the record updated. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Query.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Query.html",
     "title": "Method Query | The official SurrealDB library for .NET",
-    "keywords": "Method Query | Improve this Doc View Source Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Declaration Task<SurrealDbResponse> Query(string query, IReadOnlyDictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) Parameters Type Name Description string query The SurrealQL query. IReadOnlyDictionary<string, object> parameters A list of parameters to be used inside the SurrealQL query. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<SurrealDbResponse> The list of results from the SurrealQL queries."
+    "keywords": "Method Query | Edit this page View Source Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Declaration Task<SurrealDbResponse> Query(string query, IReadOnlyDictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) Parameters Type Name Description string query The SurrealQL query. IReadOnlyDictionary<string, object> parameters A list of parameters to be used inside the SurrealQL query. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<SurrealDbResponse> The list of results from the SurrealQL queries. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Select.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Select.html",
     "title": "Method Select | The official SurrealDB library for .NET",
-    "keywords": "Method Select | Improve this Doc View Source Select<T>(string, CancellationToken) Selects all records in a table. Declaration Task<List<T>> Select<T>(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<List<T>> The list of extracted records Type Parameters Name Description T The type of record to extract | Improve this Doc View Source Select<T>(string, string, CancellationToken) Selects a single record. Declaration Task<T?> Select<T>(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record | Improve this Doc View Source Select<T>(Thing, CancellationToken) Selects a single record. Declaration Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record"
+    "keywords": "Method Select | Edit this page View Source Select<T>(string, CancellationToken) Selects all records in a table. Declaration Task<List<T>> Select<T>(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<List<T>> The list of extracted records Type Parameters Name Description T The type of record to extract Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Select<T>(string, string, CancellationToken) Selects a single record. Declaration Task<T?> Select<T>(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Select<T>(Thing, CancellationToken) Selects a single record. Declaration Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Set.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Set.html",
     "title": "Method Set | The official SurrealDB library for .NET",
-    "keywords": "Method Set | Improve this Doc View Source Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. Declaration Task Set(string key, object value, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. object value The value of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Set | Edit this page View Source Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. Declaration Task Set(string key, object value, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. object value The value of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.SignIn.html": {
     "href": "api/SurrealDb.ISurrealDbClient.SignIn.html",
     "title": "Method SignIn | The official SurrealDB library for .NET",
-    "keywords": "Method SignIn | Improve this Doc View Source SignIn(RootAuth, CancellationToken) Sign in as a root user. Declaration Task SignIn(RootAuth root, CancellationToken cancellationToken = default) Parameters Type Name Description RootAuth root Credentials to sign in as a root user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task | Improve this Doc View Source SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. Declaration Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken = default) Parameters Type Name Description NamespaceAuth nsAuth Credentials to sign in as a namespace user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> | Improve this Doc View Source SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. Declaration Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken = default) Parameters Type Name Description DatabaseAuth dbAuth Credentials to sign in as a database user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> | Improve this Doc View Source SignIn<T>(T, CancellationToken) Sign in as a scoped user. Declaration Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign in as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNIN scope function"
+    "keywords": "Method SignIn | Edit this page View Source SignIn(RootAuth, CancellationToken) Sign in as a root user. Declaration Task SignIn(RootAuth root, CancellationToken cancellationToken = default) Parameters Type Name Description RootAuth root Credentials to sign in as a root user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. Declaration Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken = default) Parameters Type Name Description NamespaceAuth nsAuth Credentials to sign in as a namespace user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. Declaration Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken = default) Parameters Type Name Description DatabaseAuth dbAuth Credentials to sign in as a database user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn<T>(T, CancellationToken) Sign in as a scoped user. Declaration Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign in as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNIN scope function Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.SignUp.html": {
     "href": "api/SurrealDb.ISurrealDbClient.SignUp.html",
     "title": "Method SignUp | The official SurrealDB library for .NET",
-    "keywords": "Method SignUp | Improve this Doc View Source SignUp<T>(T, CancellationToken) Sign up a new scoped user. Declaration Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign up as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNUP scope function"
+    "keywords": "Method SignUp | Edit this page View Source SignUp<T>(T, CancellationToken) Sign up a new scoped user. Declaration Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign up as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNUP scope function Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Unset.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Unset.html",
     "title": "Method Unset | The official SurrealDB library for .NET",
-    "keywords": "Method Unset | Improve this Doc View Source Unset(string, CancellationToken) Removes a parameter from this connection. Declaration Task Unset(string key, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Unset | Edit this page View Source Unset(string, CancellationToken) Removes a parameter from this connection. Declaration Task Unset(string key, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Upsert.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Upsert.html",
     "title": "Method Upsert | The official SurrealDB library for .NET",
-    "keywords": "Method Upsert | Improve this Doc View Source Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Declaration Task<T> Upsert<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create or update. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created or updated. Type Parameters Name Description T The type of the record to create."
+    "keywords": "Method Upsert | Edit this page View Source Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Declaration Task<T> Upsert<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create or update. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created or updated. Type Parameters Name Description T The type of the record to create. Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Uri.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Uri.html",
     "title": "Property Uri | The official SurrealDB library for .NET",
-    "keywords": "Property Uri | Improve this Doc View Source Uri The uri linked to the SurrealDB instance target. Declaration Uri Uri { get; } Property Value Type Description Uri"
+    "keywords": "Property Uri | Edit this page View Source Uri The uri linked to the SurrealDB instance target. Declaration Uri Uri { get; } Property Value Type Description Uri"
   },
   "api/SurrealDb.ISurrealDbClient.Use.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Use.html",
     "title": "Method Use | The official SurrealDB library for .NET",
-    "keywords": "Method Use | Improve this Doc View Source Use(string, string, CancellationToken) Switch to a specific namespace and database. Declaration Task Use(string ns, string db, CancellationToken cancellationToken = default) Parameters Type Name Description string ns Name of the namespace string db Name of the database CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task"
+    "keywords": "Method Use | Edit this page View Source Use(string, string, CancellationToken) Switch to a specific namespace and database. Declaration Task Use(string ns, string db, CancellationToken cancellationToken = default) Parameters Type Name Description string ns Name of the namespace string db Name of the database CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.Version.html": {
     "href": "api/SurrealDb.ISurrealDbClient.Version.html",
     "title": "Method Version | The official SurrealDB library for .NET",
-    "keywords": "Method Version | Improve this Doc View Source Version(CancellationToken) Retrieve the version of the SurrealDB instance. Declaration Task<string> Version(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<string> The version of the SurrealDB instance"
+    "keywords": "Method Version | Edit this page View Source Version(CancellationToken) Retrieve the version of the SurrealDB instance. Declaration Task<string> Version(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<string> The version of the SurrealDB instance Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.ISurrealDbClient.html": {
     "href": "api/SurrealDb.ISurrealDbClient.html",
     "title": "Interface ISurrealDbClient | The official SurrealDB library for .NET",
-    "keywords": "Interface ISurrealDbClient The entry point to communicate with a SurrealDB instance. Authenticate, use namespace/database, execute queries, etc... Inherited Members IDisposable.Dispose() Namespace: SurrealDb Assembly: SurrealDb.dll Syntax public interface ISurrealDbClient : IDisposable Properties Name Description Uri The uri linked to the SurrealDB instance target. Methods Name Description Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Create<T>(T, CancellationToken) Creates the specific record in the database. Delete(Thing, CancellationToken) Deletes the specified record from the database. Delete(string, string, CancellationToken) Deletes the specified record from the database. Delete(string, CancellationToken) Deletes all records in a table from the database. Invalidate(CancellationToken) Invalidates the authentication for the current connection. Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Select<T>(Thing, CancellationToken) Selects a single record. Select<T>(string, string, CancellationToken) Selects a single record. Select<T>(string, CancellationToken) Selects all records in a table. Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. SignIn(RootAuth, CancellationToken) Sign in as a root user. SignIn<T>(T, CancellationToken) Sign in as a scoped user. SignUp<T>(T, CancellationToken) Sign up a new scoped user. Unset(string, CancellationToken) Removes a parameter from this connection. Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Use(string, string, CancellationToken) Switch to a specific namespace and database. Version(CancellationToken) Retrieve the version of the SurrealDB instance."
+    "keywords": "Interface ISurrealDbClient The entry point to communicate with a SurrealDB instance. Authenticate, use namespace/database, execute queries, etc... Inherited Members IDisposable.Dispose() Namespace: SurrealDb Assembly: SurrealDb.dll Syntax public interface ISurrealDbClient : IDisposable Properties Name Description Uri The uri linked to the SurrealDB instance target. Methods Name Description Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Create<T>(T, CancellationToken) Creates the specific record in the database. Delete(Thing, CancellationToken) Deletes the specified record from the database. Delete(string, string, CancellationToken) Deletes the specified record from the database. Delete(string, CancellationToken) Deletes all records in a table from the database. Health(CancellationToken) Checks the status of the database server and storage engine. Invalidate(CancellationToken) Invalidates the authentication for the current connection. Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Select<T>(Thing, CancellationToken) Selects a single record. Select<T>(string, string, CancellationToken) Selects a single record. Select<T>(string, CancellationToken) Selects all records in a table. Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. SignIn(RootAuth, CancellationToken) Sign in as a root user. SignIn<T>(T, CancellationToken) Sign in as a scoped user. SignUp<T>(T, CancellationToken) Sign up a new scoped user. Unset(string, CancellationToken) Removes a parameter from this connection. Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Use(string, string, CancellationToken) Switch to a specific namespace and database. Version(CancellationToken) Retrieve the version of the SurrealDB instance."
   },
   "api/SurrealDb.Models.Auth.DatabaseAuth.Database.html": {
     "href": "api/SurrealDb.Models.Auth.DatabaseAuth.Database.html",
     "title": "Property Database | The official SurrealDB library for .NET",
-    "keywords": "Property Database | Improve this Doc View Source Database The database the user has access to Declaration [JsonPropertyName(\"db\")] public string Database { get; set; } Property Value Type Description string"
+    "keywords": "Property Database | Edit this page View Source Database The database the user has access to Declaration [JsonPropertyName(\"db\")] public string Database { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.DatabaseAuth.Namespace.html": {
     "href": "api/SurrealDb.Models.Auth.DatabaseAuth.Namespace.html",
     "title": "Property Namespace | The official SurrealDB library for .NET",
-    "keywords": "Property Namespace | Improve this Doc View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
+    "keywords": "Property Namespace | Edit this page View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.DatabaseAuth.Password.html": {
     "href": "api/SurrealDb.Models.Auth.DatabaseAuth.Password.html",
     "title": "Property Password | The official SurrealDB library for .NET",
-    "keywords": "Property Password | Improve this Doc View Source Password The password of the namespace user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
+    "keywords": "Property Password | Edit this page View Source Password The password of the namespace user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.DatabaseAuth.Username.html": {
     "href": "api/SurrealDb.Models.Auth.DatabaseAuth.Username.html",
     "title": "Property Username | The official SurrealDB library for .NET",
-    "keywords": "Property Username | Improve this Doc View Source Username The username of the namespace user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
+    "keywords": "Property Username | Edit this page View Source Username The username of the namespace user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.DatabaseAuth.html": {
     "href": "api/SurrealDb.Models.Auth.DatabaseAuth.html",
@@ -237,7 +242,7 @@
   "api/SurrealDb.Models.Auth.Jwt.Token.html": {
     "href": "api/SurrealDb.Models.Auth.Jwt.Token.html",
     "title": "Property Token | The official SurrealDB library for .NET",
-    "keywords": "Property Token | Improve this Doc View Source Token The underlying token string Declaration public string Token { get; set; } Property Value Type Description string"
+    "keywords": "Property Token | Edit this page View Source Token The underlying token string Declaration public string Token { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.Jwt.html": {
     "href": "api/SurrealDb.Models.Auth.Jwt.html",
@@ -247,17 +252,17 @@
   "api/SurrealDb.Models.Auth.NamespaceAuth.Namespace.html": {
     "href": "api/SurrealDb.Models.Auth.NamespaceAuth.Namespace.html",
     "title": "Property Namespace | The official SurrealDB library for .NET",
-    "keywords": "Property Namespace | Improve this Doc View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
+    "keywords": "Property Namespace | Edit this page View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.NamespaceAuth.Password.html": {
     "href": "api/SurrealDb.Models.Auth.NamespaceAuth.Password.html",
     "title": "Property Password | The official SurrealDB library for .NET",
-    "keywords": "Property Password | Improve this Doc View Source Password The password of the namespace user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
+    "keywords": "Property Password | Edit this page View Source Password The password of the namespace user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.NamespaceAuth.Username.html": {
     "href": "api/SurrealDb.Models.Auth.NamespaceAuth.Username.html",
     "title": "Property Username | The official SurrealDB library for .NET",
-    "keywords": "Property Username | Improve this Doc View Source Username The username of the namespace user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
+    "keywords": "Property Username | Edit this page View Source Username The username of the namespace user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.NamespaceAuth.html": {
     "href": "api/SurrealDb.Models.Auth.NamespaceAuth.html",
@@ -267,12 +272,12 @@
   "api/SurrealDb.Models.Auth.RootAuth.Password.html": {
     "href": "api/SurrealDb.Models.Auth.RootAuth.Password.html",
     "title": "Property Password | The official SurrealDB library for .NET",
-    "keywords": "Property Password | Improve this Doc View Source Password The password of the root user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
+    "keywords": "Property Password | Edit this page View Source Password The password of the root user Declaration [JsonPropertyName(\"pass\")] public string Password { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.RootAuth.Username.html": {
     "href": "api/SurrealDb.Models.Auth.RootAuth.Username.html",
     "title": "Property Username | The official SurrealDB library for .NET",
-    "keywords": "Property Username | Improve this Doc View Source Username The username of the root user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
+    "keywords": "Property Username | Edit this page View Source Username The username of the root user Declaration [JsonPropertyName(\"user\")] public string Username { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.RootAuth.html": {
     "href": "api/SurrealDb.Models.Auth.RootAuth.html",
@@ -282,17 +287,17 @@
   "api/SurrealDb.Models.Auth.ScopeAuth.Database.html": {
     "href": "api/SurrealDb.Models.Auth.ScopeAuth.Database.html",
     "title": "Property Database | The official SurrealDB library for .NET",
-    "keywords": "Property Database | Improve this Doc View Source Database The database the user has access to Declaration [JsonPropertyName(\"db\")] public string Database { get; set; } Property Value Type Description string"
+    "keywords": "Property Database | Edit this page View Source Database The database the user has access to Declaration [JsonPropertyName(\"db\")] public string Database { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.ScopeAuth.Namespace.html": {
     "href": "api/SurrealDb.Models.Auth.ScopeAuth.Namespace.html",
     "title": "Property Namespace | The official SurrealDB library for .NET",
-    "keywords": "Property Namespace | Improve this Doc View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
+    "keywords": "Property Namespace | Edit this page View Source Namespace The namespace the user has access to Declaration [JsonPropertyName(\"ns\")] public string Namespace { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.ScopeAuth.Scope.html": {
     "href": "api/SurrealDb.Models.Auth.ScopeAuth.Scope.html",
     "title": "Property Scope | The official SurrealDB library for .NET",
-    "keywords": "Property Scope | Improve this Doc View Source Scope The scope to use for signin and signup Declaration [JsonPropertyName(\"sc\")] public string Scope { get; set; } Property Value Type Description string"
+    "keywords": "Property Scope | Edit this page View Source Scope The scope to use for signin and signup Declaration [JsonPropertyName(\"sc\")] public string Scope { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Auth.ScopeAuth.html": {
     "href": "api/SurrealDb.Models.Auth.ScopeAuth.html",
@@ -307,77 +312,77 @@
   "api/SurrealDb.Models.Duration.-ctor.html": {
     "href": "api/SurrealDb.Models.Duration.-ctor.html",
     "title": "Constructor Duration | The official SurrealDB library for .NET",
-    "keywords": "Constructor Duration | Improve this Doc View Source Duration() Creates a default Duration (0ns) Declaration public Duration()"
+    "keywords": "Constructor Duration | Edit this page View Source Duration() Creates a default Duration (0ns) Declaration public Duration()"
   },
   "api/SurrealDb.Models.Duration.CompareTo.html": {
     "href": "api/SurrealDb.Models.Duration.CompareTo.html",
     "title": "Method CompareTo | The official SurrealDB library for .NET",
-    "keywords": "Method CompareTo | Improve this Doc View Source CompareTo(Duration) Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object. Declaration public int CompareTo(Duration other) Parameters Type Name Description Duration other An object to compare with this instance. Returns Type Description int A value that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance precedes other in the sort order. Zero This instance occurs in the same position in the sort order as other. Greater than zero This instance follows other in the sort order. Implements IComparable<T>.CompareTo(T)"
+    "keywords": "Method CompareTo | Edit this page View Source CompareTo(Duration) Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object. Declaration public int CompareTo(Duration other) Parameters Type Name Description Duration other An object to compare with this instance. Returns Type Description int A value that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance precedes other in the sort order. Zero This instance occurs in the same position in the sort order as other. Greater than zero This instance follows other in the sort order. Implements IComparable<T>.CompareTo(T)"
   },
   "api/SurrealDb.Models.Duration.Days.html": {
     "href": "api/SurrealDb.Models.Duration.Days.html",
     "title": "Property Days | The official SurrealDB library for .NET",
-    "keywords": "Property Days | Improve this Doc View Source Days The Days part of the Duration type. Declaration public int Days { get; } Property Value Type Description int"
+    "keywords": "Property Days | Edit this page View Source Days The Days part of the Duration type. Declaration public int Days { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.Equals.html": {
     "href": "api/SurrealDb.Models.Duration.Equals.html",
     "title": "Method Equals | The official SurrealDB library for .NET",
-    "keywords": "Method Equals | Improve this Doc View Source Equals(Duration) Indicates whether the current object is equal to another object of the same type. Declaration public bool Equals(Duration other) Parameters Type Name Description Duration other An object to compare with this object. Returns Type Description bool true if the current object is equal to the other parameter; otherwise, false. Implements IEquatable<T>.Equals(T) | Improve this Doc View Source Equals(object?) Indicates whether this instance and a specified object are equal. Declaration public override bool Equals(object? obj) Parameters Type Name Description object obj The object to compare with the current instance. Returns Type Description bool true if obj and this instance are the same type and represent the same value; otherwise, false. Overrides ValueType.Equals(object)"
+    "keywords": "Method Equals | Edit this page View Source Equals(Duration) Indicates whether the current object is equal to another object of the same type. Declaration public bool Equals(Duration other) Parameters Type Name Description Duration other An object to compare with this object. Returns Type Description bool true if the current object is equal to the other parameter; otherwise, false. Implements IEquatable<T>.Equals(T) | Edit this page View Source Equals(object?) Indicates whether this instance and a specified object are equal. Declaration public override bool Equals(object? obj) Parameters Type Name Description object obj The object to compare with the current instance. Returns Type Description bool true if obj and this instance are the same type and represent the same value; otherwise, false. Overrides ValueType.Equals(object)"
   },
   "api/SurrealDb.Models.Duration.GetHashCode.html": {
     "href": "api/SurrealDb.Models.Duration.GetHashCode.html",
     "title": "Method GetHashCode | The official SurrealDB library for .NET",
-    "keywords": "Method GetHashCode | Improve this Doc View Source GetHashCode() Returns the hash code for this instance. Declaration public override int GetHashCode() Returns Type Description int A 32-bit signed integer that is the hash code for this instance. Overrides ValueType.GetHashCode()"
+    "keywords": "Method GetHashCode | Edit this page View Source GetHashCode() Returns the hash code for this instance. Declaration public override int GetHashCode() Returns Type Description int A 32-bit signed integer that is the hash code for this instance. Overrides ValueType.GetHashCode()"
   },
   "api/SurrealDb.Models.Duration.Hours.html": {
     "href": "api/SurrealDb.Models.Duration.Hours.html",
     "title": "Property Hours | The official SurrealDB library for .NET",
-    "keywords": "Property Hours | Improve this Doc View Source Hours The Hours part of the Duration type. Declaration public int Hours { get; } Property Value Type Description int"
+    "keywords": "Property Hours | Edit this page View Source Hours The Hours part of the Duration type. Declaration public int Hours { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.MicroSeconds.html": {
     "href": "api/SurrealDb.Models.Duration.MicroSeconds.html",
     "title": "Property MicroSeconds | The official SurrealDB library for .NET",
-    "keywords": "Property MicroSeconds | Improve this Doc View Source MicroSeconds The MicroSeconds part of the Duration type. Declaration public int MicroSeconds { get; } Property Value Type Description int"
+    "keywords": "Property MicroSeconds | Edit this page View Source MicroSeconds The MicroSeconds part of the Duration type. Declaration public int MicroSeconds { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.MilliSeconds.html": {
     "href": "api/SurrealDb.Models.Duration.MilliSeconds.html",
     "title": "Property MilliSeconds | The official SurrealDB library for .NET",
-    "keywords": "Property MilliSeconds | Improve this Doc View Source MilliSeconds The MilliSeconds part of the Duration type. Declaration public int MilliSeconds { get; } Property Value Type Description int"
+    "keywords": "Property MilliSeconds | Edit this page View Source MilliSeconds The MilliSeconds part of the Duration type. Declaration public int MilliSeconds { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.Minutes.html": {
     "href": "api/SurrealDb.Models.Duration.Minutes.html",
     "title": "Property Minutes | The official SurrealDB library for .NET",
-    "keywords": "Property Minutes | Improve this Doc View Source Minutes The Minutes part of the Duration type. Declaration public int Minutes { get; } Property Value Type Description int"
+    "keywords": "Property Minutes | Edit this page View Source Minutes The Minutes part of the Duration type. Declaration public int Minutes { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.NanoSeconds.html": {
     "href": "api/SurrealDb.Models.Duration.NanoSeconds.html",
     "title": "Property NanoSeconds | The official SurrealDB library for .NET",
-    "keywords": "Property NanoSeconds | Improve this Doc View Source NanoSeconds The NanoSeconds part of the Duration type. Declaration public int NanoSeconds { get; } Property Value Type Description int"
+    "keywords": "Property NanoSeconds | Edit this page View Source NanoSeconds The NanoSeconds part of the Duration type. Declaration public int NanoSeconds { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.Seconds.html": {
     "href": "api/SurrealDb.Models.Duration.Seconds.html",
     "title": "Property Seconds | The official SurrealDB library for .NET",
-    "keywords": "Property Seconds | Improve this Doc View Source Seconds The Seconds part of the Duration type. Declaration public int Seconds { get; } Property Value Type Description int"
+    "keywords": "Property Seconds | Edit this page View Source Seconds The Seconds part of the Duration type. Declaration public int Seconds { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.ToString.html": {
     "href": "api/SurrealDb.Models.Duration.ToString.html",
     "title": "Method ToString | The official SurrealDB library for .NET",
-    "keywords": "Method ToString | Improve this Doc View Source ToString() Returns the fully qualified type name of this instance. Declaration public override string ToString() Returns Type Description string The fully qualified type name. Overrides ValueType.ToString()"
+    "keywords": "Method ToString | Edit this page View Source ToString() Returns the fully qualified type name of this instance. Declaration public override string ToString() Returns Type Description string The fully qualified type name. Overrides ValueType.ToString()"
   },
   "api/SurrealDb.Models.Duration.ToTimeSpan.html": {
     "href": "api/SurrealDb.Models.Duration.ToTimeSpan.html",
     "title": "Method ToTimeSpan | The official SurrealDB library for .NET",
-    "keywords": "Method ToTimeSpan | Improve this Doc View Source ToTimeSpan() Converts the Duration to a TimeSpan unit. Declaration public TimeSpan ToTimeSpan() Returns Type Description TimeSpan"
+    "keywords": "Method ToTimeSpan | Edit this page View Source ToTimeSpan() Converts the Duration to a TimeSpan unit. Declaration public TimeSpan ToTimeSpan() Returns Type Description TimeSpan Exceptions Type Condition ArgumentOutOfRangeException OverflowException"
   },
   "api/SurrealDb.Models.Duration.Weeks.html": {
     "href": "api/SurrealDb.Models.Duration.Weeks.html",
     "title": "Property Weeks | The official SurrealDB library for .NET",
-    "keywords": "Property Weeks | Improve this Doc View Source Weeks The Weeks part of the Duration type. Declaration public int Weeks { get; } Property Value Type Description int"
+    "keywords": "Property Weeks | Edit this page View Source Weeks The Weeks part of the Duration type. Declaration public int Weeks { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.Years.html": {
     "href": "api/SurrealDb.Models.Duration.Years.html",
     "title": "Property Years | The official SurrealDB library for .NET",
-    "keywords": "Property Years | Improve this Doc View Source Years The Years part of the Duration type. Declaration public int Years { get; } Property Value Type Description int"
+    "keywords": "Property Years | Edit this page View Source Years The Years part of the Duration type. Declaration public int Years { get; } Property Value Type Description int"
   },
   "api/SurrealDb.Models.Duration.Zero.html": {
     "href": "api/SurrealDb.Models.Duration.Zero.html",
@@ -392,37 +397,37 @@
   "api/SurrealDb.Models.Duration.op_Equality.html": {
     "href": "api/SurrealDb.Models.Duration.op_Equality.html",
     "title": "Operator operator == | The official SurrealDB library for .NET",
-    "keywords": "Operator operator == | Improve this Doc View Source operator ==(Duration, Duration) Declaration public static bool operator ==(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator == | Edit this page View Source operator ==(Duration, Duration) Declaration public static bool operator ==(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Duration.op_GreaterThan.html": {
     "href": "api/SurrealDb.Models.Duration.op_GreaterThan.html",
     "title": "Operator operator > | The official SurrealDB library for .NET",
-    "keywords": "Operator operator > | Improve this Doc View Source operator >(Duration, Duration) Declaration public static bool operator >(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator > | Edit this page View Source operator >(Duration, Duration) Declaration public static bool operator >(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Duration.op_GreaterThanOrEqual.html": {
     "href": "api/SurrealDb.Models.Duration.op_GreaterThanOrEqual.html",
     "title": "Operator operator >= | The official SurrealDB library for .NET",
-    "keywords": "Operator operator >= | Improve this Doc View Source operator >=(Duration, Duration) Declaration public static bool operator >=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator >= | Edit this page View Source operator >=(Duration, Duration) Declaration public static bool operator >=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Duration.op_Inequality.html": {
     "href": "api/SurrealDb.Models.Duration.op_Inequality.html",
     "title": "Operator operator != | The official SurrealDB library for .NET",
-    "keywords": "Operator operator != | Improve this Doc View Source operator !=(Duration, Duration) Declaration public static bool operator !=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator != | Edit this page View Source operator !=(Duration, Duration) Declaration public static bool operator !=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Duration.op_LessThan.html": {
     "href": "api/SurrealDb.Models.Duration.op_LessThan.html",
     "title": "Operator operator < | The official SurrealDB library for .NET",
-    "keywords": "Operator operator < | Improve this Doc View Source operator <(Duration, Duration) Declaration public static bool operator <(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator < | Edit this page View Source operator <(Duration, Duration) Declaration public static bool operator <(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Duration.op_LessThanOrEqual.html": {
     "href": "api/SurrealDb.Models.Duration.op_LessThanOrEqual.html",
     "title": "Operator operator <= | The official SurrealDB library for .NET",
-    "keywords": "Operator operator <= | Improve this Doc View Source operator <=(Duration, Duration) Declaration public static bool operator <=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
+    "keywords": "Operator operator <= | Edit this page View Source operator <=(Duration, Duration) Declaration public static bool operator <=(Duration left, Duration right) Parameters Type Name Description Duration left Duration right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Record.Id.html": {
     "href": "api/SurrealDb.Models.Record.Id.html",
     "title": "Property Id | The official SurrealDB library for .NET",
-    "keywords": "Property Id | Improve this Doc View Source Id The id of the record Declaration [JsonConverter(typeof(ThingConverter))] [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public Thing? Id { get; set; } Property Value Type Description Thing"
+    "keywords": "Property Id | Edit this page View Source Id The id of the record Declaration [JsonConverter(typeof(ThingConverter))] [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public Thing? Id { get; set; } Property Value Type Description Thing"
   },
   "api/SurrealDb.Models.Record.html": {
     "href": "api/SurrealDb.Models.Record.html",
@@ -437,12 +442,12 @@
   "api/SurrealDb.Models.Response.ISurrealDbResult.IsError.html": {
     "href": "api/SurrealDb.Models.Response.ISurrealDbResult.IsError.html",
     "title": "Property IsError | The official SurrealDB library for .NET",
-    "keywords": "Property IsError | Improve this Doc View Source IsError Declaration bool IsError { get; } Property Value Type Description bool"
+    "keywords": "Property IsError | Edit this page View Source IsError Declaration bool IsError { get; } Property Value Type Description bool"
   },
   "api/SurrealDb.Models.Response.ISurrealDbResult.IsOk.html": {
     "href": "api/SurrealDb.Models.Response.ISurrealDbResult.IsOk.html",
     "title": "Property IsOk | The official SurrealDB library for .NET",
-    "keywords": "Property IsOk | Improve this Doc View Source IsOk Declaration bool IsOk { get; } Property Value Type Description bool"
+    "keywords": "Property IsOk | Edit this page View Source IsOk Declaration bool IsOk { get; } Property Value Type Description bool"
   },
   "api/SurrealDb.Models.Response.ISurrealDbResult.html": {
     "href": "api/SurrealDb.Models.Response.ISurrealDbResult.html",
@@ -452,22 +457,22 @@
   "api/SurrealDb.Models.Response.SurrealDbErrorResult.Details.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Details.html",
     "title": "Property Details | The official SurrealDB library for .NET",
-    "keywords": "Property Details | Improve this Doc View Source Details Details about the error. Declaration [JsonPropertyName(\"detail\")] public string Details { get; set; } Property Value Type Description string"
+    "keywords": "Property Details | Edit this page View Source Details Details about the error. Declaration [JsonPropertyName(\"detail\")] public string Details { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbErrorResult.IsOk.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbErrorResult.IsOk.html",
     "title": "Property IsOk | The official SurrealDB library for .NET",
-    "keywords": "Property IsOk | Improve this Doc View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
+    "keywords": "Property IsOk | Edit this page View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
   },
   "api/SurrealDb.Models.Response.SurrealDbErrorResult.Status.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Status.html",
     "title": "Property Status | The official SurrealDB library for .NET",
-    "keywords": "Property Status | Improve this Doc View Source Status Status of the query (\"ERR\"). Declaration [JsonPropertyName(\"status\")] public string Status { get; set; } Property Value Type Description string"
+    "keywords": "Property Status | Edit this page View Source Status Status of the query (\"ERR\"). Declaration [JsonPropertyName(\"status\")] public string Status { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbErrorResult.Time.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Time.html",
     "title": "Property Time | The official SurrealDB library for .NET",
-    "keywords": "Property Time | Improve this Doc View Source Time Time taken to execute the query. Declaration [JsonPropertyName(\"time\")] public TimeSpan Time { get; set; } Property Value Type Description TimeSpan"
+    "keywords": "Property Time | Edit this page View Source Time Time taken to execute the query. Declaration [JsonPropertyName(\"time\")] public TimeSpan Time { get; set; } Property Value Type Description TimeSpan"
   },
   "api/SurrealDb.Models.Response.SurrealDbErrorResult.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbErrorResult.html",
@@ -477,22 +482,22 @@
   "api/SurrealDb.Models.Response.SurrealDbOkResult.GetValue.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbOkResult.GetValue.html",
     "title": "Method GetValue | The official SurrealDB library for .NET",
-    "keywords": "Method GetValue | Improve this Doc View Source GetValue<T>() Gets the result value of the query. Declaration public T? GetValue<T>() Returns Type Description T Type Parameters Name Description T The type of the query result value."
+    "keywords": "Method GetValue | Edit this page View Source GetValue<T>() Gets the result value of the query. Declaration public T? GetValue<T>() Returns Type Description T Type Parameters Name Description T The type of the query result value."
   },
   "api/SurrealDb.Models.Response.SurrealDbOkResult.IsOk.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbOkResult.IsOk.html",
     "title": "Property IsOk | The official SurrealDB library for .NET",
-    "keywords": "Property IsOk | Improve this Doc View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
+    "keywords": "Property IsOk | Edit this page View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
   },
   "api/SurrealDb.Models.Response.SurrealDbOkResult.Status.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbOkResult.Status.html",
     "title": "Property Status | The official SurrealDB library for .NET",
-    "keywords": "Property Status | Improve this Doc View Source Status Status of the query (\"OK\"). Declaration public string Status { get; set; } Property Value Type Description string"
+    "keywords": "Property Status | Edit this page View Source Status Status of the query (\"OK\"). Declaration public string Status { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbOkResult.Time.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbOkResult.Time.html",
     "title": "Property Time | The official SurrealDB library for .NET",
-    "keywords": "Property Time | Improve this Doc View Source Time Time taken to execute the query. Declaration public TimeSpan Time { get; set; } Property Value Type Description TimeSpan"
+    "keywords": "Property Time | Edit this page View Source Time Time taken to execute the query. Declaration public TimeSpan Time { get; set; } Property Value Type Description TimeSpan"
   },
   "api/SurrealDb.Models.Response.SurrealDbOkResult.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbOkResult.html",
@@ -502,27 +507,27 @@
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Code.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Code.html",
     "title": "Property Code | The official SurrealDB library for .NET",
-    "keywords": "Property Code | Improve this Doc View Source Code The HTTP status code of the error. Declaration [JsonPropertyName(\"code\")] public HttpStatusCode Code { get; set; } Property Value Type Description HttpStatusCode"
+    "keywords": "Property Code | Edit this page View Source Code The HTTP status code of the error. Declaration [JsonPropertyName(\"code\")] public HttpStatusCode Code { get; set; } Property Value Type Description HttpStatusCode"
   },
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Description.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Description.html",
     "title": "Property Description | The official SurrealDB library for .NET",
-    "keywords": "Property Description | Improve this Doc View Source Description Description of the error. Declaration [JsonPropertyName(\"description\")] public string Description { get; set; } Property Value Type Description string"
+    "keywords": "Property Description | Edit this page View Source Description Description of the error. Declaration [JsonPropertyName(\"description\")] public string Description { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Details.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Details.html",
     "title": "Property Details | The official SurrealDB library for .NET",
-    "keywords": "Property Details | Improve this Doc View Source Details Details about the error. Declaration [JsonPropertyName(\"details\")] public string Details { get; set; } Property Value Type Description string"
+    "keywords": "Property Details | Edit this page View Source Details Details about the error. Declaration [JsonPropertyName(\"details\")] public string Details { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Information.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Information.html",
     "title": "Property Information | The official SurrealDB library for .NET",
-    "keywords": "Property Information | Improve this Doc View Source Information Some information about the error. Declaration [JsonPropertyName(\"information\")] public string Information { get; set; } Property Value Type Description string"
+    "keywords": "Property Information | Edit this page View Source Information Some information about the error. Declaration [JsonPropertyName(\"information\")] public string Information { get; set; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.IsOk.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.IsOk.html",
     "title": "Property IsOk | The official SurrealDB library for .NET",
-    "keywords": "Property IsOk | Improve this Doc View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
+    "keywords": "Property IsOk | Edit this page View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
   },
   "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.html",
@@ -532,62 +537,62 @@
   "api/SurrealDb.Models.Response.SurrealDbResponse.Count.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.Count.html",
     "title": "Property Count | The official SurrealDB library for .NET",
-    "keywords": "Property Count | Improve this Doc View Source Count Gets the number of elements in the collection. Declaration public int Count { get; } Property Value Type Description int The number of elements in the collection. Implements IReadOnlyCollection<T>.Count"
+    "keywords": "Property Count | Edit this page View Source Count Gets the number of elements in the collection. Declaration public int Count { get; } Property Value Type Description int The number of elements in the collection. Implements IReadOnlyCollection<T>.Count"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.Errors.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.Errors.html",
     "title": "Property Errors | The official SurrealDB library for .NET",
-    "keywords": "Property Errors | Improve this Doc View Source Errors Gets all errors from the query response. Declaration public IEnumerable<ISurrealDbErrorResult> Errors { get; } Property Value Type Description IEnumerable<ISurrealDbErrorResult>"
+    "keywords": "Property Errors | Edit this page View Source Errors Gets all errors from the query response. Declaration public IEnumerable<ISurrealDbErrorResult> Errors { get; } Property Value Type Description IEnumerable<ISurrealDbErrorResult>"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.FirstError.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstError.html",
     "title": "Property FirstError | The official SurrealDB library for .NET",
-    "keywords": "Property FirstError | Improve this Doc View Source FirstError Gets the first error from the response, null otherwise. Declaration public ISurrealDbErrorResult? FirstError { get; } Property Value Type Description ISurrealDbErrorResult"
+    "keywords": "Property FirstError | Edit this page View Source FirstError Gets the first error from the response, null otherwise. Declaration public ISurrealDbErrorResult? FirstError { get; } Property Value Type Description ISurrealDbErrorResult"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.FirstOk.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstOk.html",
     "title": "Property FirstOk | The official SurrealDB library for .NET",
-    "keywords": "Property FirstOk | Improve this Doc View Source FirstOk Gets the first OK result from the response, null otherwise. Declaration public SurrealDbOkResult? FirstOk { get; } Property Value Type Description SurrealDbOkResult"
+    "keywords": "Property FirstOk | Edit this page View Source FirstOk Gets the first OK result from the response, null otherwise. Declaration public SurrealDbOkResult? FirstOk { get; } Property Value Type Description SurrealDbOkResult"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.FirstResult.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstResult.html",
     "title": "Property FirstResult | The official SurrealDB library for .NET",
-    "keywords": "Property FirstResult | Improve this Doc View Source FirstResult Gets the first result from the response, null otherwise. Declaration public ISurrealDbResult? FirstResult { get; } Property Value Type Description ISurrealDbResult"
+    "keywords": "Property FirstResult | Edit this page View Source FirstResult Gets the first result from the response, null otherwise. Declaration public ISurrealDbResult? FirstResult { get; } Property Value Type Description ISurrealDbResult"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.GetEnumerator.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.GetEnumerator.html",
     "title": "Method GetEnumerator | The official SurrealDB library for .NET",
-    "keywords": "Method GetEnumerator | Improve this Doc View Source GetEnumerator() Returns an enumerator that iterates through the collection. Declaration public IEnumerator<ISurrealDbResult> GetEnumerator() Returns Type Description IEnumerator<ISurrealDbResult> An enumerator that can be used to iterate through the collection. Implements IEnumerable<T>.GetEnumerator()"
+    "keywords": "Method GetEnumerator | Edit this page View Source GetEnumerator() Returns an enumerator that iterates through the collection. Declaration public IEnumerator<ISurrealDbResult> GetEnumerator() Returns Type Description IEnumerator<ISurrealDbResult> An enumerator that can be used to iterate through the collection. Implements IEnumerable<T>.GetEnumerator()"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.GetValue.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.GetValue.html",
     "title": "Method GetValue | The official SurrealDB library for .NET",
-    "keywords": "Method GetValue | Improve this Doc View Source GetValue<T>(int) Gets the result value of the query based on its index. Declaration public T? GetValue<T>(int index) Parameters Type Name Description int index The index of the result in the query response. Returns Type Description T Type Parameters Name Description T The type of the query result value."
+    "keywords": "Method GetValue | Edit this page View Source GetValue<T>(int) Gets the result value of the query based on its index. Declaration public T? GetValue<T>(int index) Parameters Type Name Description int index The index of the result in the query response. Returns Type Description T Type Parameters Name Description T The type of the query result value."
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.HasErrors.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.HasErrors.html",
     "title": "Property HasErrors | The official SurrealDB library for .NET",
-    "keywords": "Property HasErrors | Improve this Doc View Source HasErrors Checks if the response contains any errors. Declaration public bool HasErrors { get; } Property Value Type Description bool"
+    "keywords": "Property HasErrors | Edit this page View Source HasErrors Checks if the response contains any errors. Declaration public bool HasErrors { get; } Property Value Type Description bool"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.IsEmpty.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.IsEmpty.html",
     "title": "Property IsEmpty | The official SurrealDB library for .NET",
-    "keywords": "Property IsEmpty | Improve this Doc View Source IsEmpty Checks if the response contains any result. Declaration public bool IsEmpty { get; } Property Value Type Description bool"
+    "keywords": "Property IsEmpty | Edit this page View Source IsEmpty Checks if the response contains any result. Declaration public bool IsEmpty { get; } Property Value Type Description bool"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.IsSingle.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.IsSingle.html",
     "title": "Property IsSingle | The official SurrealDB library for .NET",
-    "keywords": "Property IsSingle | Improve this Doc View Source IsSingle Checks if the response contains a single result. Declaration public bool IsSingle { get; } Property Value Type Description bool"
+    "keywords": "Property IsSingle | Edit this page View Source IsSingle Checks if the response contains a single result. Declaration public bool IsSingle { get; } Property Value Type Description bool"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.Item.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.Item.html",
     "title": "Property this | The official SurrealDB library for .NET",
-    "keywords": "Property this | Improve this Doc View Source this[int] Gets the element at the specified index in the read-only list. Declaration public ISurrealDbResult this[int index] { get; } Parameters Type Name Description int index The zero-based index of the element to get. Property Value Type Description ISurrealDbResult The element at the specified index in the read-only list. Implements IReadOnlyList<T>.this[int]"
+    "keywords": "Property this | Edit this page View Source this[int] Gets the element at the specified index in the read-only list. Declaration public ISurrealDbResult this[int index] { get; } Parameters Type Name Description int index The zero-based index of the element to get. Property Value Type Description ISurrealDbResult The element at the specified index in the read-only list. Implements IReadOnlyList<T>.this[int]"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.Oks.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.Oks.html",
     "title": "Property Oks | The official SurrealDB library for .NET",
-    "keywords": "Property Oks | Improve this Doc View Source Oks Gets all OK results from the query response. Declaration public IEnumerable<SurrealDbOkResult> Oks { get; } Property Value Type Description IEnumerable<SurrealDbOkResult>"
+    "keywords": "Property Oks | Edit this page View Source Oks Gets all OK results from the query response. Declaration public IEnumerable<SurrealDbOkResult> Oks { get; } Property Value Type Description IEnumerable<SurrealDbOkResult>"
   },
   "api/SurrealDb.Models.Response.SurrealDbResponse.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbResponse.html",
@@ -597,7 +602,7 @@
   "api/SurrealDb.Models.Response.SurrealDbUnknownResult.IsOk.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.IsOk.html",
     "title": "Property IsOk | The official SurrealDB library for .NET",
-    "keywords": "Property IsOk | Improve this Doc View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
+    "keywords": "Property IsOk | Edit this page View Source IsOk Declaration public bool IsOk { get; } Property Value Type Description bool Implements ISurrealDbResult.IsOk"
   },
   "api/SurrealDb.Models.Response.SurrealDbUnknownResult.html": {
     "href": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.html",
@@ -612,47 +617,47 @@
   "api/SurrealDb.Models.Thing.-ctor.html": {
     "href": "api/SurrealDb.Models.Thing.-ctor.html",
     "title": "Constructor Thing | The official SurrealDB library for .NET",
-    "keywords": "Constructor Thing | Improve this Doc View Source Thing(string) Creates a new record ID. Declaration public Thing(string thing) Parameters Type Name Description string thing The record ID. Example: `table_name:record_id` Exceptions Type Condition ArgumentException | Improve this Doc View Source Thing(ReadOnlySpan<char>, ReadOnlySpan<char>) Creates a new record ID based on the table name and the table id. Declaration public Thing(ReadOnlySpan<char> table, ReadOnlySpan<char> id) Parameters Type Name Description ReadOnlySpan<char> table Table name ReadOnlySpan<char> id Table id"
+    "keywords": "Constructor Thing | Edit this page View Source Thing(string) Creates a new record ID. Declaration public Thing(string thing) Parameters Type Name Description string thing The record ID. Example: `table_name:record_id` Exceptions Type Condition ArgumentException | Edit this page View Source Thing(ReadOnlySpan<char>, ReadOnlySpan<char>) Creates a new record ID based on the table name and the table id. Declaration public Thing(ReadOnlySpan<char> table, ReadOnlySpan<char> id) Parameters Type Name Description ReadOnlySpan<char> table Table name ReadOnlySpan<char> id Table id"
   },
   "api/SurrealDb.Models.Thing.Equals.html": {
     "href": "api/SurrealDb.Models.Thing.Equals.html",
     "title": "Method Equals | The official SurrealDB library for .NET",
-    "keywords": "Method Equals | Improve this Doc View Source Equals(Thing?) Indicates whether the current object is equal to another object of the same type. Declaration public bool Equals(Thing? other) Parameters Type Name Description Thing other An object to compare with this object. Returns Type Description bool true if the current object is equal to the other parameter; otherwise, false. Implements IEquatable<T>.Equals(T) | Improve this Doc View Source Equals(object?) Determines whether the specified object is equal to the current object. Declaration public override bool Equals(object? obj) Parameters Type Name Description object obj The object to compare with the current object. Returns Type Description bool true if the specified object is equal to the current object; otherwise, false. Overrides object.Equals(object)"
+    "keywords": "Method Equals | Edit this page View Source Equals(Thing?) Indicates whether the current object is equal to another object of the same type. Declaration public bool Equals(Thing? other) Parameters Type Name Description Thing other An object to compare with this object. Returns Type Description bool true if the current object is equal to the other parameter; otherwise, false. Implements IEquatable<T>.Equals(T) | Edit this page View Source Equals(object?) Determines whether the specified object is equal to the current object. Declaration public override bool Equals(object? obj) Parameters Type Name Description object obj The object to compare with the current object. Returns Type Description bool true if the specified object is equal to the current object; otherwise, false. Overrides object.Equals(object)"
   },
   "api/SurrealDb.Models.Thing.From.html": {
     "href": "api/SurrealDb.Models.Thing.From.html",
     "title": "Method From | The official SurrealDB library for .NET",
-    "keywords": "Method From | Improve this Doc View Source From<T>(ReadOnlySpan<char>, T) Creates a new record ID from a table and a genericly typed id. Declaration public static Thing From<T>(ReadOnlySpan<char> table, T id) Parameters Type Name Description ReadOnlySpan<char> table Table name T id Table id Returns Type Description Thing Type Parameters Name Description T The type of the table id Exceptions Type Condition ArgumentException"
+    "keywords": "Method From | Edit this page View Source From<T>(ReadOnlySpan<char>, T) Creates a new record ID from a table and a genericly typed id. Declaration public static Thing From<T>(ReadOnlySpan<char> table, T id) Parameters Type Name Description ReadOnlySpan<char> table Table name T id Table id Returns Type Description Thing Type Parameters Name Description T The type of the table id Exceptions Type Condition ArgumentException NotImplementedException"
   },
   "api/SurrealDb.Models.Thing.GetHashCode.html": {
     "href": "api/SurrealDb.Models.Thing.GetHashCode.html",
     "title": "Method GetHashCode | The official SurrealDB library for .NET",
-    "keywords": "Method GetHashCode | Improve this Doc View Source GetHashCode() Serves as the default hash function. Declaration public override int GetHashCode() Returns Type Description int A hash code for the current object. Overrides object.GetHashCode()"
+    "keywords": "Method GetHashCode | Edit this page View Source GetHashCode() Serves as the default hash function. Declaration public override int GetHashCode() Returns Type Description int A hash code for the current object. Overrides object.GetHashCode()"
   },
   "api/SurrealDb.Models.Thing.Id.html": {
     "href": "api/SurrealDb.Models.Thing.Id.html",
     "title": "Property Id | The official SurrealDB library for .NET",
-    "keywords": "Property Id | Improve this Doc View Source Id Declaration public string Id { get; } Property Value Type Description string"
+    "keywords": "Property Id | Edit this page View Source Id Declaration public string Id { get; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Thing.IdSpan.html": {
     "href": "api/SurrealDb.Models.Thing.IdSpan.html",
     "title": "Property IdSpan | The official SurrealDB library for .NET",
-    "keywords": "Property IdSpan | Improve this Doc View Source IdSpan Declaration [JsonIgnore] public ReadOnlySpan<char> IdSpan { get; } Property Value Type Description ReadOnlySpan<char>"
+    "keywords": "Property IdSpan | Edit this page View Source IdSpan Declaration [JsonIgnore] public ReadOnlySpan<char> IdSpan { get; } Property Value Type Description ReadOnlySpan<char>"
   },
   "api/SurrealDb.Models.Thing.Table.html": {
     "href": "api/SurrealDb.Models.Thing.Table.html",
     "title": "Property Table | The official SurrealDB library for .NET",
-    "keywords": "Property Table | Improve this Doc View Source Table Declaration public string Table { get; } Property Value Type Description string"
+    "keywords": "Property Table | Edit this page View Source Table Declaration public string Table { get; } Property Value Type Description string"
   },
   "api/SurrealDb.Models.Thing.TableSpan.html": {
     "href": "api/SurrealDb.Models.Thing.TableSpan.html",
     "title": "Property TableSpan | The official SurrealDB library for .NET",
-    "keywords": "Property TableSpan | Improve this Doc View Source TableSpan Declaration [JsonIgnore] public ReadOnlySpan<char> TableSpan { get; } Property Value Type Description ReadOnlySpan<char>"
+    "keywords": "Property TableSpan | Edit this page View Source TableSpan Declaration [JsonIgnore] public ReadOnlySpan<char> TableSpan { get; } Property Value Type Description ReadOnlySpan<char>"
   },
   "api/SurrealDb.Models.Thing.ToString.html": {
     "href": "api/SurrealDb.Models.Thing.ToString.html",
     "title": "Method ToString | The official SurrealDB library for .NET",
-    "keywords": "Method ToString | Improve this Doc View Source ToString() Returns a string that represents the current object. Declaration public override string ToString() Returns Type Description string A string that represents the current object. Overrides object.ToString()"
+    "keywords": "Method ToString | Edit this page View Source ToString() Returns a string that represents the current object. Declaration public override string ToString() Returns Type Description string A string that represents the current object. Overrides object.ToString()"
   },
   "api/SurrealDb.Models.Thing.html": {
     "href": "api/SurrealDb.Models.Thing.html",
@@ -662,12 +667,12 @@
   "api/SurrealDb.Models.Thing.op_Equality.html": {
     "href": "api/SurrealDb.Models.Thing.op_Equality.html",
     "title": "Operator operator == | The official SurrealDB library for .NET",
-    "keywords": "Operator operator == | Improve this Doc View Source operator ==(Thing, Thing) Declaration public static bool operator ==(Thing left, Thing right) Parameters Type Name Description Thing left Thing right Returns Type Description bool"
+    "keywords": "Operator operator == | Edit this page View Source operator ==(Thing, Thing) Declaration public static bool operator ==(Thing left, Thing right) Parameters Type Name Description Thing left Thing right Returns Type Description bool"
   },
   "api/SurrealDb.Models.Thing.op_Inequality.html": {
     "href": "api/SurrealDb.Models.Thing.op_Inequality.html",
     "title": "Operator operator != | The official SurrealDB library for .NET",
-    "keywords": "Operator operator != | Improve this Doc View Source operator !=(Thing, Thing) Declaration public static bool operator !=(Thing left, Thing right) Parameters Type Name Description Thing left Thing right Returns Type Description bool"
+    "keywords": "Operator operator != | Edit this page View Source operator !=(Thing, Thing) Declaration public static bool operator !=(Thing left, Thing right) Parameters Type Name Description Thing left Thing right Returns Type Description bool"
   },
   "api/SurrealDb.Models.html": {
     "href": "api/SurrealDb.Models.html",
@@ -677,107 +682,112 @@
   "api/SurrealDb.SurrealDbClient.-ctor.html": {
     "href": "api/SurrealDb.SurrealDbClient.-ctor.html",
     "title": "Constructor SurrealDbClient | The official SurrealDB library for .NET",
-    "keywords": "Constructor SurrealDbClient | Improve this Doc View Source SurrealDbClient(string, IHttpClientFactory?) Creates a new SurrealDbClient, with the defined endpoint. Declaration public SurrealDbClient(string endpoint, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string endpoint The endpoint to access a SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Exceptions Type Condition ArgumentException | Improve this Doc View Source SurrealDbClient(SurrealDbOptions, IHttpClientFactory?) Creates a new SurrealDbClient using a specific configuration. Declaration public SurrealDbClient(SurrealDbOptions configuration, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description SurrealDbOptions configuration The configuration options for the SurrealDbClient. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Exceptions Type Condition ArgumentException ArgumentNullException"
+    "keywords": "Constructor SurrealDbClient | Edit this page View Source SurrealDbClient(string, IHttpClientFactory?) Creates a new SurrealDbClient, with the defined endpoint. Declaration public SurrealDbClient(string endpoint, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string endpoint The endpoint to access a SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Exceptions Type Condition ArgumentException | Edit this page View Source SurrealDbClient(SurrealDbOptions, IHttpClientFactory?) Creates a new SurrealDbClient using a specific configuration. Declaration public SurrealDbClient(SurrealDbOptions configuration, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description SurrealDbOptions configuration The configuration options for the SurrealDbClient. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Exceptions Type Condition ArgumentException ArgumentNullException"
   },
   "api/SurrealDb.SurrealDbClient.Authenticate.html": {
     "href": "api/SurrealDb.SurrealDbClient.Authenticate.html",
     "title": "Method Authenticate | The official SurrealDB library for .NET",
-    "keywords": "Method Authenticate | Improve this Doc View Source Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Declaration public Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default) Parameters Type Name Description Jwt jwt The JWT holder of the token. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Authenticate(Jwt, CancellationToken)"
+    "keywords": "Method Authenticate | Edit this page View Source Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Declaration public Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default) Parameters Type Name Description Jwt jwt The JWT holder of the token. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Authenticate(Jwt, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Configure.html": {
     "href": "api/SurrealDb.SurrealDbClient.Configure.html",
     "title": "Method Configure | The official SurrealDB library for .NET",
-    "keywords": "Method Configure | Improve this Doc View Source Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Declaration public void Configure(string? ns, string? db, string? username, string? password) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string username The username with root access. string password The password with root access. Implements ISurrealDbClient.Configure(string?, string?, string?, string?) | Improve this Doc View Source Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Declaration public void Configure(string? ns, string? db, string? token = null) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string token The value of the JWT token. Implements ISurrealDbClient.Configure(string?, string?, string?)"
+    "keywords": "Method Configure | Edit this page View Source Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Declaration public void Configure(string? ns, string? db, string? username, string? password) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string username The username with root access. string password The password with root access. Implements ISurrealDbClient.Configure(string?, string?, string?, string?) | Edit this page View Source Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Declaration public void Configure(string? ns, string? db, string? token = null) Parameters Type Name Description string ns The table namespace to use. string db The table database to use. string token The value of the JWT token. Implements ISurrealDbClient.Configure(string?, string?, string?)"
   },
   "api/SurrealDb.SurrealDbClient.Connect.html": {
     "href": "api/SurrealDb.SurrealDbClient.Connect.html",
     "title": "Method Connect | The official SurrealDB library for .NET",
-    "keywords": "Method Connect | Improve this Doc View Source Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Declaration public Task Connect(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Connect(CancellationToken)"
+    "keywords": "Method Connect | Edit this page View Source Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Declaration public Task Connect(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Connect(CancellationToken) Exceptions Type Condition HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Create.html": {
     "href": "api/SurrealDb.SurrealDbClient.Create.html",
     "title": "Method Create | The official SurrealDB library for .NET",
-    "keywords": "Method Create | Improve this Doc View Source Create<T>(T, CancellationToken) Creates the specific record in the database. Declaration public Task<T> Create<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Create<T>(T, CancellationToken) | Improve this Doc View Source Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Declaration public Task<T> Create<T>(string table, T? data = default, CancellationToken cancellationToken = default) Parameters Type Name Description string table The table name where the record will be stored. T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Create<T>(string, T?, CancellationToken)"
+    "keywords": "Method Create | Edit this page View Source Create<T>(T, CancellationToken) Creates the specific record in the database. Declaration public Task<T> Create<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Create<T>(T, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Declaration public Task<T> Create<T>(string table, T? data = default, CancellationToken cancellationToken = default) Parameters Type Name Description string table The table name where the record will be stored. T data The record to create. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Create<T>(string, T?, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Delete.html": {
     "href": "api/SurrealDb.SurrealDbClient.Delete.html",
     "title": "Method Delete | The official SurrealDB library for .NET",
-    "keywords": "Method Delete | Improve this Doc View Source Delete(string, CancellationToken) Deletes all records in a table from the database. Declaration public Task Delete(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Delete(string, CancellationToken) | Improve this Doc View Source Delete(string, string, CancellationToken) Deletes the specified record from the database. Declaration public Task<bool> Delete(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Implements ISurrealDbClient.Delete(string, string, CancellationToken) | Improve this Doc View Source Delete(Thing, CancellationToken) Deletes the specified record from the database. Declaration public Task<bool> Delete(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Implements ISurrealDbClient.Delete(Thing, CancellationToken)"
+    "keywords": "Method Delete | Edit this page View Source Delete(string, CancellationToken) Deletes all records in a table from the database. Declaration public Task Delete(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Delete(string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Delete(string, string, CancellationToken) Deletes the specified record from the database. Declaration public Task<bool> Delete(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Implements ISurrealDbClient.Delete(string, string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Delete(Thing, CancellationToken) Deletes the specified record from the database. Declaration public Task<bool> Delete(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the record was removed successfully. Implements ISurrealDbClient.Delete(Thing, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Dispose.html": {
     "href": "api/SurrealDb.SurrealDbClient.Dispose.html",
     "title": "Method Dispose | The official SurrealDB library for .NET",
-    "keywords": "Method Dispose | Improve this Doc View Source Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Declaration public void Dispose() Implements IDisposable.Dispose()"
+    "keywords": "Method Dispose | Edit this page View Source Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Declaration public void Dispose() Implements IDisposable.Dispose()"
+  },
+  "api/SurrealDb.SurrealDbClient.Health.html": {
+    "href": "api/SurrealDb.SurrealDbClient.Health.html",
+    "title": "Method Health | The official SurrealDB library for .NET",
+    "keywords": "Method Health | Edit this page View Source Health(CancellationToken) Checks the status of the database server and storage engine. Declaration public Task<bool> Health(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<bool> Returns true if the database server and storage engine are healthy. Implements ISurrealDbClient.Health(CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Invalidate.html": {
     "href": "api/SurrealDb.SurrealDbClient.Invalidate.html",
     "title": "Method Invalidate | The official SurrealDB library for .NET",
-    "keywords": "Method Invalidate | Improve this Doc View Source Invalidate(CancellationToken) Invalidates the authentication for the current connection. Declaration public Task Invalidate(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Invalidate(CancellationToken)"
+    "keywords": "Method Invalidate | Edit this page View Source Invalidate(CancellationToken) Invalidates the authentication for the current connection. Declaration public Task Invalidate(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Invalidate(CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Merge.html": {
     "href": "api/SurrealDb.SurrealDbClient.Merge.html",
     "title": "Method Merge | The official SurrealDB library for .NET",
-    "keywords": "Method Merge | Improve this Doc View Source Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Declaration public Task<TOutput> Merge<TMerge, TOutput>(TMerge data, CancellationToken cancellationToken = default) where TMerge : Record Parameters Type Name Description TMerge data The data to merge with the current record. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<TOutput> The record updated. Type Parameters Name Description TMerge The type of the merge update. TOutput The type of the record updated. Implements ISurrealDbClient.Merge<TMerge, TOutput>(TMerge, CancellationToken) | Improve this Doc View Source Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Declaration public Task<T> Merge<T>(Thing thing, Dictionary<string, object> data, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. Dictionary<string, object> data A list of key-value pairs that contains properties to change. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record updated. Type Parameters Name Description T The type of the record updated. Implements ISurrealDbClient.Merge<T>(Thing, Dictionary<string, object>, CancellationToken)"
+    "keywords": "Method Merge | Edit this page View Source Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Declaration public Task<TOutput> Merge<TMerge, TOutput>(TMerge data, CancellationToken cancellationToken = default) where TMerge : Record Parameters Type Name Description TMerge data The data to merge with the current record. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<TOutput> The record updated. Type Parameters Name Description TMerge The type of the merge update. TOutput The type of the record updated. Implements ISurrealDbClient.Merge<TMerge, TOutput>(TMerge, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Declaration public Task<T> Merge<T>(Thing thing, Dictionary<string, object> data, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. Dictionary<string, object> data A list of key-value pairs that contains properties to change. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record updated. Type Parameters Name Description T The type of the record updated. Implements ISurrealDbClient.Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Query.html": {
     "href": "api/SurrealDb.SurrealDbClient.Query.html",
     "title": "Method Query | The official SurrealDB library for .NET",
-    "keywords": "Method Query | Improve this Doc View Source Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Declaration public Task<SurrealDbResponse> Query(string query, IReadOnlyDictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) Parameters Type Name Description string query The SurrealQL query. IReadOnlyDictionary<string, object> parameters A list of parameters to be used inside the SurrealQL query. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<SurrealDbResponse> The list of results from the SurrealQL queries. Implements ISurrealDbClient.Query(string, IReadOnlyDictionary<string, object>?, CancellationToken)"
+    "keywords": "Method Query | Edit this page View Source Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Declaration public Task<SurrealDbResponse> Query(string query, IReadOnlyDictionary<string, object>? parameters = null, CancellationToken cancellationToken = default) Parameters Type Name Description string query The SurrealQL query. IReadOnlyDictionary<string, object> parameters A list of parameters to be used inside the SurrealQL query. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<SurrealDbResponse> The list of results from the SurrealQL queries. Implements ISurrealDbClient.Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Select.html": {
     "href": "api/SurrealDb.SurrealDbClient.Select.html",
     "title": "Method Select | The official SurrealDB library for .NET",
-    "keywords": "Method Select | Improve this Doc View Source Select<T>(string, CancellationToken) Selects all records in a table. Declaration public Task<List<T>> Select<T>(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<List<T>> The list of extracted records Type Parameters Name Description T The type of record to extract Implements ISurrealDbClient.Select<T>(string, CancellationToken) | Improve this Doc View Source Select<T>(string, string, CancellationToken) Selects a single record. Declaration public Task<T?> Select<T>(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Implements ISurrealDbClient.Select<T>(string, string, CancellationToken) | Improve this Doc View Source Select<T>(Thing, CancellationToken) Selects a single record. Declaration public Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Implements ISurrealDbClient.Select<T>(Thing, CancellationToken)"
+    "keywords": "Method Select | Edit this page View Source Select<T>(string, CancellationToken) Selects all records in a table. Declaration public Task<List<T>> Select<T>(string table, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<List<T>> The list of extracted records Type Parameters Name Description T The type of record to extract Implements ISurrealDbClient.Select<T>(string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Select<T>(string, string, CancellationToken) Selects a single record. Declaration public Task<T?> Select<T>(string table, string id, CancellationToken cancellationToken = default) Parameters Type Name Description string table The name of the database table string id The id of the record CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Implements ISurrealDbClient.Select<T>(string, string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source Select<T>(Thing, CancellationToken) Selects a single record. Declaration public Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default) Parameters Type Name Description Thing thing The record id. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The extracted record Type Parameters Name Description T The type of the record Implements ISurrealDbClient.Select<T>(Thing, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Set.html": {
     "href": "api/SurrealDb.SurrealDbClient.Set.html",
     "title": "Method Set | The official SurrealDB library for .NET",
-    "keywords": "Method Set | Improve this Doc View Source Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. Declaration public Task Set(string key, object value, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. object value The value of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Set(string, object, CancellationToken)"
+    "keywords": "Method Set | Edit this page View Source Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. Declaration public Task Set(string key, object value, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. object value The value of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Set(string, object, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.SignIn.html": {
     "href": "api/SurrealDb.SurrealDbClient.SignIn.html",
     "title": "Method SignIn | The official SurrealDB library for .NET",
-    "keywords": "Method SignIn | Improve this Doc View Source SignIn(RootAuth, CancellationToken) Sign in as a root user. Declaration public Task SignIn(RootAuth root, CancellationToken cancellationToken = default) Parameters Type Name Description RootAuth root Credentials to sign in as a root user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.SignIn(RootAuth, CancellationToken) | Improve this Doc View Source SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. Declaration public Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken = default) Parameters Type Name Description NamespaceAuth nsAuth Credentials to sign in as a namespace user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Implements ISurrealDbClient.SignIn(NamespaceAuth, CancellationToken) | Improve this Doc View Source SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. Declaration public Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken = default) Parameters Type Name Description DatabaseAuth dbAuth Credentials to sign in as a database user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Implements ISurrealDbClient.SignIn(DatabaseAuth, CancellationToken) | Improve this Doc View Source SignIn<T>(T, CancellationToken) Sign in as a scoped user. Declaration public Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign in as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNIN scope function Implements ISurrealDbClient.SignIn<T>(T, CancellationToken)"
+    "keywords": "Method SignIn | Edit this page View Source SignIn(RootAuth, CancellationToken) Sign in as a root user. Declaration public Task SignIn(RootAuth root, CancellationToken cancellationToken = default) Parameters Type Name Description RootAuth root Credentials to sign in as a root user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.SignIn(RootAuth, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. Declaration public Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken = default) Parameters Type Name Description NamespaceAuth nsAuth Credentials to sign in as a namespace user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Implements ISurrealDbClient.SignIn(NamespaceAuth, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. Declaration public Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken = default) Parameters Type Name Description DatabaseAuth dbAuth Credentials to sign in as a database user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> Implements ISurrealDbClient.SignIn(DatabaseAuth, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException | Edit this page View Source SignIn<T>(T, CancellationToken) Sign in as a scoped user. Declaration public Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign in as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNIN scope function Implements ISurrealDbClient.SignIn<T>(T, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.SignUp.html": {
     "href": "api/SurrealDb.SurrealDbClient.SignUp.html",
     "title": "Method SignUp | The official SurrealDB library for .NET",
-    "keywords": "Method SignUp | Improve this Doc View Source SignUp<T>(T, CancellationToken) Sign up a new scoped user. Declaration public Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign up as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNUP scope function Implements ISurrealDbClient.SignUp<T>(T, CancellationToken)"
+    "keywords": "Method SignUp | Edit this page View Source SignUp<T>(T, CancellationToken) Sign up a new scoped user. Declaration public Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken = default) where T : ScopeAuth Parameters Type Name Description T scopeAuth Credentials to sign up as a scoped user CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<Jwt> The JSON Web Token that can be used to authenticate the user Type Parameters Name Description T Type of the params used in the SIGNUP scope function Implements ISurrealDbClient.SignUp<T>(T, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Unset.html": {
     "href": "api/SurrealDb.SurrealDbClient.Unset.html",
     "title": "Method Unset | The official SurrealDB library for .NET",
-    "keywords": "Method Unset | Improve this Doc View Source Unset(string, CancellationToken) Removes a parameter from this connection. Declaration public Task Unset(string key, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Unset(string, CancellationToken)"
+    "keywords": "Method Unset | Edit this page View Source Unset(string, CancellationToken) Removes a parameter from this connection. Declaration public Task Unset(string key, CancellationToken cancellationToken = default) Parameters Type Name Description string key The name of the parameter. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Unset(string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Upsert.html": {
     "href": "api/SurrealDb.SurrealDbClient.Upsert.html",
     "title": "Method Upsert | The official SurrealDB library for .NET",
-    "keywords": "Method Upsert | Improve this Doc View Source Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Declaration public Task<T> Upsert<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create or update. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created or updated. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Upsert<T>(T, CancellationToken)"
+    "keywords": "Method Upsert | Edit this page View Source Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Declaration public Task<T> Upsert<T>(T data, CancellationToken cancellationToken = default) where T : Record Parameters Type Name Description T data The record to create or update. CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<T> The record created or updated. Type Parameters Name Description T The type of the record to create. Implements ISurrealDbClient.Upsert<T>(T, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Uri.html": {
     "href": "api/SurrealDb.SurrealDbClient.Uri.html",
     "title": "Property Uri | The official SurrealDB library for .NET",
-    "keywords": "Property Uri | Improve this Doc View Source Uri The uri linked to the SurrealDB instance target. Declaration public Uri Uri { get; } Property Value Type Description Uri Implements ISurrealDbClient.Uri"
+    "keywords": "Property Uri | Edit this page View Source Uri The uri linked to the SurrealDB instance target. Declaration public Uri Uri { get; } Property Value Type Description Uri Implements ISurrealDbClient.Uri"
   },
   "api/SurrealDb.SurrealDbClient.Use.html": {
     "href": "api/SurrealDb.SurrealDbClient.Use.html",
     "title": "Method Use | The official SurrealDB library for .NET",
-    "keywords": "Method Use | Improve this Doc View Source Use(string, string, CancellationToken) Switch to a specific namespace and database. Declaration public Task Use(string ns, string db, CancellationToken cancellationToken = default) Parameters Type Name Description string ns Name of the namespace string db Name of the database CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Use(string, string, CancellationToken)"
+    "keywords": "Method Use | Edit this page View Source Use(string, string, CancellationToken) Switch to a specific namespace and database. Declaration public Task Use(string ns, string db, CancellationToken cancellationToken = default) Parameters Type Name Description string ns Name of the namespace string db Name of the database CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task Implements ISurrealDbClient.Use(string, string, CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.Version.html": {
     "href": "api/SurrealDb.SurrealDbClient.Version.html",
     "title": "Method Version | The official SurrealDB library for .NET",
-    "keywords": "Method Version | Improve this Doc View Source Version(CancellationToken) Retrieve the version of the SurrealDB instance. Declaration public Task<string> Version(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<string> The version of the SurrealDB instance Implements ISurrealDbClient.Version(CancellationToken)"
+    "keywords": "Method Version | Edit this page View Source Version(CancellationToken) Retrieve the version of the SurrealDB instance. Declaration public Task<string> Version(CancellationToken cancellationToken = default) Parameters Type Name Description CancellationToken cancellationToken The cancellationToken enables graceful cancellation of asynchronous operations Returns Type Description Task<string> The version of the SurrealDB instance Implements ISurrealDbClient.Version(CancellationToken) Exceptions Type Condition OperationCanceledException HttpRequestException InvalidOperationException SurrealDbException"
   },
   "api/SurrealDb.SurrealDbClient.html": {
     "href": "api/SurrealDb.SurrealDbClient.html",
     "title": "Class SurrealDbClient | The official SurrealDB library for .NET",
-    "keywords": "Class SurrealDbClient The entry point to communicate with a SurrealDB instance. Authenticate, use namespace/database, execute queries, etc... Inheritance object SurrealDbClient Implements ISurrealDbClient IDisposable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: SurrealDb Assembly: SurrealDb.dll Syntax public class SurrealDbClient : ISurrealDbClient, IDisposable Constructors Name Description SurrealDbClient(SurrealDbOptions, IHttpClientFactory?) Creates a new SurrealDbClient using a specific configuration. SurrealDbClient(string, IHttpClientFactory?) Creates a new SurrealDbClient, with the defined endpoint. Properties Name Description Uri The uri linked to the SurrealDB instance target. Methods Name Description Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Create<T>(T, CancellationToken) Creates the specific record in the database. Delete(Thing, CancellationToken) Deletes the specified record from the database. Delete(string, string, CancellationToken) Deletes the specified record from the database. Delete(string, CancellationToken) Deletes all records in a table from the database. Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Invalidate(CancellationToken) Invalidates the authentication for the current connection. Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Select<T>(Thing, CancellationToken) Selects a single record. Select<T>(string, string, CancellationToken) Selects a single record. Select<T>(string, CancellationToken) Selects all records in a table. Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. SignIn(RootAuth, CancellationToken) Sign in as a root user. SignIn<T>(T, CancellationToken) Sign in as a scoped user. SignUp<T>(T, CancellationToken) Sign up a new scoped user. Unset(string, CancellationToken) Removes a parameter from this connection. Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Use(string, string, CancellationToken) Switch to a specific namespace and database. Version(CancellationToken) Retrieve the version of the SurrealDB instance."
+    "keywords": "Class SurrealDbClient The entry point to communicate with a SurrealDB instance. Authenticate, use namespace/database, execute queries, etc... Inheritance object SurrealDbClient Implements ISurrealDbClient IDisposable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Namespace: SurrealDb Assembly: SurrealDb.dll Syntax public class SurrealDbClient : ISurrealDbClient, IDisposable Constructors Name Description SurrealDbClient(SurrealDbOptions, IHttpClientFactory?) Creates a new SurrealDbClient using a specific configuration. SurrealDbClient(string, IHttpClientFactory?) Creates a new SurrealDbClient, with the defined endpoint. Properties Name Description Uri The uri linked to the SurrealDB instance target. Methods Name Description Authenticate(Jwt, CancellationToken) Authenticates the current connection with a JWT. Configure(string?, string?, string?) Configures the client to use a specific namespace and database, with a JWT token identifier. Configure(string?, string?, string?, string?) Configures the client to use a specific namespace and database, with a user-defined root access. Connect(CancellationToken) Connects to the SurrealDB instance. This can improve performance to avoid cold starts. Using HTTP(S) protocol: initializes a new HTTP connection Using WS(S) protocol: will start a websocket connection so that further calls will be triggered immediately Create<T>(string, T?, CancellationToken) Creates a record in a table in the database. Create<T>(T, CancellationToken) Creates the specific record in the database. Delete(Thing, CancellationToken) Deletes the specified record from the database. Delete(string, string, CancellationToken) Deletes the specified record from the database. Delete(string, CancellationToken) Deletes all records in a table from the database. Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Health(CancellationToken) Checks the status of the database server and storage engine. Invalidate(CancellationToken) Invalidates the authentication for the current connection. Merge<T>(Thing, Dictionary<string, object>, CancellationToken) Modifies the specified record in the database. Merge<TMerge, TOutput>(TMerge, CancellationToken) Modifies the specified record in the database. Query(string, IReadOnlyDictionary<string, object>?, CancellationToken) Executes custom SurrealQL queries. Select<T>(Thing, CancellationToken) Selects a single record. Select<T>(string, string, CancellationToken) Selects a single record. Select<T>(string, CancellationToken) Selects all records in a table. Set(string, object, CancellationToken) Assigns a value as a parameter for this connection. SignIn(DatabaseAuth, CancellationToken) Sign in as a database user. SignIn(NamespaceAuth, CancellationToken) Sign in as a namespace user. SignIn(RootAuth, CancellationToken) Sign in as a root user. SignIn<T>(T, CancellationToken) Sign in as a scoped user. SignUp<T>(T, CancellationToken) Sign up a new scoped user. Unset(string, CancellationToken) Removes a parameter from this connection. Upsert<T>(T, CancellationToken) Updates or creates the specified record in the database. Use(string, string, CancellationToken) Switch to a specific namespace and database. Version(CancellationToken) Retrieve the version of the SurrealDB instance."
   },
   "api/SurrealDb.SurrealDbHttpClient.New.html": {
     "href": "api/SurrealDb.SurrealDbHttpClient.New.html",
     "title": "Method New | The official SurrealDB library for .NET",
-    "keywords": "Method New | Improve this Doc View Source New(string, IHttpClientFactory?) Creates a new SurrealDbClient using the HTTP protocol. Declaration public static ISurrealDbClient New(string host, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string host The host name of the SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException"
+    "keywords": "Method New | Edit this page View Source New(string, IHttpClientFactory?) Creates a new SurrealDbClient using the HTTP protocol. Declaration public static ISurrealDbClient New(string host, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string host The host name of the SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException Thrown when host is not valid. ArgumentOutOfRangeException Thrown when port in host is provided but is value is out of range."
   },
   "api/SurrealDb.SurrealDbHttpClient.html": {
     "href": "api/SurrealDb.SurrealDbHttpClient.html",
@@ -787,7 +797,7 @@
   "api/SurrealDb.SurrealDbHttpsClient.New.html": {
     "href": "api/SurrealDb.SurrealDbHttpsClient.New.html",
     "title": "Method New | The official SurrealDB library for .NET",
-    "keywords": "Method New | Improve this Doc View Source New(string, IHttpClientFactory?) Creates a new SurrealDbClient using the HTTPS protocol. Declaration public static ISurrealDbClient New(string host, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string host The host name of the SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException"
+    "keywords": "Method New | Edit this page View Source New(string, IHttpClientFactory?) Creates a new SurrealDbClient using the HTTPS protocol. Declaration public static ISurrealDbClient New(string host, IHttpClientFactory? httpClientFactory = null) Parameters Type Name Description string host The host name of the SurrealDB instance. IHttpClientFactory httpClientFactory An IHttpClientFactory instance, or none. Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException Thrown when host is not valid. ArgumentOutOfRangeException Thrown when port in host is provided but is value is out of range."
   },
   "api/SurrealDb.SurrealDbHttpsClient.html": {
     "href": "api/SurrealDb.SurrealDbHttpsClient.html",
@@ -797,7 +807,7 @@
   "api/SurrealDb.SurrealDbWsClient.New.html": {
     "href": "api/SurrealDb.SurrealDbWsClient.New.html",
     "title": "Method New | The official SurrealDB library for .NET",
-    "keywords": "Method New | Improve this Doc View Source New(string, string?, string?, string?, string?, string?) Creates a new SurrealDbClient using the WS protocol. Declaration public static ISurrealDbClient New(string host, string? ns = null, string? db = null, string? username = null, string? password = null, string? token = null) Parameters Type Name Description string host The host name of the SurrealDB instance. string ns The table namespace to connect to. string db The table database to connect to. string username The username to connect to (with root access). string password The password to connect to (with root access). string token The token to connect to (with user access). Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException"
+    "keywords": "Method New | Edit this page View Source New(string, string?, string?, string?, string?, string?) Creates a new SurrealDbClient using the WS protocol. Declaration public static ISurrealDbClient New(string host, string? ns = null, string? db = null, string? username = null, string? password = null, string? token = null) Parameters Type Name Description string host The host name of the SurrealDB instance. string ns The table namespace to connect to. string db The table database to connect to. string username The username to connect to (with root access). string password The password to connect to (with root access). string token The token to connect to (with user access). Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException Thrown when host is not valid. ArgumentOutOfRangeException Thrown when port in host is provided but is value is out of range."
   },
   "api/SurrealDb.SurrealDbWsClient.html": {
     "href": "api/SurrealDb.SurrealDbWsClient.html",
@@ -807,7 +817,7 @@
   "api/SurrealDb.SurrealDbWssClient.New.html": {
     "href": "api/SurrealDb.SurrealDbWssClient.New.html",
     "title": "Method New | The official SurrealDB library for .NET",
-    "keywords": "Method New | Improve this Doc View Source New(string, string?, string?, string?, string?, string?) Creates a new SurrealDbClient using the WSS protocol. Declaration public static ISurrealDbClient New(string host, string? ns = null, string? db = null, string? username = null, string? password = null, string? token = null) Parameters Type Name Description string host The host name of the SurrealDB instance. string ns The table namespace to connect to. string db The table database to connect to. string username The username to connect to (with root access). string password The password to connect to (with root access). string token The token to connect to (with user access). Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException"
+    "keywords": "Method New | Edit this page View Source New(string, string?, string?, string?, string?, string?) Creates a new SurrealDbClient using the WSS protocol. Declaration public static ISurrealDbClient New(string host, string? ns = null, string? db = null, string? username = null, string? password = null, string? token = null) Parameters Type Name Description string host The host name of the SurrealDB instance. string ns The table namespace to connect to. string db The table database to connect to. string username The username to connect to (with root access). string password The password to connect to (with root access). string token The token to connect to (with user access). Returns Type Description ISurrealDbClient Exceptions Type Condition ArgumentException Thrown when host is not valid. ArgumentOutOfRangeException Thrown when port in host is provided but is value is out of range."
   },
   "api/SurrealDb.SurrealDbWssClient.html": {
     "href": "api/SurrealDb.SurrealDbWssClient.html",

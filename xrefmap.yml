@@ -403,6 +403,18 @@ references:
   commentId: Overload:SurrealDb.ISurrealDbClient.Delete
   fullName: SurrealDb.ISurrealDbClient.Delete
   nameWithType: ISurrealDbClient.Delete
+- uid: SurrealDb.ISurrealDbClient.Health(System.Threading.CancellationToken)
+  name: Health(CancellationToken)
+  href: api/SurrealDb.ISurrealDbClient.Health.html#SurrealDb_ISurrealDbClient_Health_System_Threading_CancellationToken_
+  commentId: M:SurrealDb.ISurrealDbClient.Health(System.Threading.CancellationToken)
+  fullName: SurrealDb.ISurrealDbClient.Health(System.Threading.CancellationToken)
+  nameWithType: ISurrealDbClient.Health(CancellationToken)
+- uid: SurrealDb.ISurrealDbClient.Health*
+  name: Health
+  href: api/SurrealDb.ISurrealDbClient.Health.html
+  commentId: Overload:SurrealDb.ISurrealDbClient.Health
+  fullName: SurrealDb.ISurrealDbClient.Health
+  nameWithType: ISurrealDbClient.Health
 - uid: SurrealDb.ISurrealDbClient.Invalidate(System.Threading.CancellationToken)
   name: Invalidate(CancellationToken)
   href: api/SurrealDb.ISurrealDbClient.Invalidate.html#SurrealDb_ISurrealDbClient_Invalidate_System_Threading_CancellationToken_
@@ -1873,6 +1885,18 @@ references:
   commentId: Overload:SurrealDb.SurrealDbClient.Dispose
   fullName: SurrealDb.SurrealDbClient.Dispose
   nameWithType: SurrealDbClient.Dispose
+- uid: SurrealDb.SurrealDbClient.Health(System.Threading.CancellationToken)
+  name: Health(CancellationToken)
+  href: api/SurrealDb.SurrealDbClient.Health.html#SurrealDb_SurrealDbClient_Health_System_Threading_CancellationToken_
+  commentId: M:SurrealDb.SurrealDbClient.Health(System.Threading.CancellationToken)
+  fullName: SurrealDb.SurrealDbClient.Health(System.Threading.CancellationToken)
+  nameWithType: SurrealDbClient.Health(CancellationToken)
+- uid: SurrealDb.SurrealDbClient.Health*
+  name: Health
+  href: api/SurrealDb.SurrealDbClient.Health.html
+  commentId: Overload:SurrealDb.SurrealDbClient.Health
+  fullName: SurrealDb.SurrealDbClient.Health
+  nameWithType: SurrealDbClient.Health
 - uid: SurrealDb.SurrealDbClient.Invalidate(System.Threading.CancellationToken)
   name: Invalidate(CancellationToken)
   href: api/SurrealDb.SurrealDbClient.Invalidate.html#SurrealDb_SurrealDbClient_Invalidate_System_Threading_CancellationToken_
