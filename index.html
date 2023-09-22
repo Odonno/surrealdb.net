@@ -294,10 +294,31 @@ public class WeatherForecastController : ControllerBase
 <li>a vast majority of tests are integration tests, ensuring compatibility with a concrete SurrealDB version</li>
 <li>each integration test is using a separate SurrealDB instance</li>
 </ul>
+<h3 id="net-release-versions">.NET release versions</h3>
+<p>The .NET release versions must follow these rules:</p>
+<ul>
+<li>Should target at least the last 2 LTS versions</li>
+<li>Should target the last 3 LTS version for a maximum of 12 months after the latest LTS release</li>
+</ul>
+<p>So, for example,</p>
+<ul>
+<li>Given the following release of .NET 8:
+<ul>
+<li>The last 3 LTS: .NET standard 2.1, .NET 6, .NET 8</li>
+</ul>
+</li>
+<li>Given the following release of .NET 9:
+<ul>
+<li>The last 2 LTS: .NET 6, .NET 8</li>
+</ul>
+</li>
+</ul>
+<p>Note: The support of .NET standard 2.1 can be expanded if necessary.</p>
+<p>This will ensure a minimum of a 5 years compatibility which is close to the average time frame of any .NET application.</p>
 <h3 id="testing">Testing</h3>
 <p>Unit/Integration tests are written using <a href="https://xunit.net/">xUnit</a> and <a href="https://fluentassertions.com/">FluentAssertions</a>.</p>
 <p>You will need a local SurrealDB instance alongside the tests. Start one using the following command:</p>
-<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory
+<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory --auth --allow-guests
 </code></pre>
 <p>Once ready, go to the root directory of the project and run the following command:</p>
 <pre><code class="lang-bash">dotnet watch test --project SurrealDb.Tests
@@ -305,7 +326,7 @@ public class WeatherForecastController : ControllerBase
 <h3 id="benchmarking">Benchmarking</h3>
 <p>This project also contains <a href="https://benchmarkdotnet.org/">benchmarks</a> in order to detect possible performance regressions.</p>
 <p>You will need a local SurrealDB instance alongside the tests. Start one using the following command:</p>
-<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory
+<pre><code class="lang-bash">surreal start --log debug --user root --pass root memory --auth --allow-guests
 </code></pre>
 <p>Once ready, go to the root directory of the project and run the following command:</p>
 <pre><code class="lang-bash">dotnet run -c Release --project SurrealDb.Benchmarks --filter '*'

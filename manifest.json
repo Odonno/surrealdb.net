@@ -746,56 +746,6 @@
       "source_relative_path": "api/SurrealDb.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Hours.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Days.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Weeks.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Years.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/SurrealDb.Models.Duration.op_GreaterThanOrEqual.html"
         }
       },
@@ -857,6 +807,56 @@
       "output": {
         ".html": {
           "relative_path": "api/SurrealDb.Models.Duration.Minutes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Duration.Hours.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Duration.Days.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Duration.Weeks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Duration.Years.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Duration.html"
         }
       },
       "version": ""
@@ -1086,46 +1086,6 @@
       "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Item.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Count.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Oks.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Errors.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstResult.html"
         }
       },
@@ -1213,6 +1173,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Item.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Count.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Oks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.yml",
       "output": {
         ".html": {
@@ -1237,6 +1237,46 @@
       "output": {
         ".html": {
           "relative_path": "api/SurrealDb.Models.Response.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Thing.-ctor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Thing.Equals.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Thing.GetHashCode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SurrealDb.Models.Thing.ToString.html"
         }
       },
       "version": ""
@@ -1317,46 +1357,6 @@
       "output": {
         ".html": {
           "relative_path": "api/SurrealDb.Models.Thing.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.-ctor.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.Equals.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.GetHashCode.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.ToString.html"
         }
       },
       "version": ""
