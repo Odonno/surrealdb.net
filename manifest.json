@@ -1,5 +1,4 @@
 {
-  "homepages": [],
   "source_base_path": "/home/runner/work/surrealdb.net/surrealdb.net/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -213,1460 +212,1460 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Exceptions.EmptySurrealDbResponseException.yml",
+      "source_relative_path": "api/SurrealDb.Net.Exceptions.EmptySurrealDbResponseException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Exceptions.EmptySurrealDbResponseException.html"
+          "relative_path": "api/SurrealDb.Net.Exceptions.EmptySurrealDbResponseException.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Exceptions.SurrealDbErrorResultException.yml",
+      "source_relative_path": "api/SurrealDb.Net.Exceptions.SurrealDbErrorResultException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Exceptions.SurrealDbErrorResultException.html"
+          "relative_path": "api/SurrealDb.Net.Exceptions.SurrealDbErrorResultException.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Exceptions.SurrealDbException.yml",
+      "source_relative_path": "api/SurrealDb.Net.Exceptions.SurrealDbException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Exceptions.SurrealDbException.html"
+          "relative_path": "api/SurrealDb.Net.Exceptions.SurrealDbException.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Exceptions.yml",
+      "source_relative_path": "api/SurrealDb.Net.Exceptions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Exceptions.html"
+          "relative_path": "api/SurrealDb.Net.Exceptions.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Uri.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Uri.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Authenticate.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Authenticate.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Configure.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Configure.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Connect.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Connect.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Create.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Create.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Delete.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Delete.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Health.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Health.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Invalidate.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Invalidate.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Merge.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Merge.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Query.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Query.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Select.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Select.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Set.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Set.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.SignIn.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.SignIn.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.SignUp.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.SignUp.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Unset.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Unset.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Upsert.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Upsert.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Use.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Use.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.Version.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.Version.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.ISurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.ISurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.ISurrealDbClient.html"
+          "relative_path": "api/SurrealDb.Net.ISurrealDbClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.Namespace.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.Namespace.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.Database.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.Database.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.Username.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.Username.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.Password.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.Password.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.DatabaseAuth.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.DatabaseAuth.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.Jwt.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.Jwt.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.Jwt.Token.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.Jwt.Token.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.Jwt.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.Jwt.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.Jwt.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.Jwt.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.Namespace.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.Namespace.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.Username.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.Username.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.Password.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.Password.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.NamespaceAuth.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.NamespaceAuth.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.RootAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.RootAuth.Username.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.Username.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.RootAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.RootAuth.Password.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.Password.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.RootAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.RootAuth.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.RootAuth.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.Namespace.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.Namespace.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.Database.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.Database.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.Scope.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.Scope.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.ScopeAuth.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.ScopeAuth.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Auth.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Auth.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Auth.html"
+          "relative_path": "api/SurrealDb.Net.Models.Auth.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.-ctor.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.-ctor.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Equals.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Equals.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.CompareTo.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.CompareTo.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.GetHashCode.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.GetHashCode.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.ToString.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.ToString.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.ToTimeSpan.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.ToTimeSpan.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_Equality.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_Equality.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_Inequality.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_Inequality.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_LessThan.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_LessThan.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_GreaterThan.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_GreaterThan.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_LessThanOrEqual.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_LessThanOrEqual.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.op_GreaterThanOrEqual.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.op_GreaterThanOrEqual.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Zero.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Zero.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.NanoSeconds.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.NanoSeconds.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.MicroSeconds.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.MicroSeconds.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.MilliSeconds.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.MilliSeconds.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Seconds.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Seconds.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Minutes.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Minutes.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Hours.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Hours.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Days.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Days.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Weeks.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Weeks.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.Years.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.Years.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Duration.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Duration.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Duration.html"
+          "relative_path": "api/SurrealDb.Net.Models.Duration.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Record.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Record.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Record.Id.html"
+          "relative_path": "api/SurrealDb.Net.Models.Record.Id.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Record.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Record.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Record.html"
+          "relative_path": "api/SurrealDb.Net.Models.Record.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.ISurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.ISurrealDbErrorResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbErrorResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.IsOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.IsOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.IsError.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.IsError.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.ISurrealDbResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.ISurrealDbResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Time.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.Time.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Status.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.Status.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.Details.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.Details.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.IsOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.IsOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbErrorResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbErrorResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.Time.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.Time.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.Status.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.Status.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.GetValue.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.GetValue.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.IsOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.IsOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbOkResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbOkResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Code.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.Code.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Details.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.Details.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Description.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.Description.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.Information.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.Information.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.IsOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.IsOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbProtocolErrorResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbProtocolErrorResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.Item.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.Count.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.FirstError.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.Oks.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.HasErrors.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.Errors.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.IsEmpty.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.FirstResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.IsSingle.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.FirstOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.GetEnumerator.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.FirstError.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.GetValue.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.HasErrors.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.IsEmpty.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Item.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.IsSingle.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Count.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.GetEnumerator.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Oks.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.GetValue.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbResponse.Errors.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbResponse.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbUnknownResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.IsOk.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbUnknownResult.IsOk.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbUnknownResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.SurrealDbUnknownResult.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.SurrealDbUnknownResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Response.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Response.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Response.html"
+          "relative_path": "api/SurrealDb.Net.Models.Response.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.-ctor.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.-ctor.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.Equals.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.Equals.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.GetHashCode.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.GetHashCode.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.ToString.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.ToString.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.From.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.From.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.op_Equality.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.op_Equality.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.op_Inequality.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.op_Inequality.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.TableSpan.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.TableSpan.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.IdSpan.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.IdSpan.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.Table.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.Table.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.Id.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.Id.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.Thing.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.Thing.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.Thing.html"
+          "relative_path": "api/SurrealDb.Net.Models.Thing.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.Models.yml",
+      "source_relative_path": "api/SurrealDb.Net.Models.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.Models.html"
+          "relative_path": "api/SurrealDb.Net.Models.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Uri.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Dispose.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.-ctor.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Health.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Authenticate.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Invalidate.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Configure.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Merge.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Connect.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Query.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Create.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Select.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Delete.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Set.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Dispose.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.SignIn.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Health.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.SignUp.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Invalidate.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Unset.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Merge.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Upsert.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Query.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Use.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Select.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Version.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Set.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.SignIn.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Uri.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.SignUp.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.-ctor.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Unset.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Authenticate.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Upsert.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Configure.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Use.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Connect.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.Version.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Create.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbClient.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbClient.Delete.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbHttpClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbHttpClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbHttpClient.New.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbHttpClient.New.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbHttpClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbHttpClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbHttpClient.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbHttpClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbHttpsClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbHttpsClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbHttpsClient.New.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbHttpsClient.New.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbHttpsClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbHttpsClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbHttpsClient.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbHttpsClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbWsClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbWsClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbWsClient.New.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbWsClient.New.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbWsClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbWsClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbWsClient.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbWsClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbWssClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbWssClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbWssClient.New.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbWssClient.New.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.SurrealDbWssClient.yml",
+      "source_relative_path": "api/SurrealDb.Net.SurrealDbWssClient.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.SurrealDbWssClient.html"
+          "relative_path": "api/SurrealDb.Net.SurrealDbWssClient.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SurrealDb.yml",
+      "source_relative_path": "api/SurrealDb.Net.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SurrealDb.html"
+          "relative_path": "api/SurrealDb.Net.html"
         }
       },
       "version": ""
@@ -1735,7 +1734,6 @@
       "version": ""
     }
   ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
