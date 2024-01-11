@@ -77,7 +77,7 @@ public class PatchTests
 
             result = await client.Patch(new StringRecordId("post:first"), jsonPatchDocument);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

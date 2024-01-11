@@ -16,6 +16,7 @@ using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Internals.Helpers;
 using SurrealDb.Net.Internals.Models.LiveQuery;
 using SurrealDb.Net.Internals.Stream;
+using SurrealDb.Net.Internals.Query;
 using SurrealDb.Net.Internals.Ws;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
@@ -836,7 +837,10 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         return dbResponse.GetValue<T>()!;
     }
 
-    public async Task<IEnumerable<T>> Select<T>(string table, CancellationToken cancellationToken)
+    public async Task<IEnumerable<T>> SelectAll<T>(
+        string table,
+        CancellationToken cancellationToken
+    )
     {
         var dbResponse = await SendRequestAsync(
                 "select",
@@ -846,6 +850,11 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             )
             .ConfigureAwait(false);
         return dbResponse.DeserializeEnumerable<T>()!;
+    }
+
+    public IQueryable<T> Select<T>(string table)
+    {
+        return new SurrealDbQueryable<T>(new SurrealDbQueryProvider<T>(this, table));
     }
 
     public async Task<T?> Select<T>(RecordId recordId, CancellationToken cancellationToken)
