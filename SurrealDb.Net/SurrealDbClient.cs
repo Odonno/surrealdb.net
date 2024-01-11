@@ -317,12 +317,9 @@ public class SurrealDbClient : ISurrealDbClient
         );
     }
 
-    public Task<IEnumerable<T>> Select<T>(
-        string table,
-        CancellationToken cancellationToken = default
-    )
+    public IQueryable<T> Select<T>(string table)
     {
-        return _engine.Select<T>(table, cancellationToken);
+        return _engine.Select<T>(table);
     }
 
     public Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default)

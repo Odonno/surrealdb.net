@@ -31,7 +31,7 @@ public class DeleteTests
 
             await client.Delete("post");
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -67,7 +67,7 @@ public class DeleteTests
 
             result = await client.Delete(("post", "first"));
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -111,7 +111,7 @@ public class DeleteTests
 
             result = await client.Delete(thing);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -155,7 +155,7 @@ public class DeleteTests
 
             result = await client.Delete(thing);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

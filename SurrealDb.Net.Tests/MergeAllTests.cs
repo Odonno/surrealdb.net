@@ -32,7 +32,7 @@ public class MergeAllTests
 
             var merge = new PostMergeData { Content = "[Edit] Oops" };
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
 
             results = await client.MergeAll<PostMergeData, Post>("post", merge);
         };
@@ -82,7 +82,7 @@ public class MergeAllTests
             var thing = new Thing("post", "first");
             var data = new Dictionary<string, object> { { "content", "[Edit] Oops" } };
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
 
             results = await client.MergeAll<Post>("post", data);
         };

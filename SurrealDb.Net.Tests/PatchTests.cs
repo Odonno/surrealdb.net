@@ -45,7 +45,7 @@ public class PatchTests
 
             result = await client.Patch(thing, jsonPatchDocument);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

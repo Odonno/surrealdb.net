@@ -40,7 +40,7 @@ public class UpdateAllTests
                 Status = "PUBLISHED"
             };
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
 
             results = await client.UpdateAll("post", postUpdate);
         };

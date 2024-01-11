@@ -48,7 +48,7 @@ public class MergeTests
 
             result = await client.Merge<PostMergeRecord, Post>(merge);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -96,7 +96,7 @@ public class MergeTests
 
             result = await client.Merge<Post>(thing, data);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

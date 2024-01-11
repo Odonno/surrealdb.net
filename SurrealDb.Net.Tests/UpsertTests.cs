@@ -39,7 +39,7 @@ public class UpsertTests
 
             result = await client.Upsert(post);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -101,7 +101,7 @@ public class UpsertTests
 
             result = await client.Upsert(post);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

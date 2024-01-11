@@ -93,7 +93,7 @@ public class SelectBench : BaseBenchmark
 
     private static async Task<List<Post>> Run(ISurrealDbClient surrealDbClient)
     {
-        var result = await surrealDbClient.Select<Post>("post");
+        var result = await surrealDbClient.Select<Post>("post").ToListAsync();
         return result.ToList();
     }
 }

@@ -100,7 +100,7 @@ public class BaseBenchmark
         );
         InitializeSurrealDbClient(client, databaseInfo);
 
-        var posts = await client.Select<Post>("post");
+        var posts = await client.Select<Post>("post").ToListAsync();
         return posts.First();
     }
 

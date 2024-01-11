@@ -41,7 +41,7 @@ public class ConfigureJsonSerializerOptionsTests
                 }
             );
 
-            result = await client.Select<DeviceInput>("device_input");
+            result = await client.Select<DeviceInput>("device_input").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
@@ -141,7 +141,7 @@ public class ConfigureJsonSerializerOptionsTests
                 }
             );
 
-            result = await client.Select<DeviceInput>("device_input");
+            result = await client.Select<DeviceInput>("device_input").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
