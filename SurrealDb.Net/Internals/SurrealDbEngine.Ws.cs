@@ -1,16 +1,13 @@
 ﻿using System.Collections.Concurrent;
-using System.Collections.Immutable;
-using System.Globalization;
 using System.Net.WebSockets;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
-using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
 using Microsoft.IO;
 using SurrealDb.Net.Exceptions;
 using SurrealDb.Net.Internals.Auth;
+using SurrealDb.Net.Internals.Cbor;
 using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Internals.Helpers;
 using SurrealDb.Net.Internals.Json;
@@ -108,6 +105,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                         switch (message.MessageType)
                         {
                             case WebSocketMessageType.Text:
+#if !USE_CBOR
 #if NET8_0_OR_GREATER
                                 if (JsonSerializer.IsReflectionEnabledByDefault)
                                 {
@@ -135,6 +133,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                                     GetJsonSerializerOptions()
                                 );
 #endif
+#endif
                                 break;
                             case WebSocketMessageType.Binary:
                             {
@@ -142,6 +141,15 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                                     ? message.Stream
                                     : _memoryStreamManager.GetStream(message.Binary!);
 
+#if USE_CBOR
+                                response = await CborSerializer
+                                    .DeserializeAsync<ISurrealDbWsResponse>(
+                                        stream,
+                                        SurrealDbCborOptions.Default,
+                                        cancellationToken
+                                    )
+                                    .ConfigureAwait(false);
+#else
 #if NET8_0_OR_GREATER
                                 if (JsonSerializer.IsReflectionEnabledByDefault)
                                 {
@@ -178,6 +186,8 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                                     )
                                     .ConfigureAwait(false);
 #endif
+#endif
+
                                 break;
                             }
                         }
@@ -271,6 +281,9 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         _isInitialized = false;
 
+#if USE_CBOR
+        _wsClient.NativeClient?.Options.AddSubProtocol("cbor");
+#endif
         await _wsClient.StartOrFail().ConfigureAwait(false);
 
         if (_config.Ns is not null)
@@ -926,6 +939,12 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         using var stream = _memoryStreamManager.GetStream();
 
+#if USE_CBOR
+        await CborSerializer
+            .SerializeAsync(request, stream, SurrealDbCborOptions.Default, cancellationToken)
+            .ConfigureAwait(false);
+        _wsClient.Send(stream.ToArray());
+#else
 #if NET8_0_OR_GREATER
         if (JsonSerializer.IsReflectionEnabledByDefault)
         {
@@ -954,6 +973,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         var payload = stream.ToArray();
         _wsClient.SendAsText(payload);
+#endif
 
         var response = await taskCompletionSource.Task.ConfigureAwait(false);
         cancellationToken.ThrowIfCancellationRequested();
