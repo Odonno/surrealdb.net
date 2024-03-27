@@ -1,25 +1,18 @@
 ﻿using Dahomey.Cbor;
 using Dahomey.Cbor.Serialization;
 using Dahomey.Cbor.Serialization.Converters;
+using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Models;
 
 namespace SurrealDb.Net.Internals.Cbor.Converters;
-
-// TODO : Register converters
-// options.Registry.ConverterRegistry.RegisterConverter()
 
 internal class ThingConverter : CborConverterBase<Thing>
 {
     public override Thing Read(ref CborReader reader)
     {
-        bool hasSemanticTag = reader.TryReadSemanticTag(out var semanticTag);
-        if (!hasSemanticTag || semanticTag != CborTagConstants.TAG_RECORDID)
-        {
-            throw new CborException("No record id detected...");
-        }
-
         return reader.GetCurrentDataItemType() switch
         {
+            CborDataItemType.Null => default!,
             CborDataItemType.String => new Thing(reader.ReadString()!),
             CborDataItemType.Array => ReadThingFromArray(ref reader),
             _
@@ -27,49 +20,55 @@ internal class ThingConverter : CborConverterBase<Thing>
                     "Expected a CBOR text data type, or a CBOR array with 2 elements"
                 )
         };
-
-        //reader.ReadBeginArray();
-
-        //ReadOnlySpan<byte> bytes = reader.ReadByteString();
-        //return new Guid(bytes);
     }
 
     private static Thing ReadThingFromArray(ref CborReader reader)
     {
         reader.ReadBeginArray();
 
-        throw new Exception("TODO"); // TODO
+        int size = reader.ReadSize();
 
-        //int len = reader.re();
+        if (size != 2)
+        {
+            throw new CborException(
+                "Expected a CBOR text data type, or a CBOR array with 2 elements"
+            );
+        }
 
-        //if (len != 2)
-        //{
-        //    throw new CborException(
-        //        "Expected a CBOR text data type, or a CBOR array with 2 elements"
-        //    );
-        //}
+        var table = reader.ReadString();
 
-        //ReadBeginArray();
-        //int num = ReadSize();
-        //arrayReader.ReadBeginArray(num, ref context);
-        //while (num > 0 || (num < 0 && GetCurrentDataItemType() != CborDataItemType.Break))
-        //{
-        //    arrayReader.ReadArrayItem(ref this, ref context);
-        //    num--;
-        //}
+        if (table is null)
+        {
+            throw new CborException("Expected a string as the first element of the array");
+        }
 
-        //_state = CborReaderState.Start;
+        var idItemType = reader.GetCurrentDataItemType();
+
+        return idItemType switch
+        {
+            CborDataItemType.String => Thing.From(table, reader.ReadString()!),
+            CborDataItemType.Signed
+            or CborDataItemType.Unsigned
+                => Thing.From(table, reader.ReadInt32()),
+            CborDataItemType.Array => Thing.From(table, reader.ReadDataItemAsMemory()),
+            CborDataItemType.Map => Thing.From(table, reader.ReadDataItemAsMemory()),
+            _
+                => throw new CborException(
+                    "Expected the id of a Record Id to be a String, Integer, Array or Object value"
+                )
+        };
     }
 
     public override void Write(ref CborWriter writer, Thing value)
     {
         writer.WriteSemanticTag(CborTagConstants.TAG_RECORDID);
 
-        writer.WriteBeginArray(2);
+        if (value is null)
+        {
+            writer.WriteNull();
+            return;
+        }
 
-        writer.WriteString(value.Table);
-        writer.WriteString(value.Id);
-
-        writer.WriteEndArray(-1);
+        writer.WriteString(value.ToString());
     }
 }

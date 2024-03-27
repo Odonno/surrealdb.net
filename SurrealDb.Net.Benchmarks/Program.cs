@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
@@ -11,10 +11,10 @@ using SurrealDb.Net.Benchmarks.Helpers;
 
 var config = DefaultConfig
     .Instance.AddJob(Job.Default.WithRuntime(CoreRuntime.Core80))
-    .AddJob(
-        Job.Default.WithRuntime(NativeAotRuntime.Net80)
-            .WithEnvironmentVariable(EnvVariablesConstants.NativeAotRuntime, "true")
-    )
+    //.AddJob(
+    //    Job.Default.WithRuntime(NativeAotRuntime.Net80)
+    //        .WithEnvironmentVariable(EnvVariablesConstants.NativeAotRuntime, "true")
+    //)
     .AddDiagnoser(MemoryDiagnoser.Default)
     .AddExporter(JsonExporter.Full)
     .HideColumns(Column.EnvironmentVariables);

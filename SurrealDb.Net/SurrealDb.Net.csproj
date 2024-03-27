@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="Dahomey.Cbor" Version="1.21.0" />
 	<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 	<PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.0" />
 	<PackageReference Include="Microsoft.Spatial" Version="7.18.0" />
@@ -19,6 +18,7 @@
 	<PackageReference Include="System.Collections.Immutable" Version="8.0.0" />
 	<PackageReference Include="System.Text.Json" Version="8.0.0" />
 	<PackageReference Include="SystemTextJsonPatch" Version="3.0.1" />
+	<PackageReference Include="TupleAsJsonArray" Version="1.0.2" />
 	<PackageReference Include="Websocket.Client" Version="5.1.1" />
   </ItemGroup>
 
@@ -59,6 +59,10 @@
     <PackageReference Include="Pidgin">
       <Version>3.2.3</Version>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\test\Dahomey.Cbor\src\Dahomey.Cbor\Dahomey.Cbor.csproj" />
   </ItemGroup>
 
 </Project>

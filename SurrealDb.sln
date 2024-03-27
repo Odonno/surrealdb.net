@@ -49,7 +49,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.MinimalApis.Exten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.Examples.MinimalApis", "SurrealDb.Examples.MinimalApis\SurrealDb.Examples.MinimalApis.csproj", "{15FC7474-5CB5-4EAA-91B0-796DD5DE3BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.MinimalApis.Extensions.Reference", "SurrealDb.MinimalApis.Extensions.Reference\SurrealDb.MinimalApis.Extensions.Reference.csproj", "{15C6F284-FAAA-4794-9FD9-9B500A1B15FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.MinimalApis.Extensions.Reference", "SurrealDb.MinimalApis.Extensions.Reference\SurrealDb.MinimalApis.Extensions.Reference.csproj", "{15C6F284-FAAA-4794-9FD9-9B500A1B15FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dahomey.Cbor", "..\..\test\Dahomey.Cbor\src\Dahomey.Cbor\Dahomey.Cbor.csproj", "{B1BE8C9C-615A-43A9-BE8E-3E86210F6EA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,6 +119,10 @@ Global
 		{15C6F284-FAAA-4794-9FD9-9B500A1B15FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15C6F284-FAAA-4794-9FD9-9B500A1B15FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15C6F284-FAAA-4794-9FD9-9B500A1B15FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BE8C9C-615A-43A9-BE8E-3E86210F6EA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BE8C9C-615A-43A9-BE8E-3E86210F6EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BE8C9C-615A-43A9-BE8E-3E86210F6EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BE8C9C-615A-43A9-BE8E-3E86210F6EA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
