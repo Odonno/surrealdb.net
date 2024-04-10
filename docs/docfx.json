@@ -1,0 +1,24 @@
+{
+    "metadata": [
+      {
+        "src": [
+          {
+            "files": ["**/SurrealDb.Net.csproj"],
+            "src": "../"
+          }
+        ],
+        "dest": "api",
+        "includePrivateMembers": false,
+        "disableGitFeatures": false,
+        "disableDefaultFilter": false,
+        "noRestore": false,
+        "namespaceLayout": "nested",
+        "memberLayout": "separatePages",
+        "EnumSortOrder": "alphabetic",
+        "allowCompilationErrors": false,
+        "properties": {
+          "TargetFramework": "net8.0"
+        }
+      }
+    ]
+  }
