@@ -7,7 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Chisel" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\SurrealDb.Net\SurrealDb.Net.csproj" />
   </ItemGroup>
+  
+  <PropertyGroup>
+    <ChiselGraphName>$(MSBuildProjectName).Chisel.gv</ChiselGraphName>
+  </PropertyGroup>
 
 </Project>
