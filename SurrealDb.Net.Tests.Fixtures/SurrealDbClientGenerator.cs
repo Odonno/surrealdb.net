@@ -42,11 +42,13 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
             .WithNamingPolicy("SnakeCase")
             .Build();
 
-        services.AddSurreal(
-            options,
-            configureJsonSerializerOptions: configureJsonSerializerOptions,
-            appendJsonSerializerContexts: funcJsonSerializerContexts
-        );
+        services
+            .AddSurreal(
+                options,
+                configureJsonSerializerOptions: configureJsonSerializerOptions,
+                appendJsonSerializerContexts: funcJsonSerializerContexts
+            )
+            .AddInMemoryProvider();
 
         _serviceProvider = services.BuildServiceProvider(validateScopes: true);
 

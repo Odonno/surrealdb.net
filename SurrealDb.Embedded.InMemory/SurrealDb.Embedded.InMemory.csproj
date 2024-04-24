@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <IsPackable>true</IsPackable>
+    <PackageId>SurrealDb.Embedded.InMemory</PackageId>
+    <Description>In-memory provider for the SurrealDB library for .NET</Description>
+    <PackageTags>SurrealDB Surreal Database Memory Provider</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SurrealDb.Net\SurrealDb.Net.csproj" />
+  </ItemGroup>
+
+</Project>

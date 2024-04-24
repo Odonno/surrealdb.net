@@ -92,3 +92,5 @@ internal interface ISurrealDbEngine : IDisposable
     Task Use(string ns, string db, CancellationToken cancellationToken);
     Task<string> Version(CancellationToken cancellationToken);
 }
+
+internal interface ISurrealDbInMemoryEngine : ISurrealDbEngine { }

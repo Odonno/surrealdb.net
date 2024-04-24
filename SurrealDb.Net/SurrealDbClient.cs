@@ -49,6 +49,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         : this(
             new SurrealDbClientParams(endpoint, namingPolicy),
+            null,
             httpClientFactory,
             configureJsonSerializerOptions,
             prependJsonSerializerContexts,
@@ -80,6 +81,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         : this(
             new SurrealDbClientParams(configuration),
+            null,
             httpClientFactory,
             configureJsonSerializerOptions,
             prependJsonSerializerContexts,
@@ -88,6 +90,7 @@ public class SurrealDbClient : ISurrealDbClient
 
     internal SurrealDbClient(
         SurrealDbClientParams parameters,
+        IServiceProvider? serviceProvider = null,
         IHttpClientFactory? httpClientFactory = null,
         Action<JsonSerializerOptions>? configureJsonSerializerOptions = null,
         Func<JsonSerializerContext[]>? prependJsonSerializerContexts = null,
@@ -121,7 +124,12 @@ public class SurrealDbClient : ISurrealDbClient
                     prependJsonSerializerContexts,
                     appendJsonSerializerContexts
                 ),
-            _ => throw new ArgumentException("This protocol is not supported."),
+            "mem"
+                => serviceProvider?.GetService<ISurrealDbInMemoryEngine>()
+                    ?? throw new Exception(
+                        "Impossible to create a new in-memory SurrealDB client. Make sure to use `AddInMemoryProvider`."
+                    ),
+            _ => throw new NotSupportedException($"The protocol '{protocol}' is not supported."),
         };
 
         if (parameters.Username is not null)

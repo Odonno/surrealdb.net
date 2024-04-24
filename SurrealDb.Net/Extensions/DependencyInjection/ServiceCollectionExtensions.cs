@@ -2,8 +2,12 @@
 using System.Text.Json.Serialization;
 using SurrealDb.Net;
 using SurrealDb.Net.Internals.Helpers;
+using SurrealDb.Net.Internals.Models;
 
 namespace Microsoft.Extensions.DependencyInjection;
+
+// TODO : Create custom SurrealDbBuilder type and rename this to SurrealDbBuilderExtensions
+// For inspiration: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/2f6a10f89e3c6d97f232f4157a80e3a9e1470dc5/src/HealthChecks.UI/Extensions/ServiceCollectionExtensions.cs#L15
 
 /// <summary>
 /// Extensions to register SurrealDB services.
@@ -249,6 +253,8 @@ public static class ServiceCollectionExtensions
         Func<JsonSerializerContext[]>? appendJsonSerializerContexts = null
     )
     {
+        var parameters = new SurrealDbClientParams(configuration);
+
         switch (lifetime)
         {
             case ServiceLifetime.Singleton:
@@ -257,7 +263,8 @@ public static class ServiceCollectionExtensions
                     serviceProvider =>
                     {
                         return new SurrealDbClient(
-                            configuration,
+                            parameters,
+                            serviceProvider,
                             serviceProvider.GetRequiredService<IHttpClientFactory>(),
                             configureJsonSerializerOptions,
                             prependJsonSerializerContexts,
@@ -272,7 +279,8 @@ public static class ServiceCollectionExtensions
                     serviceProvider =>
                     {
                         return new SurrealDbClient(
-                            configuration,
+                            parameters,
+                            serviceProvider,
                             serviceProvider.GetRequiredService<IHttpClientFactory>(),
                             configureJsonSerializerOptions,
                             prependJsonSerializerContexts,
@@ -287,7 +295,8 @@ public static class ServiceCollectionExtensions
                     serviceProvider =>
                     {
                         return new SurrealDbClient(
-                            configuration,
+                            parameters,
+                            serviceProvider,
                             serviceProvider.GetRequiredService<IHttpClientFactory>(),
                             configureJsonSerializerOptions,
                             prependJsonSerializerContexts,
