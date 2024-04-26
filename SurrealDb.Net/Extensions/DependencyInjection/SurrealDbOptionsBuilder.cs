@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using SurrealDb.Net.Internals.Constants;
+﻿using SurrealDb.Net.Internals.Constants;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -43,6 +42,8 @@ public class SurrealDbOptionsBuilder
             {
                 case "endpoint":
                 case "server":
+                case "client":
+                    // TODO : Allow certains values for "client" and "server"
                     _endpoint = value;
                     break;
                 case "namespace":

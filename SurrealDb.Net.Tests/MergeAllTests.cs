@@ -5,6 +5,7 @@ namespace SurrealDb.Net.Tests;
 public class MergeAllTests
 {
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
     [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
@@ -56,6 +57,7 @@ public class MergeAllTests
     }
 
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
     [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]

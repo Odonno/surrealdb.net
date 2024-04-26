@@ -8,6 +8,7 @@ namespace SurrealDb.Net.LiveQuery.Tests;
 public class KillLiveQueryTests
 {
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldAutomaticallyKillLiveQueryWhenDisposed(string connectionString)
@@ -53,6 +54,7 @@ public class KillLiveQueryTests
     }
 
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldManuallyKillLiveQuery(string connectionString)

@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Models;
+using SurrealDb.Net.Internals.Resolvers;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -125,7 +126,7 @@ public class SurrealDbClient : ISurrealDbClient
                     appendJsonSerializerContexts
                 ),
             "mem"
-                => serviceProvider?.GetService<ISurrealDbInMemoryEngine>()
+                => ResolveInMemoryProvider(serviceProvider, parameters)
                     ?? throw new Exception(
                         "Impossible to create a new in-memory SurrealDB client. Make sure to use `AddInMemoryProvider`."
                     ),
@@ -136,6 +137,23 @@ public class SurrealDbClient : ISurrealDbClient
             Configure(parameters.Ns, parameters.Db, parameters.Username, parameters.Password);
         else
             Configure(parameters.Ns, parameters.Db, parameters.Token);
+    }
+
+    private static ISurrealDbInMemoryEngine? ResolveInMemoryProvider(
+        IServiceProvider? serviceProvider,
+        SurrealDbClientParams parameters
+    )
+    {
+        var engine = serviceProvider?.GetService<ISurrealDbInMemoryEngine>();
+        var resolver = serviceProvider?.GetService<SurrealDbProviderArgsResolver>();
+
+        if (engine is not null)
+        {
+            resolver?.SetClientParams(engine, parameters);
+            engine.Initialize();
+        }
+
+        return engine;
     }
 
     public Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default)

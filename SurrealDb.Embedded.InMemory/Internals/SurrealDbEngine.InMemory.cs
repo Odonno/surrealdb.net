@@ -1,5 +1,13 @@
-﻿using SurrealDb.Net.Internals;
+﻿using System.Runtime.InteropServices;
+using Dahomey.Cbor;
+using Microsoft.IO;
+using SurrealDb.Net.Exceptions;
+using SurrealDb.Net.Internals;
+using SurrealDb.Net.Internals.Cbor;
+using SurrealDb.Net.Internals.Constants;
+using SurrealDb.Net.Internals.Models;
 using SurrealDb.Net.Internals.Models.LiveQuery;
+using SurrealDb.Net.Internals.Resolvers;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -10,6 +18,30 @@ namespace SurrealDb.Embedded.InMemory.Internals;
 
 internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 {
+    // TODO : Single RecyclableMemoryStreamManager
+    private static readonly RecyclableMemoryStreamManager _memoryStreamManager = new();
+
+    private readonly SurrealDbProviderArgsResolver _surrealDbProviderArgsResolver;
+    private SurrealDbClientParams? _parameters;
+
+    public SurrealDbInMemoryEngine(SurrealDbProviderArgsResolver surrealDbProviderArgsResolver)
+    {
+        _surrealDbProviderArgsResolver = surrealDbProviderArgsResolver;
+    }
+
+    public void Initialize()
+    {
+        _parameters = _surrealDbProviderArgsResolver.GetClientParams(this);
+
+        if (_parameters.Serialization?.ToLowerInvariant() == SerializationConstants.JSON)
+        {
+            // TODO : Add test
+            throw new NotSupportedException(
+                "The JSON serialization is not supported for the in-memory provider."
+            );
+        }
+    }
+
     public Task Authenticate(Jwt jwt, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
@@ -53,6 +85,8 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
     public void Dispose()
     {
+        _surrealDbProviderArgsResolver.EvictClientParams(this);
+
         throw new NotImplementedException();
     }
 
@@ -250,13 +284,151 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         throw new NotImplementedException();
     }
 
-    public Task Use(string ns, string db, CancellationToken cancellationToken)
+    public async Task Use(string ns, string db, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        //string[] @params = [ns, db];
+
+        var request = new SurrealDbEmbeddedRequest { Method = "use", Parameters = [ns, db] };
+        await SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+        //await using var stream = _memoryStreamManager.GetStream();
+        //await CborSerializer
+        //    .SerializeAsync(request, stream, GetCborOptions(), cancellationToken)
+        //    .ConfigureAwait(false);
+
+        //bool canGetBuffer = stream.TryGetBuffer(out var bytes);
+        //if (!canGetBuffer)
+        //{
+        //    throw new SurrealDbException("Failed to retrieve serialized buffer.");
+        //}
+
+        //var taskCompletionSource = new TaskCompletionSource<SurrealDbEmbeddedOkResponse>();
+
+        //Action<ByteBuffer> success = (byteBuffer) => {
+        //    // TODO
+        //};
+        //Action<ByteBuffer> fail = (byteBuffer) => {
+        //    // TODO
+        //};
+
+        //var successHandle = GCHandle.Alloc(success);
+        //var failureHandle = GCHandle.Alloc(fail);
+
+        //unsafe
+        //{
+        //    var successAction = new SuccessAction()
+        //    {
+        //        handle = new RustGCHandle()
+        //        {
+        //            ptr = GCHandle.ToIntPtr(successHandle),
+        //            drop_callback = &NativeBindings.DropGcHandle
+        //        },
+        //        callback = &NativeBindings.SuccessCallback,
+        //    };
+
+        //    var failureAction = new FailureAction()
+        //    {
+        //        handle = new RustGCHandle()
+        //        {
+        //            ptr = GCHandle.ToIntPtr(failureHandle),
+        //            drop_callback = &NativeBindings.DropGcHandle
+        //        },
+        //        callback = &NativeBindings.FailureCallback,
+        //    };
+
+        //    fixed (byte* payload = bytes.Array)
+        //    {
+        //        NativeMethods.execute(payload, bytes.Count, successAction, failureAction);
+        //    }
+        //}
+
+        //await taskCompletionSource.Task.ConfigureAwait(false);
     }
 
     public Task<string> Version(CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }
+
+    private CborOptions GetCborOptions()
+    {
+        // TODO : Copy from updated HTTP/WS engine
+        return SurrealDbCborOptions.GetCborSerializerOptions(_parameters!.NamingPolicy);
+    }
+
+    private async Task<SurrealDbEmbeddedOkResponse> SendAsync(
+        SurrealDbEmbeddedRequest request,
+        CancellationToken cancellationToken
+    )
+    {
+        await using var stream = _memoryStreamManager.GetStream();
+        await CborSerializer
+            .SerializeAsync(request, stream, GetCborOptions(), cancellationToken)
+            .ConfigureAwait(false);
+
+        bool canGetBuffer = stream.TryGetBuffer(out var bytes);
+        if (!canGetBuffer)
+        {
+            throw new SurrealDbException("Failed to retrieve serialized buffer.");
+        }
+
+        var taskCompletionSource = new TaskCompletionSource<SurrealDbEmbeddedOkResponse>();
+
+        Action<ByteBuffer> success = (byteBuffer) =>
+        {
+            // TODO : Deserialize OK
+            taskCompletionSource.SetResult(null!);
+        };
+        Action<ByteBuffer> fail = (byteBuffer) =>
+        {
+            // TODO : Deserialize KO
+            taskCompletionSource.SetException(new SurrealDbException("KO"));
+        };
+
+        var successHandle = GCHandle.Alloc(success);
+        var failureHandle = GCHandle.Alloc(fail);
+
+        unsafe
+        {
+            var successAction = new SuccessAction()
+            {
+                handle = new RustGCHandle()
+                {
+                    ptr = GCHandle.ToIntPtr(successHandle),
+                    drop_callback = &NativeBindings.DropGcHandle
+                },
+                callback = &NativeBindings.SuccessCallback,
+            };
+
+            var failureAction = new FailureAction()
+            {
+                handle = new RustGCHandle()
+                {
+                    ptr = GCHandle.ToIntPtr(failureHandle),
+                    drop_callback = &NativeBindings.DropGcHandle
+                },
+                callback = &NativeBindings.FailureCallback,
+            };
+
+            fixed (byte* payload = bytes.Array)
+            {
+                NativeMethods.execute(payload, bytes.Count, successAction, failureAction);
+            }
+        }
+
+        return await taskCompletionSource.Task.ConfigureAwait(false);
+    }
+
+    //private async Task<bool> TrySerializeRequest(
+    //    object?[] parameters,
+    //    CancellationToken cancellationToken
+    //)
+    //{
+    //    await using var stream = _memoryStreamManager.GetStream();
+    //    await CborSerializer
+    //        .SerializeAsync(parameters, stream, GetCborOptions(), cancellationToken)
+    //        .ConfigureAwait(false);
+
+    //    return stream.TryGetBuffer(out var bytes);
+    //}
 }

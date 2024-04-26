@@ -1,4 +1,4 @@
-namespace SurrealDb.Net.Tests;
+﻿namespace SurrealDb.Net.Tests;
 
 public class ConstructorTests
 {
@@ -36,6 +36,15 @@ public class ConstructorTests
 
         func.Should().NotThrow();
         func().AbsoluteUri.Should().Be("wss://cloud.surrealdb.com/rpc");
+    }
+
+    [Fact]
+    public void ShouldSupportMemoryProtocol()
+    {
+        Func<Uri> func = () => new SurrealDbClient("mem://").Uri;
+
+        func.Should().NotThrow();
+        func().AbsoluteUri.Should().Be("mem:///");
     }
 
     [Fact]

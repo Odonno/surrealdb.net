@@ -28,6 +28,7 @@ public class LiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldReceiveData(string connectionString)

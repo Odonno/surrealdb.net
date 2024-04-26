@@ -93,4 +93,12 @@ internal interface ISurrealDbEngine : IDisposable
     Task<string> Version(CancellationToken cancellationToken);
 }
 
-internal interface ISurrealDbInMemoryEngine : ISurrealDbEngine { }
+internal interface ISurrealDbProviderEngine : ISurrealDbEngine
+{
+    /// <summary>
+    /// Initializes engine dynamically, due to DependencyInjection interop.
+    /// </summary>
+    void Initialize();
+}
+
+internal interface ISurrealDbInMemoryEngine : ISurrealDbProviderEngine { }

@@ -10,6 +10,7 @@ namespace SurrealDb.Net.LiveQuery.Tests;
 public class ReactiveObserveLiveQueryTests : BaseLiveQueryTests
 {
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldObserveQuery(string connectionString)
@@ -89,6 +90,7 @@ public class ReactiveObserveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldObserveRawQuery(string connectionString)
@@ -182,6 +184,7 @@ public class ReactiveObserveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
+    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
     public async Task ShouldObserveTable(string connectionString)
