@@ -15,11 +15,12 @@ public class SelectBench : BaseBenchmark
     private ISurrealDbClient? _surrealdbHttpClientWithHttpClientFactory;
     private ISurrealDbClient? _surrealdbWsTextClient;
     private ISurrealDbClient? _surrealdbWsBinaryClient;
+    private ISurrealDbClient? _surrealdbMemoryClient;
 
     [GlobalSetup]
     public async Task GlobalSetup()
     {
-        for (int index = 0; index < 4; index++)
+        for (int index = 0; index < 5; index++)
         {
             var clientGenerator = new SurrealDbClientGenerator();
             var dbInfo = clientGenerator.GenerateDatabaseInfo();
@@ -73,6 +74,26 @@ public class SelectBench : BaseBenchmark
                         await _surrealdbWsBinaryClient.Connect();
                     }
                     break;
+                case 4:
+                    if (JsonSerializer.IsReflectionEnabledByDefault)
+                    {
+                        var options = SurrealDbOptions
+                            .Create()
+                            .WithEndpoint(MemoryUrl)
+                            .WithNamingPolicy(NamingPolicy)
+                            .WithSerialization(SerializationConstants.CBOR)
+                            .Build();
+
+                        var services = new ServiceCollection();
+                        services.AddSurreal(options).AddInMemoryProvider();
+
+                        using var serviceProvider = services.BuildServiceProvider();
+                        _surrealdbMemoryClient =
+                            serviceProvider.GetRequiredService<ISurrealDbClient>();
+                        InitializeSurrealDbClient(_surrealdbMemoryClient, dbInfo);
+                        await _surrealdbMemoryClient.Connect();
+                    }
+                    break;
             }
 
             await SeedData(WsUrl, dbInfo);
@@ -92,6 +113,7 @@ public class SelectBench : BaseBenchmark
         _surrealdbHttpClientWithHttpClientFactory?.Dispose();
         _surrealdbWsTextClient?.Dispose();
         _surrealdbWsBinaryClient?.Dispose();
+        _surrealdbMemoryClient?.Dispose();
     }
 
     [Benchmark]
@@ -116,6 +138,12 @@ public class SelectBench : BaseBenchmark
     public Task<List<Post>> WsBinary()
     {
         return Run(_surrealdbWsBinaryClient!);
+    }
+
+    [Benchmark]
+    public Task<List<Post>> Memory()
+    {
+        return Run(_surrealdbMemoryClient!);
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]

@@ -1,15 +1,17 @@
 [package]
 name = "memory"
-version = "1.4.2"
+version = "0.1.0" # replace by the version to release (CI/CD)
 edition = "2021"
 
 [dependencies]
+cargo_metadata = "0.18.1"
 # TODO : remove unnecessary feature
 ciborium = "0.2.1"
 geo = { version = "0.27.0", features = ["use-serde"] }
 geo-types = { version = "0.7.12", features = ["arbitrary"] }
 num_cpus = "1.16.0"
 once_cell = "1.19.0"
+revision = { version = "0.7.0", features = ["chrono", "geo", "roaring", "regex", "rust_decimal", "uuid"] }
 rust_decimal = { version = "1.33.1", features = ["maths", "serde-str"] }
 serde = { version = "1.0.198", features = ["derive"] }
 serde_json = "1.0.116"

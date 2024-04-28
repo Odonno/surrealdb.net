@@ -7,10 +7,10 @@ public class SetTests
 {
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSetParam(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -21,7 +21,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -59,10 +58,10 @@ public class SetTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task KeyShouldNotBeNull(string connectionString)
     {
         Func<Task> func = async () =>
@@ -71,7 +70,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -96,10 +94,10 @@ public class SetTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task KeyShouldNotBeEmpty(string connectionString)
     {
         Func<Task> func = async () =>
@@ -108,7 +106,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -133,10 +130,10 @@ public class SetTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task KeyShouldNotContainWhitepace(string connectionString)
     {
         Func<Task> func = async () =>
@@ -145,7 +142,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -170,10 +166,10 @@ public class SetTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task KeyCanContainUnderscore(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -184,7 +180,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -222,10 +217,10 @@ public class SetTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ComplexKeyShouldBeSurroundedWithBackticks(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -236,7 +231,6 @@ public class SetTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {

@@ -4,7 +4,6 @@ using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Models;
-using SurrealDb.Net.Internals.Resolvers;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -145,13 +144,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
     {
         var engine = serviceProvider?.GetService<ISurrealDbInMemoryEngine>();
-        var resolver = serviceProvider?.GetService<SurrealDbProviderArgsResolver>();
-
-        if (engine is not null)
-        {
-            resolver?.SetClientParams(engine, parameters);
-            engine.Initialize();
-        }
+        engine?.Initialize(parameters);
 
         return engine;
     }

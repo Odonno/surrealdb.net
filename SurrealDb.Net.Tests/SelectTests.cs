@@ -35,10 +35,10 @@ public class SelectTests
 {
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectFromEmptyTable(string connectionString)
     {
         IEnumerable<Empty>? result = null;
@@ -49,7 +49,6 @@ public class SelectTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             result = await client.Select<Empty>("empty");
@@ -62,10 +61,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectFromPostTable(string connectionString)
     {
         IEnumerable<Post>? result = null;
@@ -84,7 +83,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -116,10 +114,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSinglePostUsingTwoArguments(string connectionString)
     {
         Post? result = null;
@@ -138,7 +136,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -156,10 +153,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSinglePostUsingThing(string connectionString)
     {
         Post? result = null;
@@ -178,7 +175,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -198,10 +194,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSingleFromNumberId(string connectionString)
     {
         RecordIdRecord? result = null;
@@ -220,7 +216,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -237,10 +232,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSingleFromStringId(string connectionString)
     {
         RecordIdRecord? result = null;
@@ -259,7 +254,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -276,10 +270,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSingleFromGuidId(string connectionString)
     {
         RecordIdRecord? result = null;
@@ -298,7 +292,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -315,10 +308,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSingleFromObjectId(string connectionString)
     {
         RecordIdRecord? result = null;
@@ -337,7 +330,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -354,10 +346,10 @@ public class SelectTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldSelectSingleFromArrayId(string connectionString)
     {
         RecordIdRecord? result = null;
@@ -376,7 +368,6 @@ public class SelectTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 

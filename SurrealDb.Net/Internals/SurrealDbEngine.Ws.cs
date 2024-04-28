@@ -804,7 +804,10 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     {
         var dbResponse = await SendRequestAsync("version", null, false, cancellationToken)
             .ConfigureAwait(false);
-        return dbResponse.GetValue<string>()!;
+        var version = dbResponse.GetValue<string>()!;
+
+        const string VERSION_PREFIX = "surrealdb-";
+        return version.Replace(VERSION_PREFIX, string.Empty);
     }
 
     private CurrentJsonSerializerOptionsForAot? _currentJsonSerializerOptionsForAot;

@@ -10,10 +10,10 @@ public class RawQueryTests
 {
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldQueryWithParams(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -24,7 +24,6 @@ public class RawQueryTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -64,12 +63,14 @@ public class RawQueryTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldHaveOneProtocolErrorResult(string connectionString)
     {
+        var options = new SurrealDbOptionsBuilder().FromConnectionString(connectionString).Build();
+
         SurrealDbResponse? response = null;
 
         Func<Task> func = async () =>
@@ -78,7 +79,6 @@ public class RawQueryTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -100,23 +100,36 @@ public class RawQueryTests
             }
         };
 
-        await func.Should()
-            .ThrowAsync<SurrealDbException>()
-            .WithMessage(
+        string errorMessage;
+
+        if (options.IsEmbedded)
+        {
+            errorMessage =
+                @"Parse error: Failed to parse query at line 1 column 5 expected query to end
+  |
+1 | abc def;
+  |     ^ perhaps missing a semicolon on the previous statement?
+";
+        }
+        else
+        {
+            errorMessage =
                 @"There was a problem with the database: Parse error: Failed to parse query at line 1 column 5 expected query to end
   |
 1 | abc def;
   |     ^ perhaps missing a semicolon on the previous statement?
-"
-            );
+";
+        }
+
+        await func.Should().ThrowAsync<SurrealDbException>().WithMessage(errorMessage);
     }
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldHave4Results(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -127,7 +140,6 @@ public class RawQueryTests
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -163,10 +175,10 @@ SELECT xyz FROM post;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldIterateOnOkResults(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -177,7 +189,6 @@ SELECT xyz FROM post;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -216,10 +227,10 @@ CANCEL TRANSACTION;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldIterateOnErrorResults(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -230,7 +241,6 @@ CANCEL TRANSACTION;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -269,10 +279,10 @@ CANCEL TRANSACTION;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldReturnFirstOkResult(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -283,7 +293,6 @@ CANCEL TRANSACTION;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -322,10 +331,10 @@ CANCEL TRANSACTION;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldReturnFirstError(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -336,7 +345,6 @@ CANCEL TRANSACTION;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -375,10 +383,10 @@ CANCEL TRANSACTION;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldHaveError(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -389,7 +397,6 @@ CANCEL TRANSACTION;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {
@@ -428,10 +435,10 @@ CANCEL TRANSACTION;
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldGetValueFromIndex(string connectionString)
     {
         SurrealDbResponse? response = null;
@@ -442,7 +449,6 @@ CANCEL TRANSACTION;
             var dbInfo = surrealDbClientGenerator.GenerateDatabaseInfo();
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
 
             {

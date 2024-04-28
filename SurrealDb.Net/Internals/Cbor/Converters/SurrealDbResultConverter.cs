@@ -107,10 +107,7 @@ internal class SurrealDbResultConverter : CborConverterBase<ISurrealDbResult>
                 return new SurrealDbOkResult(time, status, result.Value, _options);
             }
 
-            if (status is not null)
-            {
-                return new SurrealDbErrorResult(time, status, errorDetails!);
-            }
+            return new SurrealDbErrorResult(time, status, errorDetails!);
         }
 
         if (

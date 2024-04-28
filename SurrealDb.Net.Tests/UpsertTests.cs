@@ -6,10 +6,10 @@ public class UpsertTests
 {
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldCreateNewPost(string connectionString)
     {
         IEnumerable<Post>? list = null;
@@ -29,7 +29,6 @@ public class UpsertTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 
@@ -66,10 +65,10 @@ public class UpsertTests
 
     [Theory]
     [InlineData("Endpoint=mem://")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=JSON")]
-    [InlineData("Endpoint=http://127.0.0.1:8000;Serialization=CBOR")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=JSON")]
-    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;Serialization=CBOR")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=http://127.0.0.1:8000;User=root;Pass=root;Serialization=CBOR")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
+    [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldUpdateExistingPost(string connectionString)
     {
         IEnumerable<Post>? list = null;
@@ -89,7 +88,6 @@ public class UpsertTests
             string query = fileContent;
 
             using var client = surrealDbClientGenerator.Create(connectionString);
-            await client.SignIn(new RootAuth { Username = "root", Password = "root" });
             await client.Use(dbInfo.Namespace, dbInfo.Database);
             await client.RawQuery(query);
 

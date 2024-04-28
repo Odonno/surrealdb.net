@@ -1,3 +1,13 @@
 pub mod connect;
+pub mod create;
+pub mod delete;
+pub mod merge;
+pub mod patch;
+pub mod ping;
 pub mod query;
+pub mod select;
+pub mod set;
+pub mod unset;
+pub mod update;
 pub mod use_ns_db;
+pub mod version;

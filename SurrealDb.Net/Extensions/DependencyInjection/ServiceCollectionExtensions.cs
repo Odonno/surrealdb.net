@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 using SurrealDb.Net;
 using SurrealDb.Net.Internals.Helpers;
 using SurrealDb.Net.Internals.Models;
-using SurrealDb.Net.Internals.Resolvers;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -188,8 +187,6 @@ public static class ServiceCollectionExtensions
     {
         if (configuration.Endpoint is null)
             throw new ArgumentNullException(nameof(configuration), "The endpoint is required.");
-
-        services.AddSingleton<SurrealDbProviderArgsResolver>();
 
         RegisterHttpClient(services, configuration.Endpoint);
 

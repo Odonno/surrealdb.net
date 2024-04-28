@@ -27,6 +27,7 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
 
     private ServiceProvider? _serviceProvider;
     private DatabaseInfo? _databaseInfo;
+    private SurrealDbOptions? _options;
 
     public SurrealDbClient Create(
         string connectionString,
@@ -36,7 +37,7 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
     {
         var services = new ServiceCollection();
 
-        var options = SurrealDbOptions
+        _options = SurrealDbOptions
             .Create()
             .FromConnectionString(connectionString)
             .WithNamingPolicy("SnakeCase")
@@ -44,7 +45,7 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
 
         services
             .AddSurreal(
-                options,
+                _options,
                 configureJsonSerializerOptions: configureJsonSerializerOptions,
                 appendJsonSerializerContexts: funcJsonSerializerContexts
             )
@@ -68,7 +69,7 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
-        if (_databaseInfo is not null)
+        if (_options is not null && !_options.IsEmbedded && _databaseInfo is not null)
         {
             using var client = new SurrealDbClient("ws://127.0.0.1:8000/rpc", "SnakeCase");
             await client.SignIn(new RootAuth { Username = "root", Password = "root" });

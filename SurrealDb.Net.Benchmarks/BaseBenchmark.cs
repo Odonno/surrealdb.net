@@ -9,6 +9,7 @@ public class BaseBenchmark
     public static string Host { get; } = "127.0.0.1:8000";
     protected string HttpUrl { get; } = $"http://{Host}";
     protected string WsUrl { get; } = $"ws://{Host}/rpc";
+    protected string MemoryUrl { get; } = "mem://";
     protected string NamingPolicy { get; } = "SnakeCase";
 
     private readonly Func<JsonSerializerContext[]>? _funcJsonSerializerContexts;

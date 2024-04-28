@@ -1,24 +1,33 @@
-use std::ffi::CString;
+use std::sync::Arc;
+use surrealdb::{engine::{any::Any, local::Db}, sql::Value, Surreal};
 
-use crate::{bindgen::callback::{FailureAction, SuccessAction}, runtime::DB};
-
+use crate::{bindgen::{alloc::alloc_u8_buffer, callback::{send_failure, send_success, FailureAction, SuccessAction}}};
 //pub async fn connect_async(callback: extern "C" fn(), error_callback: Option<extern "C" fn(str: *mut c_char)>) {
-pub async fn connect_async(success: SuccessAction, failure: FailureAction) {
-    let result = DB.connect("mem://").await;
+pub async fn connect_async(client: Arc<Surreal<Any>>, success: SuccessAction, failure: FailureAction) {
+    let result = client.connect("mem://").await;
 
     match result {
         Ok(_) => {
-            success();
+            send_success(Value::None, success, failure);
+            // let value = Value::None;
+
+            // let mut output = Vec::new();
+            // ciborium::into_writer(&value, &mut output).unwrap();
+
+            // let res = alloc_u8_buffer(output);
+
+            // success.invoke(res);
         },
         Err(error) => {
-            match failure {
-                Some(f) => {
-                    // TODO : String to Value
-                    let str = CString::new(error.to_string()).unwrap();
-                    f(str.into_raw())
-                },
-                None => (),
-            }
+            send_failure(error.to_string().as_str(), failure);
+            // let value = Value::Strand(error.to_string().into());
+
+            // let mut output = Vec::new();
+            // ciborium::into_writer(&value, &mut output).unwrap();
+
+            // let res = alloc_u8_buffer(output);
+
+            // failure.invoke(res);
         },
     }
 }

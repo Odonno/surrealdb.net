@@ -1,4 +1,5 @@
-﻿using SurrealDb.Net.Internals.Models.LiveQuery;
+﻿using SurrealDb.Net.Internals.Models;
+using SurrealDb.Net.Internals.Models.LiveQuery;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -98,7 +99,7 @@ internal interface ISurrealDbProviderEngine : ISurrealDbEngine
     /// <summary>
     /// Initializes engine dynamically, due to DependencyInjection interop.
     /// </summary>
-    void Initialize();
+    void Initialize(SurrealDbClientParams parameters);
 }
 
 internal interface ISurrealDbInMemoryEngine : ISurrealDbProviderEngine { }
