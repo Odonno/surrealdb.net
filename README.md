@@ -24,6 +24,7 @@ Supported protocols:
 
 - ✅ HTTP(S)
 - ✅ WS(S)
+- ✅ In-memory
 - 🚧 and more to come...
 
 #### Construct a new SurrealDB client

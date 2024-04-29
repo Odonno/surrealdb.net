@@ -1,7 +1,6 @@
 ﻿using System.Reactive;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Text.Json;
 using Dahomey.Cbor;
 using Microsoft.IO;
 using SurrealDb.Net.Exceptions;
@@ -9,7 +8,6 @@ using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Cbor;
 using SurrealDb.Net.Internals.Constants;
 using SurrealDb.Net.Internals.Extensions;
-using SurrealDb.Net.Internals.Http;
 using SurrealDb.Net.Internals.Models;
 using SurrealDb.Net.Internals.Models.LiveQuery;
 using SurrealDb.Net.Models;
@@ -24,8 +22,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 {
     // TODO : Single RecyclableMemoryStreamManager
     private static readonly RecyclableMemoryStreamManager _memoryStreamManager = new();
-
-    //private static int _globalId;
+    private static int _globalId;
 
     private SurrealDbClientParams? _parameters;
     private readonly int _id;
@@ -41,8 +38,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
     public SurrealDbInMemoryEngine()
     {
-        _id = Random.Shared.Next();
-        //_id = Interlocked.Increment(ref _globalId);
+        _id = Interlocked.Increment(ref _globalId);
     }
 
     public void Initialize(SurrealDbClientParams parameters)
@@ -184,12 +180,12 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         CancellationToken cancellationToken
     )
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public SurrealDbLiveQuery<T> ListenLive<T>(Guid queryUuid)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public Task<SurrealDbLiveQuery<T>> LiveQuery<T>(
@@ -197,7 +193,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         CancellationToken cancellationToken
     )
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public Task<SurrealDbLiveQuery<T>> LiveRawQuery<T>(
@@ -206,7 +202,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         CancellationToken cancellationToken
     )
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public Task<SurrealDbLiveQuery<T>> LiveTable<T>(
@@ -215,7 +211,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         CancellationToken cancellationToken
     )
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public async Task<TOutput> Merge<TMerge, TOutput>(
@@ -401,7 +397,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
     public SurrealDbLiveQueryChannel SubscribeToLiveQuery(Guid id)
     {
-        throw new NotImplementedException();
+        throw new NotSupportedException();
     }
 
     public async Task Unset(string key, CancellationToken cancellationToken)

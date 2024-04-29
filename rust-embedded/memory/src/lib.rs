@@ -231,7 +231,7 @@ pub extern "C" fn execute(
                 send_failure("Cannot retrieve params", failure);
             }
         },
-        _ => send_failure("Method not found", failure),
+        //_ => send_failure("Method not found", failure),
     }
 
         //send_success(value, success);

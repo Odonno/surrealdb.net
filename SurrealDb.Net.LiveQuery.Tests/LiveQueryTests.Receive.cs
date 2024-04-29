@@ -9,7 +9,6 @@ namespace SurrealDb.Net.LiveQuery.Tests;
 public class ReceiveLiveQueryTests : BaseLiveQueryTests
 {
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldLiveQueryReceiveCreatedRecord(string connectionString)
@@ -80,7 +79,6 @@ public class ReceiveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldLiveQueryReceiveUpdatedRecord(string connectionString)
@@ -153,7 +151,6 @@ public class ReceiveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldLiveQueryReceiveDeletedRecord(string connectionString)
@@ -228,7 +225,6 @@ public class ReceiveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldLiveQueryReceiveSocketClosed(string connectionString)
@@ -305,7 +301,6 @@ public class ReceiveLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldLiveQueryReceiveQueryKilled(string connectionString)

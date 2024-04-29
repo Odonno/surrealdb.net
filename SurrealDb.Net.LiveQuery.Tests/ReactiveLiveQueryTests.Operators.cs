@@ -10,7 +10,6 @@ namespace SurrealDb.Net.LiveQuery.Tests;
 public class ReactiveOperatorsLiveQueryTests : BaseLiveQueryTests
 {
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldAggregateRecords(string connectionString)
@@ -100,7 +99,6 @@ public class ReactiveOperatorsLiveQueryTests : BaseLiveQueryTests
     }
 
     [Theory]
-    [InlineData("Endpoint=mem://")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=JSON")]
     [InlineData("Endpoint=ws://127.0.0.1:8000/rpc;User=root;Pass=root;Serialization=CBOR")]
     public async Task ShouldScanRecords(string connectionString)
