@@ -313,5 +313,9 @@ surreal start --user root --pass root memory --auth --allow-guests
 Once ready, go to the root directory of the project and run the following command:
 
 ```
-dotnet run -c Release --project SurrealDb.Net.Benchmarks --filter '*'
+dotnet run -c Release --project SurrealDb.Net.Benchmarks.Remote --filter '*'
+```
+
+```
+dotnet run -c Release --project SurrealDb.Net.Benchmarks.Embedded --filter '*'
 ```

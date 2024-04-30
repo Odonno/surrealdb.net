@@ -1,16 +1,17 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text.Json;
+﻿using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.DependencyInjection;
-using SurrealDb.Embedded.InMemory;
+using SurrealDb.Net.Benchmarks.Models;
 using SurrealDb.Net.Internals.Constants;
+using SurrealDb.Net.Tests.Fixtures;
 
-namespace SurrealDb.Net.Benchmarks;
+namespace SurrealDb.Net.Benchmarks.Remote;
 
-public class DeleteBench : BaseBenchmark
+public class QueryBench : BaseRemoteBenchmark
 {
     private readonly SurrealDbClientGenerator[] _surrealDbClientGenerators =
         new SurrealDbClientGenerator[4];
+    private readonly IEnumerable<GeneratedPost> _generatedPosts = new PostFaker().Generate(1000);
 
     private ISurrealDbClient? _surrealdbHttpClient;
     private ISurrealDbClient? _surrealdbHttpClientWithHttpClientFactory;
@@ -75,8 +76,7 @@ public class DeleteBench : BaseBenchmark
                     }
                     break;
             }
-
-            await SeedData(WsUrl, dbInfo);
+            await SeedData(WsUrl, dbInfo, _generatedPosts);
         }
     }
 
@@ -96,45 +96,26 @@ public class DeleteBench : BaseBenchmark
     }
 
     [Benchmark]
-    public Task Http()
+    public Task<List<Post>> Http()
     {
-        return Run(_surrealdbHttpClient!);
+        return BenchmarkRuns.Query(_surrealdbHttpClient!);
     }
 
     [Benchmark]
-    public Task HttpWithClientFactory()
+    public Task<List<Post>> HttpWithClientFactory()
     {
-        return Run(_surrealdbHttpClientWithHttpClientFactory!);
+        return BenchmarkRuns.Query(_surrealdbHttpClientWithHttpClientFactory!);
     }
 
     [Benchmark]
-    public Task WsText()
+    public Task<List<Post>> WsText()
     {
-        return Run(_surrealdbWsTextClient!);
+        return BenchmarkRuns.Query(_surrealdbWsTextClient!);
     }
 
     [Benchmark]
-    public Task WsBinary()
+    public Task<List<Post>> WsBinary()
     {
-        return Run(_surrealdbWsBinaryClient!);
-    }
-
-    [Benchmark]
-    public async Task Memory()
-    {
-        using var clientGenerator = new SurrealDbClientGenerator();
-        var dbInfo = clientGenerator.GenerateDatabaseInfo();
-
-        using var client = new SurrealDbMemoryClient(NamingPolicy);
-        InitializeSurrealDbClient(client, dbInfo);
-        await SeedData(client, dbInfo);
-
-        await Run(client);
-    }
-
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static Task Run(ISurrealDbClient surrealDbClient)
-    {
-        return surrealDbClient.Delete("post");
+        return BenchmarkRuns.Query(_surrealdbWsBinaryClient!);
     }
 }

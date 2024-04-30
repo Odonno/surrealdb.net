@@ -1,6 +1,5 @@
 ﻿using System.Reactive;
 using System.Runtime.InteropServices;
-using System.Text;
 using Dahomey.Cbor;
 using Microsoft.IO;
 using SurrealDb.Net.Exceptions;
@@ -554,12 +553,14 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         Action<ByteBuffer> success = (byteBuffer) =>
         {
-            taskCompletionSource.SetResult(new ReadOnlyMemory<byte>(byteBuffer.AsSpan().ToArray()));
+            taskCompletionSource.SetResult(
+                new ReadOnlyMemory<byte>(byteBuffer.AsReadOnly().ToArray())
+            );
         };
         Action<ByteBuffer> fail = (byteBuffer) =>
         {
             string error = CborSerializer.Deserialize<string>(
-                byteBuffer.AsSpan(),
+                byteBuffer.AsReadOnly(),
                 GetCborOptions()
             );
             taskCompletionSource.SetException(new SurrealDbException(error));
@@ -649,7 +650,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
                 try
                 {
                     var result = CborSerializer.Deserialize<T>(
-                        byteBuffer.AsSpan(),
+                        byteBuffer.AsReadOnly(),
                         GetCborOptions()
                     );
                     taskCompletionSource.SetResult(result!);
@@ -673,7 +674,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         {
             //string x = ByteArrayToString(byteBuffer.AsSpan());
             string error = CborSerializer.Deserialize<string>(
-                byteBuffer.AsSpan(),
+                byteBuffer.AsReadOnly(),
                 GetCborOptions()
             );
             taskCompletionSource.SetException(new SurrealDbException(error));

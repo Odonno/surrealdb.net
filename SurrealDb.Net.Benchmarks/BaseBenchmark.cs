@@ -1,47 +1,14 @@
 ﻿using System.Text;
-using System.Text.Json.Serialization;
-using SurrealDb.Net.Benchmarks.Constants;
 
 namespace SurrealDb.Net.Benchmarks;
 
 public class BaseBenchmark
 {
-    public static string Host { get; } = "127.0.0.1:8000";
-    protected string HttpUrl { get; } = $"http://{Host}";
-    protected string WsUrl { get; } = $"ws://{Host}/rpc";
     protected string NamingPolicy { get; } = "SnakeCase";
-
-    private readonly Func<JsonSerializerContext[]>? _funcJsonSerializerContexts;
-
-    protected BaseBenchmark()
-    {
-        var isNativeAotRuntime = Environment.GetEnvironmentVariable(
-            EnvVariablesConstants.NativeAotRuntime
-        );
-
-        _funcJsonSerializerContexts = string.IsNullOrWhiteSpace(isNativeAotRuntime)
-            ? null
-            : () => new JsonSerializerContext[] { AppJsonSerializerContext.Default };
-    }
-
-    protected Func<JsonSerializerContext[]>? GetFuncJsonSerializerContexts()
-    {
-        return _funcJsonSerializerContexts;
-    }
 
     protected void InitializeSurrealDbClient(ISurrealDbClient client, DatabaseInfo databaseInfo)
     {
         client.Configure(databaseInfo.Namespace, databaseInfo.Database, "root", "root");
-    }
-
-    protected Task CreatePostTable(string url, DatabaseInfo databaseInfo)
-    {
-        var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
-            appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
-        );
-        return CreatePostTable(client, databaseInfo);
     }
 
     protected async Task CreatePostTable(ISurrealDbClient client, DatabaseInfo databaseInfo)
@@ -52,16 +19,6 @@ public class BaseBenchmark
         await client.RawQuery(query);
     }
 
-    protected Task CreateEcommerceTables(string url, DatabaseInfo databaseInfo)
-    {
-        var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
-            appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
-        );
-        return CreateEcommerceTables(client, databaseInfo);
-    }
-
     protected async Task CreateEcommerceTables(ISurrealDbClient client, DatabaseInfo databaseInfo)
     {
         InitializeSurrealDbClient(client, databaseInfo);
@@ -70,54 +27,26 @@ public class BaseBenchmark
         await client.RawQuery(query);
     }
 
-    protected Task<List<GeneratedPost>> SeedData(
-        string url,
-        DatabaseInfo databaseInfo,
-        int count = 1000
-    )
-    {
-        var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
-            appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
-        );
-        return SeedData(client, databaseInfo, count);
-    }
-
-    protected async Task<List<GeneratedPost>> SeedData(
+    protected async Task<IEnumerable<GeneratedPost>> SeedData(
         ISurrealDbClient client,
         DatabaseInfo databaseInfo,
-        int count = 1000
+        IEnumerable<GeneratedPost> posts
     )
     {
         InitializeSurrealDbClient(client, databaseInfo);
 
         var tasks = new List<Task>();
 
-        var generatedPosts = new PostFaker().Generate(count);
-
-        generatedPosts.ForEach(
-            (post) =>
-            {
-                string statement =
-                    $"CREATE post SET title = \"{post.Title}\", content = \"{post.Content}\";";
-                tasks.Add(client.RawQuery(statement));
-            }
-        );
+        foreach (var post in posts)
+        {
+            string statement =
+                $"CREATE post SET title = \"{post.Title}\", content = \"{post.Content}\";";
+            tasks.Add(client.RawQuery(statement));
+        }
 
         await Task.WhenAll(tasks);
 
-        return generatedPosts;
-    }
-
-    protected Task<Post> GetFirstPost(string url, DatabaseInfo databaseInfo)
-    {
-        var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
-            appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
-        );
-        return GetFirstPost(client, databaseInfo);
+        return posts;
     }
 
     protected async Task<Post> GetFirstPost(ISurrealDbClient client, DatabaseInfo databaseInfo)

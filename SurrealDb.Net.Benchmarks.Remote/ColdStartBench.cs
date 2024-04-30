@@ -1,12 +1,11 @@
-﻿using System.Text.Json;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.DependencyInjection;
-using SurrealDb.Embedded.InMemory;
 using SurrealDb.Net.Internals.Helpers;
+using SurrealDb.Net.Tests.Fixtures;
 
-namespace SurrealDb.Net.Benchmarks;
+namespace SurrealDb.Net.Benchmarks.Remote;
 
-public class ColdStartBenchmark : BaseBenchmark
+public class ColdStartBench : BaseRemoteBenchmark
 {
     private ServiceProvider? _serviceProvider;
     private DatabaseInfo? _databaseInfo;
@@ -61,16 +60,6 @@ public class ColdStartBenchmark : BaseBenchmark
             NamingPolicy,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
-        _clients.Add(client);
-
-        InitializeSurrealDbClient(client, _databaseInfo!);
-        await client.Connect();
-    }
-
-    [Benchmark]
-    public async Task MemoryConstructor()
-    {
-        var client = new SurrealDbMemoryClient(NamingPolicy);
         _clients.Add(client);
 
         InitializeSurrealDbClient(client, _databaseInfo!);
