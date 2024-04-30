@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use surrealdb::{engine::{any::Any, local::Db}, sql::Value, Surreal};
 
-use crate::{bindgen::{alloc::alloc_u8_buffer, callback::{send_failure, send_success, FailureAction, SuccessAction}}};
+use crate::{bindgen::{callback::{send_failure, send_success, FailureAction, SuccessAction}}};
 //pub async fn connect_async(callback: extern "C" fn(), error_callback: Option<extern "C" fn(str: *mut c_char)>) {
 pub async fn connect_async(client: Arc<Surreal<Any>>, success: SuccessAction, failure: FailureAction) {
     let result = client.connect("mem://").await;

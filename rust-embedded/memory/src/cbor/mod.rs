@@ -2,7 +2,9 @@
 use ciborium::Value as Data;
 use surrealdb::sql::{Array, Value};
 
-use crate::surrealdb::cbor::convert::Cbor;
+use surrealdb_core::rpc::format::cbor::Cbor;
+
+//use crate::surrealdb::cbor::convert::Cbor;
 
 //use crate::{models::request::Request, surrealdb::cbor::convert::Cbor};
 
@@ -42,14 +44,14 @@ pub fn get_params(val: Vec<u8>) -> Result<Array, ()> {
 	// 	.map_err(|_| ()) // TODO
 }
 
-pub fn res(res: Value) -> Result<Vec<u8>, ()> {
-	// Convert the response into a value
-	let val: Value = res.into();
-	let val: Cbor = val.try_into().unwrap(); // TODO
-	// Create a new vector for encoding output
-	let mut res = Vec::new();
-	// Serialize the value into CBOR binary data
-	ciborium::into_writer(&val.0, &mut res).unwrap();
-	// Return the message length, and message as binary
-	Ok(res)
-}
+// pub fn res(res: Value) -> Result<Vec<u8>, ()> {
+// 	// Convert the response into a value
+// 	let val: Value = res.into();
+// 	let val: Cbor = val.try_into().unwrap(); // TODO
+// 	// Create a new vector for encoding output
+// 	let mut res = Vec::new();
+// 	// Serialize the value into CBOR binary data
+// 	ciborium::into_writer(&val.0, &mut res).unwrap();
+// 	// Return the message length, and message as binary
+// 	Ok(res)
+// }

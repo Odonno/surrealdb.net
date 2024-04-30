@@ -15,9 +15,6 @@ mod cbor;
 mod methods;
 mod models;
 mod runtime;
-mod surrealdb;
-
-// TODO : remove files from surrealdb module to use as much function from surrealdb package as possible
 
 fn read_params(bytes: *const u8, len: i32) -> Result<Array, ()> {
     let bytes = convert_csharp_to_rust_bytes(bytes, len);
@@ -283,45 +280,3 @@ pub extern "C" fn execute(
     //     connect_async(callback, error_callback).await;
     // });
 }
-
-// #[no_mangle]
-// pub extern "C" fn connect(callback: extern "C" fn(), error_callback: Option<extern "C" fn(str: *mut c_char)>) {
-//     unsafe {
-//         create_global_runtime();
-//     };
-
-//     unsafe { get_global_runtime() }.spawn(async move {
-//         connect_async(callback, error_callback).await;
-//     });
-// }
-
-// #[no_mangle]
-// pub extern "C" fn query(
-//     query_str: *const u16, 
-//     query_len: i32, 
-//     callback: extern "C" fn(res: *mut ByteBuffer), 
-//     error_callback: Option<extern "C" fn(str: *mut c_char)>
-// ) {
-//     let query = convert_csharp_to_rust_string(query_str, query_len);
-
-//     unsafe { get_global_runtime() }.spawn(async move {
-//         query_async(query, callback, error_callback).await;
-//     });
-// }
-
-// #[no_mangle]
-// pub extern "C" fn use_ns_db(
-//     ns_str: *const u16, 
-//     ns_len: i32, 
-//     db_str: *const u16, 
-//     db_len: i32, 
-//     callback: extern "C" fn(), 
-//     error_callback: Option<extern "C" fn(str: *mut c_char)>
-// ) {
-//     let ns = convert_csharp_to_rust_string(ns_str, ns_len);
-//     let db = convert_csharp_to_rust_string(db_str, db_len);
-
-//     unsafe { get_global_runtime() }.spawn(async move {
-//         use_ns_db_async(ns, db, callback, error_callback).await;
-//     });
-// }

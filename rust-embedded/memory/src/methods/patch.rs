@@ -1,7 +1,8 @@
 use std::{collections::BTreeMap, sync::Arc};
 use surrealdb::{engine::local::Db, sql::{Array, Value}, Surreal};
+use surrealdb_core::rpc::args::Take;
 
-use crate::{bindgen::callback::{send_failure, send_success, FailureAction, SuccessAction}, surrealdb::args::Take};
+use crate::{bindgen::callback::{send_failure, send_success, FailureAction, SuccessAction}};
 
 pub async fn patch_async(client: Arc<Surreal<Db>>, params: Array, success: SuccessAction, failure: FailureAction) {
     let Ok((what, data, diff)) = params.needs_one_two_or_three() else  {

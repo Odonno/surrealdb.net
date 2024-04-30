@@ -129,9 +129,7 @@ pub async fn get_db(id: i32) -> Result<Arc<Surreal<Db>>, String> {
 
 #[no_mangle]
 pub extern "C" fn dispose(id: i32) {
-    unsafe {
-        // TODO : impl drop for Surreal<Any>
-        //DBS.remove(&id);
-        DBS.write().unwrap().remove(&id);
-    }
+    // TODO : impl drop for Surreal
+    //DBS.remove(&id);
+    DBS.write().unwrap().remove(&id);
 }

@@ -1,6 +1,7 @@
 use surrealdb::sql::Value;
 
-use crate::surrealdb::cbor::convert::Cbor;
+//use crate::surrealdb::cbor::convert::Cbor;
+use surrealdb_core::rpc::format::cbor::Cbor;
 
 use super::{alloc::alloc_u8_buffer, byte_buffer::ByteBuffer};
 

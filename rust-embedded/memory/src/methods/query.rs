@@ -1,7 +1,8 @@
 use std::{collections::BTreeMap, sync::Arc};
-use surrealdb::{engine::{any::Any, local::Db}, sql::{Array, Object, Strand, Value}, Surreal};
+use surrealdb::{engine::{local::Db}, sql::{Array, Object, Strand, Value}, Surreal};
+use surrealdb_core::rpc::args::Take;
 
-use crate::{bindgen::{alloc::alloc_u8_buffer, callback::{send_failure, send_success, FailureAction, SuccessAction}}, surrealdb::{args::Take, cbor::convert::Cbor}};
+use crate::{bindgen::{callback::{send_failure, send_success, FailureAction, SuccessAction}}};
 
 pub async fn query_async(client: Arc<Surreal<Db>>, params: Array, success: SuccessAction, failure: FailureAction) {
 // pub async fn query_async(
@@ -36,17 +37,6 @@ pub async fn query_async(client: Arc<Surreal<Db>>, params: Array, success: Succe
         None => None,
     };
 
-    //let mut query = client.query(&query).bind(vars);
-
-    // if let Some(vars) = vars {
-    //     for (k, v) in vars {
-    //         query.bind((k, v));
-    //     } 
-    //     // vars.iter().for_each(|(k, v)| {
-    //     //     query.bind((k, v));
-    //     // });
-    // }
-    
     let response = client.query(&query).bind(vars).with_stats().await;
 
     match response {

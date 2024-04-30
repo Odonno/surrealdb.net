@@ -1,11 +1,5 @@
 use std::{error::Error, time::Duration};
 
-// TODO : check diff between src/surrealdb and GitHub repository
-// TODO : check diff between src/surrealdb/cbor.rs and https://github.com/surrealdb/surrealdb/blob/main/core/src/rpc/format/cbor/convert.rs
-// TODO : check diff between src/surrealdb/method.rs and https://github.com/surrealdb/surrealdb/blob/main/core/src/rpc/method.rs
-// TODO : check diff between src/surrealdb/response.rs and ?
-// TODO : avoid header file check (ex: use ::)
-
 fn main() -> Result<(), Box<dyn Error>> {
     csbindgen::Builder::default()
         .input_extern_file("src/lib.rs")

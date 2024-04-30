@@ -1,7 +1,8 @@
 use std::sync::Arc;
 use surrealdb::{engine::{any::Any, local::Db}, sql::{Array, Value}, Surreal};
+use surrealdb_core::rpc::args::Take;
 
-use crate::{bindgen::{alloc::alloc_u8_buffer, callback::{send_failure, send_success, FailureAction, SuccessAction}}, surrealdb::args::Take};
+use crate::{bindgen::{alloc::alloc_u8_buffer, callback::{send_failure, send_success, FailureAction, SuccessAction}}};
 
 pub async fn use_ns_db_async(client: Arc<Surreal<Db>>, params: Array, success: SuccessAction, failure: FailureAction) {
 // pub async fn use_ns_db_async(
