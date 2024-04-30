@@ -474,17 +474,17 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
     }
 
     // TODO : To remove
-    private static string ByteArrayToString(ReadOnlySpan<byte> bytes)
-    {
-        var stringBuilder = new StringBuilder(bytes.Length * 2);
+    //private static string ByteArrayToString(ReadOnlySpan<byte> bytes)
+    //{
+    //    var stringBuilder = new StringBuilder(bytes.Length * 2);
 
-        foreach (byte b in bytes)
-        {
-            stringBuilder.AppendFormat("{0:x2}", b);
-        }
+    //    foreach (byte b in bytes)
+    //    {
+    //        stringBuilder.AppendFormat("{0:x2}", b);
+    //    }
 
-        return stringBuilder.ToString();
-    }
+    //    return stringBuilder.ToString();
+    //}
 
     private readonly SemaphoreSlim _semaphoreConnect = new(1, 1);
 
@@ -635,7 +635,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         Action<ByteBuffer> success = (byteBuffer) =>
         {
-            string x = ByteArrayToString(byteBuffer.AsSpan());
+            //string x = ByteArrayToString(byteBuffer.AsSpan());
 
             //if (expectMemoryBytes)
             //{

@@ -9,7 +9,6 @@ public class BaseBenchmark
     public static string Host { get; } = "127.0.0.1:8000";
     protected string HttpUrl { get; } = $"http://{Host}";
     protected string WsUrl { get; } = $"ws://{Host}/rpc";
-    protected string MemoryUrl { get; } = "mem://";
     protected string NamingPolicy { get; } = "SnakeCase";
 
     private readonly Func<JsonSerializerContext[]>? _funcJsonSerializerContexts;
@@ -35,33 +34,43 @@ public class BaseBenchmark
         client.Configure(databaseInfo.Namespace, databaseInfo.Database, "root", "root");
     }
 
-    protected async Task CreatePostTable(string url, DatabaseInfo databaseInfo)
+    protected Task CreatePostTable(string url, DatabaseInfo databaseInfo)
     {
         var client = new SurrealDbClient(
             url,
             NamingPolicy,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
+        return CreatePostTable(client, databaseInfo);
+    }
+
+    protected async Task CreatePostTable(ISurrealDbClient client, DatabaseInfo databaseInfo)
+    {
         InitializeSurrealDbClient(client, databaseInfo);
 
         string query = GetPostQueryContent();
         await client.RawQuery(query);
     }
 
-    protected async Task CreateEcommerceTables(string url, DatabaseInfo databaseInfo)
+    protected Task CreateEcommerceTables(string url, DatabaseInfo databaseInfo)
     {
         var client = new SurrealDbClient(
             url,
             NamingPolicy,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
+        return CreateEcommerceTables(client, databaseInfo);
+    }
+
+    protected async Task CreateEcommerceTables(ISurrealDbClient client, DatabaseInfo databaseInfo)
+    {
         InitializeSurrealDbClient(client, databaseInfo);
 
         string query = GetEcommerceQueryContent();
         await client.RawQuery(query);
     }
 
-    protected async Task<List<GeneratedPost>> SeedData(
+    protected Task<List<GeneratedPost>> SeedData(
         string url,
         DatabaseInfo databaseInfo,
         int count = 1000
@@ -72,6 +81,15 @@ public class BaseBenchmark
             NamingPolicy,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
+        return SeedData(client, databaseInfo, count);
+    }
+
+    protected async Task<List<GeneratedPost>> SeedData(
+        ISurrealDbClient client,
+        DatabaseInfo databaseInfo,
+        int count = 1000
+    )
+    {
         InitializeSurrealDbClient(client, databaseInfo);
 
         var tasks = new List<Task>();
@@ -92,13 +110,18 @@ public class BaseBenchmark
         return generatedPosts;
     }
 
-    protected async Task<Post> GetFirstPost(string httpUrl, DatabaseInfo databaseInfo)
+    protected Task<Post> GetFirstPost(string url, DatabaseInfo databaseInfo)
     {
         var client = new SurrealDbClient(
-            httpUrl,
+            url,
             NamingPolicy,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
+        return GetFirstPost(client, databaseInfo);
+    }
+
+    protected async Task<Post> GetFirstPost(ISurrealDbClient client, DatabaseInfo databaseInfo)
+    {
         InitializeSurrealDbClient(client, databaseInfo);
 
         var posts = await client.Select<Post>("post");

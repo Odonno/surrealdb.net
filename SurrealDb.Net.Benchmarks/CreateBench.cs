@@ -2,11 +2,13 @@
 using System.Text.Json;
 using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.DependencyInjection;
+using SurrealDb.Embedded.InMemory;
 using SurrealDb.Net.Internals.Constants;
 
 namespace SurrealDb.Net.Benchmarks;
 
 // TODO : Create a SurrealDbBenchmarkContext class
+// TODO : Separate in 2 benchmark projects (Remote.Benchmarks and Embedded.Benchmarks)
 
 public class CreateBench : BaseBenchmark
 {
@@ -18,12 +20,11 @@ public class CreateBench : BaseBenchmark
     private ISurrealDbClient? _surrealdbHttpClientWithHttpClientFactory;
     private ISurrealDbClient? _surrealdbWsTextClient;
     private ISurrealDbClient? _surrealdbWsBinaryClient;
-    private ISurrealDbClient? _surrealdbMemoryClient;
 
     [GlobalSetup]
     public async Task GlobalSetup()
     {
-        for (int index = 0; index < 5; index++)
+        for (int index = 0; index < 4; index++)
         {
             var clientGenerator = new SurrealDbClientGenerator();
             var dbInfo = clientGenerator.GenerateDatabaseInfo();
@@ -79,26 +80,6 @@ public class CreateBench : BaseBenchmark
                         await _surrealdbWsBinaryClient.Connect();
                     }
                     break;
-                case 4:
-                    if (JsonSerializer.IsReflectionEnabledByDefault)
-                    {
-                        var options = SurrealDbOptions
-                            .Create()
-                            .WithEndpoint(MemoryUrl)
-                            .WithNamingPolicy(NamingPolicy)
-                            .WithSerialization(SerializationConstants.CBOR)
-                            .Build();
-
-                        var services = new ServiceCollection();
-                        services.AddSurreal(options).AddInMemoryProvider();
-
-                        using var serviceProvider = services.BuildServiceProvider();
-                        _surrealdbMemoryClient =
-                            serviceProvider.GetRequiredService<ISurrealDbClient>();
-                        InitializeSurrealDbClient(_surrealdbMemoryClient, dbInfo);
-                        await _surrealdbMemoryClient.Connect();
-                    }
-                    break;
             }
         }
     }
@@ -116,7 +97,6 @@ public class CreateBench : BaseBenchmark
         _surrealdbHttpClientWithHttpClientFactory?.Dispose();
         _surrealdbWsTextClient?.Dispose();
         _surrealdbWsBinaryClient?.Dispose();
-        _surrealdbMemoryClient?.Dispose();
     }
 
     [Benchmark]
@@ -144,9 +124,16 @@ public class CreateBench : BaseBenchmark
     }
 
     [Benchmark]
-    public Task<Post> Memory()
+    public async Task<Post> Memory()
     {
-        return Run(_surrealdbMemoryClient!);
+        using var clientGenerator = new SurrealDbClientGenerator();
+        var dbInfo = clientGenerator.GenerateDatabaseInfo();
+
+        using var client = new SurrealDbMemoryClient(NamingPolicy);
+        InitializeSurrealDbClient(client, dbInfo);
+        await CreatePostTable(client, dbInfo);
+
+        return await Run(client);
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
