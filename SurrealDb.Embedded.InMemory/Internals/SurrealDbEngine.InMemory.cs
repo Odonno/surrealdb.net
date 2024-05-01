@@ -1,7 +1,7 @@
 ﻿using System.Reactive;
 using System.Runtime.InteropServices;
+using System.Text;
 using Dahomey.Cbor;
-using Microsoft.IO;
 using SurrealDb.Net.Exceptions;
 using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Cbor;
@@ -9,6 +9,7 @@ using SurrealDb.Net.Internals.Constants;
 using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Internals.Models;
 using SurrealDb.Net.Internals.Models.LiveQuery;
+using SurrealDb.Net.Internals.Stream;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -19,8 +20,6 @@ namespace SurrealDb.Embedded.InMemory.Internals;
 
 internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 {
-    // TODO : Single RecyclableMemoryStreamManager
-    private static readonly RecyclableMemoryStreamManager _memoryStreamManager = new();
     private static int _globalId;
 
     private SurrealDbClientParams? _parameters;
@@ -46,7 +45,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         if (_parameters.Serialization?.ToLowerInvariant() == SerializationConstants.JSON)
         {
-            // TODO : Add test
             throw new NotSupportedException(
                 "The JSON serialization is not supported for the in-memory provider."
             );
@@ -98,13 +96,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         return await SendRequestAsync<T>(Method.Create, [data.Id, data], cancellationToken)
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Create,
-        //        [data.Id, data],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-        //return dbResponse.GetValue<T>()!;
     }
 
     public async Task<T> Create<T>(string table, T? data, CancellationToken cancellationToken)
@@ -117,14 +108,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
             .ConfigureAwait(false);
 
         return list.First();
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Create,
-        //        [table, data],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-
-        //return dbResponse.DeserializeEnumerable<T>().First();
     }
 
     public async Task Delete(string table, CancellationToken cancellationToken)
@@ -135,13 +118,8 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
     public async Task<bool> Delete(Thing thing, CancellationToken cancellationToken)
     {
-        var result = await SendRequestWithRawResponseAsync(
-                Method.Delete,
-                [thing],
-                cancellationToken
-            )
+        return await SendRequestAsync<bool>(Method.Delete, [thing], cancellationToken)
             .ConfigureAwait(false);
-        return !result.Span.ExpectNone() && !result.Span.ExpectEmptyArray();
     }
 
     public void Dispose()
@@ -314,42 +292,18 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
             )
             .ConfigureAwait(false);
         return new SurrealDbResponse(list);
-
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Query,
-        //        [query, parameters],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-
-        //var list = dbResponse.GetValue<List<ISurrealDbResult>>() ?? [];
-        //return new SurrealDbResponse(list);
     }
 
     public async Task<IEnumerable<T>> Select<T>(string table, CancellationToken cancellationToken)
     {
         return await SendRequestAsync<IEnumerable<T>>(Method.Select, [table], cancellationToken)
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Select,
-        //        [table],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-        //return dbResponse.DeserializeEnumerable<T>()!;
     }
 
     public async Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken)
     {
         return await SendRequestAsync<T?>(Method.Select, [thing], cancellationToken)
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Select,
-        //        [thing],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-        //return dbResponse.GetValue<T?>();
     }
 
     public async Task Set(string key, object value, CancellationToken cancellationToken)
@@ -426,13 +380,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
                 cancellationToken
             )
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Update,
-        //        [table, data],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-        //return dbResponse.DeserializeEnumerable<T>();
     }
 
     public async Task<T> Upsert<T>(T data, CancellationToken cancellationToken)
@@ -443,13 +390,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         return await SendRequestAsync<T>(Method.Update, [data.Id, data], cancellationToken)
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync<SurrealDbHttpOkResponse>(
-        //        Method.Update,
-        //        [data.Id, data],
-        //        cancellationToken
-        //    )
-        //    .ConfigureAwait(false);
-        //return dbResponse.GetValue<T>()!;
     }
 
     public async Task Use(string ns, string db, CancellationToken cancellationToken)
@@ -461,9 +401,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
     {
         return await SendRequestAsync<string>(Method.Version, null, cancellationToken)
             .ConfigureAwait(false);
-        //var dbResponse = await SendRequestAsync(Method.Version, null, cancellationToken)
-        //    .ConfigureAwait(false);
-        //return dbResponse.GetValue<string>()!;
     }
 
     private CborOptions GetCborOptions()
@@ -471,19 +408,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         // TODO : Copy from updated HTTP/WS engine
         return SurrealDbCborOptions.GetCborSerializerOptions(_parameters!.NamingPolicy);
     }
-
-    // TODO : To remove
-    //private static string ByteArrayToString(ReadOnlySpan<byte> bytes)
-    //{
-    //    var stringBuilder = new StringBuilder(bytes.Length * 2);
-
-    //    foreach (byte b in bytes)
-    //    {
-    //        stringBuilder.AppendFormat("{0:x2}", b);
-    //    }
-
-    //    return stringBuilder.ToString();
-    //}
 
     private readonly SemaphoreSlim _semaphoreConnect = new(1, 1);
 
@@ -526,87 +450,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         }
     }
 
-    private async Task<ReadOnlyMemory<byte>> SendRequestWithRawResponseAsync(
-        Method method,
-        object?[]? parameters,
-        CancellationToken cancellationToken
-    )
-    {
-        bool requireConnected = method != Method.Connect;
-        bool requireInitialized = method != Method.Connect && method != Method.Use;
-        await InternalConnectAsync(requireConnected, requireInitialized, cancellationToken)
-            .ConfigureAwait(false);
-
-        await using var stream = _memoryStreamManager.GetStream();
-        await CborSerializer
-            .SerializeAsync(parameters, stream, GetCborOptions(), cancellationToken)
-            .ConfigureAwait(false);
-
-        bool canGetBuffer = stream.TryGetBuffer(out var bytes);
-        if (!canGetBuffer)
-        {
-            throw new SurrealDbException("Failed to retrieve serialized buffer.");
-        }
-
-        // TODO : Base class for SurrealDbHttpOkResponse and SurrealDbEmbeddedOkResponse?
-        var taskCompletionSource = new TaskCompletionSource<ReadOnlyMemory<byte>>();
-
-        Action<ByteBuffer> success = (byteBuffer) =>
-        {
-            taskCompletionSource.SetResult(
-                new ReadOnlyMemory<byte>(byteBuffer.AsReadOnly().ToArray())
-            );
-        };
-        Action<ByteBuffer> fail = (byteBuffer) =>
-        {
-            string error = CborSerializer.Deserialize<string>(
-                byteBuffer.AsReadOnly(),
-                GetCborOptions()
-            );
-            taskCompletionSource.SetException(new SurrealDbException(error));
-        };
-
-        var successHandle = GCHandle.Alloc(success);
-        var failureHandle = GCHandle.Alloc(fail);
-
-        unsafe
-        {
-            var successAction = new SuccessAction()
-            {
-                handle = new RustGCHandle()
-                {
-                    ptr = GCHandle.ToIntPtr(successHandle),
-                    drop_callback = &NativeBindings.DropGcHandle
-                },
-                callback = &NativeBindings.SuccessCallback,
-            };
-
-            var failureAction = new FailureAction()
-            {
-                handle = new RustGCHandle()
-                {
-                    ptr = GCHandle.ToIntPtr(failureHandle),
-                    drop_callback = &NativeBindings.DropGcHandle
-                },
-                callback = &NativeBindings.FailureCallback,
-            };
-
-            fixed (byte* payload = bytes.AsSpan())
-            {
-                NativeMethods.execute(
-                    _id,
-                    method,
-                    payload,
-                    bytes.Count,
-                    successAction,
-                    failureAction
-                );
-            }
-        }
-
-        return await taskCompletionSource.Task.ConfigureAwait(false);
-    }
-
     private async Task<T> SendRequestAsync<T>(
         Method method,
         object?[]? parameters,
@@ -618,7 +461,7 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         await InternalConnectAsync(requireConnected, requireInitialized, cancellationToken)
             .ConfigureAwait(false);
 
-        await using var stream = _memoryStreamManager.GetStream();
+        await using var stream = MemoryStreamProvider.MemoryStreamManager.GetStream();
         await CborSerializer
             .SerializeAsync(parameters, stream, GetCborOptions(), cancellationToken)
             .ConfigureAwait(false);
@@ -636,15 +479,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         Action<ByteBuffer> success = (byteBuffer) =>
         {
-            //string x = ByteArrayToString(byteBuffer.AsSpan());
-
-            //if (expectMemoryBytes)
-            //{
-            //    taskCompletionSource.SetResult(
-            //        new ReadOnlyMemory<byte>(byteBuffer.AsSpan().ToArray())
-            //    );
-            //}
-            //else
             if (expectOutput)
             {
                 try
@@ -659,11 +493,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
                 {
                     taskCompletionSource.SetException(e);
                 }
-                //var result =
-                //    CborSerializer.Deserialize<ISurrealDbHttpResponse>(
-                //        byteBuffer.AsSpan(),
-                //        GetCborOptions()
-                //    ) as SurrealDbHttpOkResponse;
             }
             else
             {
@@ -672,7 +501,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
         };
         Action<ByteBuffer> fail = (byteBuffer) =>
         {
-            //string x = ByteArrayToString(byteBuffer.AsSpan());
             string error = CborSerializer.Deserialize<string>(
                 byteBuffer.AsReadOnly(),
                 GetCborOptions()
@@ -720,17 +548,4 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
 
         return await taskCompletionSource.Task.ConfigureAwait(false);
     }
-
-    //private async Task<bool> TrySerializeRequest(
-    //    object?[] parameters,
-    //    CancellationToken cancellationToken
-    //)
-    //{
-    //    await using var stream = _memoryStreamManager.GetStream();
-    //    await CborSerializer
-    //        .SerializeAsync(parameters, stream, GetCborOptions(), cancellationToken)
-    //        .ConfigureAwait(false);
-
-    //    return stream.TryGetBuffer(out var bytes);
-    //}
 }

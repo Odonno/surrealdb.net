@@ -27,18 +27,16 @@ pub async fn delete_async(client: Arc<Surreal<Db>>, params: Array, success: Succ
                 Ok(value) => {
                     let value = match one {
                         true => {
-                            match value {
-                                Value::Array(v) => {
-                                    if v.is_empty() {
-                                        Value::None
-                                    } else {
-                                        v.first().unwrap_or(&Value::None).clone()
-                                    }
-                                },
-                                _ => value,
-                            }
+                            let is_success = match value {
+                                Value::Array(v) => !v.is_empty() && v.first().unwrap_or(&Value::None) != &Value::None,
+                                Value::None => false,
+                                Value::Null => false,
+                                _ => true,
+                            };
+
+                            Value::Bool(is_success)
                         },
-                        false => value,
+                        false => Value::None,
                     };
 
                     send_success(value, success, failure);
