@@ -21,22 +21,53 @@
     <ProjectReference Include="..\SurrealDb.Net\SurrealDb.Net.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
-    <None Include="../rust-embedded/target/debug/memory.dll" Condition="Exists('../rust-embedded/target/debug/memory.dll')">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="../rust-embedded/target/debug/memory.pdb" Condition="Exists('../rust-embedded/target/debug/memory.pdb')">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  <!-- https://stackoverflow.com/a/48714896/7847252 -->
+  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
+    <Content
+      Include="../rust-embedded/target/debug/memory.dll"
+      TargetPath="memory.dll"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Debug'" />
+    <Content
+      Include="../rust-embedded/target/release/memory.dll"
+      TargetPath="memory.dll"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Release'" />
 
-  <ItemGroup Condition="'$(Configuration)' == 'Release'">
-    <None Include="../rust-embedded/target/release/memory.dll" Condition="Exists('../rust-embedded/target/release/memory.dll')">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="../rust-embedded/target/release/memory.pdb" Condition="Exists('../rust-embedded/target/release/memory.pdb')">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content
+      Include="../rust-embedded/target/debug/memory.pdb"
+      TargetPath="memory.pdb"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Debug'" />
+    <Content
+      Include="../rust-embedded/target/release/memory.pdb"
+      TargetPath="memory.pdb"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Release'" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
+    <Content
+      Include="../rust-embedded/target/debug/libmemory.so"
+      TargetPath="libmemory.so"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Debug'" />
+    <Content
+      Include="../rust-embedded/target/release/libmemory.so"
+      TargetPath="libmemory.so"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Release'" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' ">
+    <Content
+      Include="../rust-embedded/target/debug/libmemory.dylib"
+      TargetPath="libmemory.dylib"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Debug'" />
+    <Content
+      Include="../rust-embedded/target/release/libmemory.dylib"
+      TargetPath="libmemory.dylib"
+      CopyToOutputDirectory="Always"
+      Condition="'$(Configuration)' == 'Release'" />
   </ItemGroup>
 
 </Project>
