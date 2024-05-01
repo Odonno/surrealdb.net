@@ -14,12 +14,119 @@ defaults:
     shell: pwsh
 
 jobs:
+  embedded-build-win:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            rust-embedded
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build libraries
+        working-directory: ./rust-embedded
+        run: cargo build --release --target x86_64-pc-windows-msvc
+      
+      - name: Publish embedded artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: embedded-windows-latest
+          path: |
+            ./rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll
+            ./rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb
+
+  embedded-build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            rust-embedded
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build libraries
+        working-directory: ./rust-embedded
+        run: cargo build --release
+      
+      - name: Publish embedded artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: embedded-ubuntu-latest
+          path: |
+            ./rust-embedded/target/release/libmemory.so
+
+  embedded-build-osx:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            rust-embedded
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build libraries
+        working-directory: ./rust-embedded
+        run: cargo build --release
+      
+      - name: Publish embedded artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: embedded-macos-latest
+          path: |
+            ./rust-embedded/target/release/libmemory.dylib
+
   create-package:
+    needs: [embedded-build-win, embedded-build-linux, embedded-build-osx]
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Download embedded artifacts (Windows)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-windows-latest
+          path: |
+            ./rust-embedded/target/x86_64-pc-windows-msvc/release/
+    
+      - name: Download embedded artifacts (Linux)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-ubuntu-latest
+          path: |
+            ./rust-embedded/target/release/
+
+      - name: Download embedded artifacts (MacOS)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-macos-latest
+          path: |
+            ./rust-embedded/target/release/
 
       - name: Setup dotnet 8.0
         uses: actions/setup-dotnet@v3

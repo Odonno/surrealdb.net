@@ -8,7 +8,7 @@ using SystemTextJsonPatch;
 
 namespace SurrealDb.Net.Internals;
 
-internal interface ISurrealDbEngine : IDisposable
+public interface ISurrealDbEngine : IDisposable
 {
     Task Authenticate(Jwt jwt, CancellationToken cancellationToken);
     void Configure(string? ns, string? db, string? username, string? password);
@@ -94,7 +94,7 @@ internal interface ISurrealDbEngine : IDisposable
     Task<string> Version(CancellationToken cancellationToken);
 }
 
-internal interface ISurrealDbProviderEngine : ISurrealDbEngine
+public interface ISurrealDbProviderEngine : ISurrealDbEngine
 {
     /// <summary>
     /// Initializes engine dynamically, due to DependencyInjection interop.
@@ -102,4 +102,4 @@ internal interface ISurrealDbProviderEngine : ISurrealDbEngine
     void Initialize(SurrealDbClientParams parameters);
 }
 
-internal interface ISurrealDbInMemoryEngine : ISurrealDbProviderEngine { }
+public interface ISurrealDbInMemoryEngine : ISurrealDbProviderEngine { }

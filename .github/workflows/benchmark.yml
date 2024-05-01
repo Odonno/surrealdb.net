@@ -7,10 +7,29 @@ on:
 
 jobs:
   action:
+    needs: [embedded-build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+    
+      - name: Download embedded artifacts (Linux)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-ubuntu-latest
+          path: ./rust-embedded/target/release/
+
+      - name: Download embedded artifacts (Windows)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-windows-latest
+          path: ./rust-embedded/target/release/
+
+      - name: Download embedded artifacts (MacOS)
+        uses: actions/download-artifact@v2
+        with:
+          name: embedded-macos-latest
+          path: ./rust-embedded/target/release/
 
       - name: Download SurrealDB
         run: curl --proto '=https' --tlsv1.2 -sSf https://install.surrealdb.com | sh
@@ -23,8 +42,17 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Execute benchmarks
-        run: sudo dotnet run -c Release --project SurrealDb.Net.Benchmarks --filter '*'
+      - name: Assign benchmark mode
+        run: sh ./prepare_embeded_benchmarks.sh -s
+
+      - name: Execute Remote benchmarks
+        run: sudo dotnet run -c Release --project SurrealDb.Net.Benchmarks.Remote --filter '*'
+
+      - name: Execute Embedded benchmarks
+        run: sudo dotnet run -c Release --project SurrealDb.Net.Benchmarks.Embedded --filter '*'
+
+      - name: Revert benchmark mode
+        run: sh ./prepare_embeded_benchmarks.sh -e
 
       - name: Download previous benchmark data
         uses: actions/cache@v1
@@ -41,3 +69,36 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           comment-on-alert: true
           summary-always: true
+
+  embedded-build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            rust-embedded
+
+      - name: Install stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build libraries
+        working-directory: ./rust-embedded
+        run: cargo build --release
+      
+      - name: Publish embedded artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: embedded-${{ matrix.os }}
+          path: |
+            ./rust-embedded/target/release/memory.dll
+            ./rust-embedded/target/release/memory.pdb
+            ./rust-embedded/target/release/libmemory.so
+            ./rust-embedded/target/release/libmemory.dylib

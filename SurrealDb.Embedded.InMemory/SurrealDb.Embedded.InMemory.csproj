@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\SurrealDb.Net\Internals\Constants\SerializationConstants.cs" Link="Internals\Constants\SerializationConstants.cs" />
+    <Compile Include="..\SurrealDb.Net\Internals\Extensions\FormattableStringExtensions.cs" Link="Internals\Extensions\FormattableStringExtensions.cs" />
+    <Compile Include="..\SurrealDb.Net\Internals\Extensions\StringExtensions.cs" Link="Internals\Extensions\StringExtensions.cs" />
+    <Compile Include="..\SurrealDb.Net\Internals\Stream\MemoryStreamProvider.cs" Link="Internals\Stream\MemoryStreamProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="csbindgen" Version="1.9.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,53 +28,46 @@
     <ProjectReference Include="..\SurrealDb.Net\SurrealDb.Net.csproj" />
   </ItemGroup>
 
-  <!-- https://stackoverflow.com/a/48714896/7847252 -->
-  <ItemGroup Condition=" '$(OS)' == 'Windows_NT' ">
-    <Content
-      Include="../rust-embedded/target/debug/memory.dll"
-      TargetPath="memory.dll"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Debug'" />
-    <Content
-      Include="../rust-embedded/target/release/memory.dll"
-      TargetPath="memory.dll"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Folder Include="Internals\Extensions\" />
+    <Folder Include="Internals\Constants\" />
+    <Folder Include="Internals\Stream\" />
+  </ItemGroup>
 
-    <Content
-      Include="../rust-embedded/target/debug/memory.pdb"
-      TargetPath="memory.pdb"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Debug'" />
-    <Content
-      Include="../rust-embedded/target/release/memory.pdb"
-      TargetPath="memory.pdb"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Release'" />
+  <!-- Used to enable the consumption of the memory library during benchmarks (local or CI/CD) -->
+  <PropertyGroup Label="Constants" Condition="false">
+    <DefineConstants>BENCHMARK_MODE</DefineConstants>
+  </PropertyGroup>
+  
+  <!-- https://stackoverflow.com/a/48714896/7847252 -->
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <Content Include="../rust-embedded/target/debug/memory.dll" TargetPath="memory.dll" CopyToOutputDirectory="Always" Condition="'$(OS)' == 'Windows_NT'" />
+    <Content Include="../rust-embedded/target/debug/memory.pdb" TargetPath="memory.pdb" CopyToOutputDirectory="Always" Condition="'$(OS)' == 'Windows_NT'" />
+
+    <Content Include="../rust-embedded/target/debug/libmemory.so" TargetPath="libmemory.so" CopyToOutputDirectory="Always" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'" />
+
+    <Content Include="../rust-embedded/target/debug/libmemory.dylib" TargetPath="libmemory.dylib" CopyToOutputDirectory="Always" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'" />
   </ItemGroup>
-  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
-    <Content
-      Include="../rust-embedded/target/debug/libmemory.so"
-      TargetPath="libmemory.so"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Debug'" />
-    <Content
-      Include="../rust-embedded/target/release/libmemory.so"
-      TargetPath="libmemory.so"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Release'" />
+  
+  <ItemGroup Condition="$(DefineConstants.Contains('BENCHMARK_MODE'))">
+    <Content Include="../rust-embedded/target/release/memory.dll" TargetPath="memory.dll" CopyToOutputDirectory="Always" Condition="'$(OS)' == 'Windows_NT'" />
+    <Content Include="../rust-embedded/target/release/memory.pdb" TargetPath="memory.pdb" CopyToOutputDirectory="Always" Condition="'$(OS)' == 'Windows_NT'" />
+
+    <Content Include="../rust-embedded/target/release/libmemory.so" TargetPath="libmemory.so" CopyToOutputDirectory="Always" Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'" />
+
+    <Content Include="../rust-embedded/target/release/libmemory.dylib" TargetPath="libmemory.dylib" CopyToOutputDirectory="Always"   Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))'" />
   </ItemGroup>
-  <ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' ">
-    <Content
-      Include="../rust-embedded/target/debug/libmemory.dylib"
-      TargetPath="libmemory.dylib"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Debug'" />
-    <Content
-      Include="../rust-embedded/target/release/libmemory.dylib"
-      TargetPath="libmemory.dylib"
-      CopyToOutputDirectory="Always"
-      Condition="'$(Configuration)' == 'Release'" />
+
+  <ItemGroup Condition="'$(Configuration)' == 'Release' And !$(DefineConstants.Contains('BENCHMARK_MODE'))">
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x64/native/" />
+
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x86/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x86/native/" />
+
+    <Content Include="../rust-embedded/target/release/libmemory.so" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+
+    <Content Include="../rust-embedded/target/release/libmemory.dylib" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/osx-x64/native/" />
   </ItemGroup>
 
 </Project>

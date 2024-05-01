@@ -55,9 +55,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.Embedded.InMemory", "SurrealDb.Embedded.InMemory\SurrealDb.Embedded.InMemory.csproj", "{DF431D96-ED87-4A2B-959E-D345E337F110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Net.Benchmarks.Embedded", "SurrealDb.Net.Benchmarks.Embedded\SurrealDb.Net.Benchmarks.Embedded.csproj", "{ABB406DB-023C-4B7C-891F-0B75454D0205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.Net.Benchmarks.Embedded", "SurrealDb.Net.Benchmarks.Embedded\SurrealDb.Net.Benchmarks.Embedded.csproj", "{ABB406DB-023C-4B7C-891F-0B75454D0205}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Net.Benchmarks.Remote", "SurrealDb.Net.Benchmarks.Remote\SurrealDb.Net.Benchmarks.Remote.csproj", "{9B9B9E0F-4AEF-4629-95FE-F627B13A19F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurrealDb.Net.Benchmarks.Remote", "SurrealDb.Net.Benchmarks.Remote\SurrealDb.Net.Benchmarks.Remote.csproj", "{9B9B9E0F-4AEF-4629-95FE-F627B13A19F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
