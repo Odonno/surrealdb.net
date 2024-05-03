@@ -35,23 +35,20 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
         Func<JsonSerializerContext[]>? funcJsonSerializerContexts = null
     )
     {
-        var services = new ServiceCollection();
-
         _options = SurrealDbOptions
             .Create()
             .FromConnectionString(connectionString)
             .WithNamingPolicy("SnakeCase")
             .Build();
 
-        services
+        _serviceProvider = new ServiceCollection()
             .AddSurreal(
                 _options,
                 configureJsonSerializerOptions: configureJsonSerializerOptions,
                 appendJsonSerializerContexts: funcJsonSerializerContexts
             )
-            .AddInMemoryProvider();
-
-        _serviceProvider = services.BuildServiceProvider(validateScopes: true);
+            .AddInMemoryProvider()
+            .And.BuildServiceProvider(validateScopes: true);
 
         return _serviceProvider.GetRequiredService<SurrealDbClient>();
     }

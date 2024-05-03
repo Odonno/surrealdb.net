@@ -234,7 +234,6 @@ public class SurrealDbOptionsBuilderTests
     }
 
     [Theory]
-    [InlineData("mem://")]
     [InlineData("http://127.0.0.1:8000")]
     [InlineData("https://cloud.surrealdb.com")]
     [InlineData("ws://127.0.0.1:8000/rpc")]
@@ -252,9 +251,14 @@ public class SurrealDbOptionsBuilderTests
     public void ShouldFailToCreateFromConnectionStringWithServerEndpoint(string server)
     {
         string connectionString = $"Server={server}";
-        var options = new SurrealDbOptionsBuilder().FromConnectionString(connectionString).Build();
+        Action action = () =>
+            new SurrealDbOptionsBuilder().FromConnectionString(connectionString).Build();
 
-        options.Endpoint.Should().Be(server);
+        action
+            .Should()
+            .Throw<ArgumentException>()
+            .WithParameterName("connectionString")
+            .WithMessage($"Invalid server endpoint: {server} (Parameter 'connectionString')");
     }
 
     [Theory]
@@ -275,8 +279,13 @@ public class SurrealDbOptionsBuilderTests
     public void ShouldFailToCreateFromConnectionStringWithClientEndpoint(string client)
     {
         string connectionString = $"Client={client}";
-        var options = new SurrealDbOptionsBuilder().FromConnectionString(connectionString).Build();
+        Action action = () =>
+            new SurrealDbOptionsBuilder().FromConnectionString(connectionString).Build();
 
-        options.Endpoint.Should().Be(client);
+        action
+            .Should()
+            .Throw<ArgumentException>()
+            .WithParameterName("connectionString")
+            .WithMessage($"Invalid client endpoint: {client} (Parameter 'connectionString')");
     }
 }

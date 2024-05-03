@@ -1,4 +1,3 @@
-pub mod connect;
 pub mod create;
 pub mod delete;
 pub mod merge;

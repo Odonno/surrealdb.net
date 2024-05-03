@@ -59,15 +59,15 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(Configuration)' == 'Release' And !$(DefineConstants.Contains('BENCHMARK_MODE'))">
-    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x64/native/" />
-    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" Pack="true" PackagePath="runtimes/win-x64/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" Pack="true" PackagePath="runtimes/win-x64/native/" />
 
-    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x86/native/" />
-    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/win-x86/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.dll" Pack="true" PackagePath="runtimes/win-x86/native/" />
+    <Content Include="../rust-embedded/target/x86_64-pc-windows-msvc/release/memory.pdb" Pack="true" PackagePath="runtimes/win-x86/native/" />
 
-    <Content Include="../rust-embedded/target/release/libmemory.so" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/linux-x64/native/" />
+    <Content Include="../rust-embedded/target/release/libmemory.so" Pack="true" PackagePath="runtimes/linux-x64/native/" />
 
-    <Content Include="../rust-embedded/target/release/libmemory.dylib" CopyToOutputDirectory="Always" Pack="true" PackagePath="runtimes/osx-x64/native/" />
+    <Content Include="../rust-embedded/target/release/libmemory.dylib" Pack="true" PackagePath="runtimes/osx-x64/native/" />
   </ItemGroup>
 
 </Project>

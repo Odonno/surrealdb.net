@@ -9,10 +9,10 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// </summary>
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddInMemoryProvider(this IServiceCollection services)
+    public static SurrealDbBuilder AddInMemoryProvider(this SurrealDbBuilder builder)
     {
-        services.AddTransient<ISurrealDbInMemoryEngine, SurrealDbInMemoryEngine>();
+        builder.Services.AddTransient<ISurrealDbInMemoryEngine, SurrealDbInMemoryEngine>();
 
-        return services;
+        return builder;
     }
 }

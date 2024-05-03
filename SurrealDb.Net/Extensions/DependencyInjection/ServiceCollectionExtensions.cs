@@ -6,9 +6,6 @@ using SurrealDb.Net.Internals.Models;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-// TODO : Create custom SurrealDbBuilder type and rename this to SurrealDbBuilderExtensions
-// For inspiration: https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/blob/2f6a10f89e3c6d97f232f4157a80e3a9e1470dc5/src/HealthChecks.UI/Extensions/ServiceCollectionExtensions.cs#L15
-
 /// <summary>
 /// Extensions to register SurrealDB services.
 /// Registers <see cref="ISurrealDbClient"/> as a singleton instance.
@@ -35,7 +32,7 @@ public static class ServiceCollectionExtensions
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IServiceCollection AddSurreal(
+    public static SurrealDbBuilder AddSurreal(
         this IServiceCollection services,
         string connectionString,
         ServiceLifetime lifetime = ServiceLifetime.Singleton,
@@ -74,7 +71,7 @@ public static class ServiceCollectionExtensions
     /// <exception cref="ArgumentException"></exception>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IServiceCollection AddSurreal<T>(
+    public static SurrealDbBuilder AddSurreal<T>(
         this IServiceCollection services,
         string connectionString,
         ServiceLifetime lifetime = ServiceLifetime.Singleton,
@@ -108,7 +105,7 @@ public static class ServiceCollectionExtensions
     /// <returns>Service collection</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IServiceCollection AddSurreal(
+    public static SurrealDbBuilder AddSurreal(
         this IServiceCollection services,
         Action<SurrealDbOptionsBuilder> configureOptions,
         ServiceLifetime lifetime = ServiceLifetime.Singleton
@@ -137,7 +134,7 @@ public static class ServiceCollectionExtensions
     /// <returns>Service collection</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IServiceCollection AddSurreal(
+    public static SurrealDbBuilder AddSurreal(
         this IServiceCollection services,
         SurrealDbOptions configuration,
         ServiceLifetime lifetime = ServiceLifetime.Singleton,
@@ -175,7 +172,7 @@ public static class ServiceCollectionExtensions
     /// <returns>Service collection</returns>
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     /// <exception cref="ArgumentNullException"></exception>
-    public static IServiceCollection AddSurreal<T>(
+    public static SurrealDbBuilder AddSurreal<T>(
         this IServiceCollection services,
         SurrealDbOptions configuration,
         ServiceLifetime lifetime = ServiceLifetime.Singleton,
@@ -227,7 +224,7 @@ public static class ServiceCollectionExtensions
             );
         }
 
-        return services;
+        return new SurrealDbBuilder(services);
     }
 
     private static void RegisterHttpClient(IServiceCollection services, string endpoint)

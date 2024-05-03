@@ -1,6 +1,5 @@
 ﻿using System.Reactive;
 using System.Runtime.InteropServices;
-using System.Text;
 using Dahomey.Cbor;
 using SurrealDb.Net.Exceptions;
 using SurrealDb.Net.Internals;
@@ -472,7 +471,6 @@ internal class SurrealDbInMemoryEngine : ISurrealDbInMemoryEngine
             throw new SurrealDbException("Failed to retrieve serialized buffer.");
         }
 
-        // TODO : Base class for SurrealDbHttpOkResponse and SurrealDbEmbeddedOkResponse?
         var taskCompletionSource = new TaskCompletionSource<T>();
 
         bool expectOutput = typeof(T) != typeof(Unit);

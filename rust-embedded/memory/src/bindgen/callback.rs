@@ -1,6 +1,4 @@
 use surrealdb::sql::Value;
-
-//use crate::surrealdb::cbor::convert::Cbor;
 use surrealdb_core::rpc::format::cbor::Cbor;
 
 use super::{alloc::alloc_u8_buffer, byte_buffer::ByteBuffer};
@@ -44,35 +42,26 @@ impl FailureAction {
 }
 
 fn value_to_buffer(value: Value) -> Result<*mut ByteBuffer, ()> {
-    let value: Cbor = value.try_into().map_err(|_| ())?; // TODO
+    let value: Cbor = value.try_into().map_err(|_| ())?;
 
     let mut output = Vec::new();
-    ciborium::into_writer(&value.0, &mut output).map_err(|_| ())?; // TODO
+    ciborium::into_writer(&value.0, &mut output).map_err(|_| ())?;
 
     Ok(alloc_u8_buffer(output))
 }
 
 pub fn send_success(value: Value, success: SuccessAction, failure: FailureAction) {
-	// let value: Cbor = value.try_into().unwrap();
-
-    // let mut output = Vec::new();
-    // ciborium::into_writer(&value.0, &mut output).unwrap();
-
-    // let res = alloc_u8_buffer(output);
-
     match value_to_buffer(value) {
         Ok(buffer) => success.invoke(buffer),
         Err(_) => send_failure("Failed to serialize Value", failure),
     }
-    //success.invoke(value_to_buffer(value));
 }
 
 pub fn send_failure(error: &str, action: FailureAction) {
     let value = Value::Strand(error.into());
-    
+
     match value_to_buffer(value) {
         Ok(buffer) => action.invoke(buffer),
         Err(_) => panic!("Failed to serialize Value"),
     }
-    //action.invoke(value_to_buffer(value));
 }

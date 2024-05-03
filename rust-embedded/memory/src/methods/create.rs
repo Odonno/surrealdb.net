@@ -1,17 +1,26 @@
 use std::{collections::BTreeMap, sync::Arc};
-use surrealdb::{engine::local::Db, sql::{Array, Value}, Surreal};
+use surrealdb::{
+    engine::local::Db,
+    sql::{Array, Value},
+    Surreal,
+};
 use surrealdb_core::rpc::args::Take;
 
-use crate::{bindgen::callback::{send_failure, send_success, FailureAction, SuccessAction}};
+use crate::bindgen::callback::{send_failure, send_success, FailureAction, SuccessAction};
 
-pub async fn create_async(client: Arc<Surreal<Db>>, params: Array, success: SuccessAction, failure: FailureAction) {
+pub async fn create_async(
+    client: Arc<Surreal<Db>>,
+    params: Array,
+    success: SuccessAction,
+    failure: FailureAction,
+) {
     let Ok((what, data)) = params.needs_one_or_two() else {
         send_failure("Invalid params", failure);
         return;
     };
-    
+
     let one = what.is_thing();
-    
+
     let sql = if data.is_none_or_null() {
         "CREATE $what RETURN AFTER"
     } else {
@@ -31,30 +40,28 @@ pub async fn create_async(client: Arc<Surreal<Db>>, params: Array, success: Succ
             match result {
                 Ok(value) => {
                     let value = match one {
-                        true => {
-                            match value {
-                                Value::Array(v) => {
-                                    if v.is_empty() {
-                                        Value::None
-                                    } else {
-                                        v.first().unwrap_or(&Value::None).clone()
-                                    }
-                                },
-                                _ => value,
+                        true => match value {
+                            Value::Array(v) => {
+                                if v.is_empty() {
+                                    Value::None
+                                } else {
+                                    v.first().unwrap_or(&Value::None).clone()
+                                }
                             }
+                            _ => value,
                         },
                         false => value,
                     };
 
                     send_success(value, success, failure);
-                },
+                }
                 Err(error) => {
                     send_failure(error.to_string().as_str(), failure);
-                },
+                }
             }
-        },
+        }
         Err(error) => {
             send_failure(error.to_string().as_str(), failure);
-        },
+        }
     }
 }
