@@ -17,19 +17,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: embedded-ubuntu-latest
-          path: ./rust-embedded/target/release/
 
       - name: Download embedded artifacts (Windows)
         uses: actions/download-artifact@v2
         with:
           name: embedded-windows-latest
-          path: ./rust-embedded/target/release/
 
       - name: Download embedded artifacts (MacOS)
         uses: actions/download-artifact@v2
         with:
           name: embedded-macos-latest
-          path: ./rust-embedded/target/release/
 
       - name: Download SurrealDB
         run: curl --proto '=https' --tlsv1.2 -sSf https://install.surrealdb.com | sh
@@ -43,7 +40,7 @@ jobs:
           dotnet-version: "8.0.x"
 
       - name: Assign benchmark mode
-        run: sh ./prepare_embeded_benchmarks.sh -s
+        run: ./prepare_embedded_benchmarks.sh -s
 
       - name: Execute Remote benchmarks
         run: sudo dotnet run -c Release --project SurrealDb.Net.Benchmarks.Remote --filter '*'
@@ -52,7 +49,7 @@ jobs:
         run: sudo dotnet run -c Release --project SurrealDb.Net.Benchmarks.Embedded --filter '*'
 
       - name: Revert benchmark mode
-        run: sh ./prepare_embeded_benchmarks.sh -e
+        run: ./prepare_embedded_benchmarks.sh -e
 
       - name: Download previous benchmark data
         uses: actions/cache@v1
@@ -75,6 +72,18 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          # expand matrix configuration to add "libpath" variable
+          - os: windows-latest
+            libpath: |
+              **/release/memory.dll
+              **/release/memory.pdb
+          - os: ubuntu-latest
+            libpath: |
+              **/release/libmemory.so
+          - os: macos-latest
+            libpath: |
+              **/release/libmemory.dylib
 
     steps:
       - name: Checkout
@@ -97,8 +106,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: embedded-${{ matrix.os }}
-          path: |
-            ./rust-embedded/target/release/memory.dll
-            ./rust-embedded/target/release/memory.pdb
-            ./rust-embedded/target/release/libmemory.so
-            ./rust-embedded/target/release/libmemory.dylib
+          path: ${{ matrix.libpath }}

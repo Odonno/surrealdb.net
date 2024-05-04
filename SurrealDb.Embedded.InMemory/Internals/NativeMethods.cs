@@ -25,61 +25,62 @@ internal static unsafe partial class NativeMethods
     {
         if (libraryName == __DllName)
         {
-            var path = new StringBuilder("runtimes/");
-
-            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            bool isOsx = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-
-            if (isWindows)
+            if (GetDefaultPlatformLibraryPath(out var path) && File.Exists(path))
             {
-                path.Append("win-");
-            }
-            else if (isOsx)
-            {
-                path.Append("osx-");
-            }
-            else
-            {
-                path.Append("linux-");
+                return NativeLibrary.Load(path, assembly, searchPath);
             }
 
-            if (RuntimeInformation.ProcessArchitecture == Architecture.X86)
-            {
-                path.Append("x86");
-            }
-            else if (RuntimeInformation.ProcessArchitecture == Architecture.X64)
-            {
-                path.Append("x64");
-            }
-            else if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
-            {
-                path.Append("arm64");
-            }
-
-            path.Append("/native/");
-            path.Append(__DllName);
-
-            if (isWindows)
-            {
-                path.Append(".dll");
-            }
-            else if (isOsx)
-            {
-                path.Append(".dylib");
-            }
-            else
-            {
-                path.Append(".so");
-            }
-
-            return NativeLibrary.Load(
-                Path.Combine(AppContext.BaseDirectory, path.ToString()),
-                assembly,
-                searchPath
-            );
+            return NativeLibrary.Load(libraryName, assembly, searchPath);
         }
 
         return IntPtr.Zero;
+    }
+
+    static bool GetDefaultPlatformLibraryPath(out string path)
+    {
+        var pathBuilder = new StringBuilder("runtimes/");
+
+        if (PlatformConfiguration.IsWindows)
+            pathBuilder.Append("win-");
+        else if (PlatformConfiguration.IsMac)
+            pathBuilder.Append("osx-");
+        else
+            pathBuilder.Append("linux-");
+
+        switch (RuntimeInformation.ProcessArchitecture)
+        {
+            case Architecture.X86:
+                pathBuilder.Append("x86");
+                break;
+            case Architecture.X64:
+                pathBuilder.Append("x64");
+                break;
+            case Architecture.Arm64:
+                pathBuilder.Append("arm64");
+                break;
+            case Architecture.Arm:
+                pathBuilder.Append("arm");
+                break;
+            default:
+                path = string.Empty;
+                return false;
+        }
+
+        pathBuilder.Append("/native/");
+        pathBuilder.Append(__DllName);
+        pathBuilder.Append(GetLibraryExtension());
+
+        path = Path.Combine(AppContext.BaseDirectory, pathBuilder.ToString());
+        return true;
+    }
+
+    static string GetLibraryExtension()
+    {
+        if (PlatformConfiguration.IsWindows)
+            return ".dll";
+        if (PlatformConfiguration.IsMac)
+            return ".dylib";
+        return ".so";
     }
 }
 #endif
