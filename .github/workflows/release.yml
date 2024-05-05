@@ -23,53 +23,53 @@ jobs:
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             libpath: |
-              **/release/memory.dll
-              **/release/memory.pdb
+              **/release/surreal-memory.dll
+              **/release/surreal-memory.pdb
             continue-on-error: false
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             libpath: |
-              **/release/libmemory.so
+              **/release/libsurreal-memory.so
             continue-on-error: false
           # 💡 not supported by the toolchain
           # - os: ubuntu-latest
           #   target: x86_64-unknown-linux-musl
           #   libpath: |
-          #     **/release/libmemory.so
+          #     **/release/libsurreal-memory.so
           # 💡 not supported by the toolchain
           # - os: ubuntu-latest
           #   target: aarch64-unknown-linux-musl
           #   libpath: |
-          #     **/release/libmemory.so
+          #     **/release/libsurreal-memory.so
           - os: ubuntu-latest
             target: arm-unknown-linux-gnueabihf
             libpath: |
-              **/release/libmemory.so
+              **/release/libsurreal-memory.so
             continue-on-error: true
           - os: ubuntu-latest
             target: aarch64-unknown-linux-gnu
             libpath: |
-              **/release/libmemory.so
+              **/release/libsurreal-memory.so
             continue-on-error: true
           - os: ubuntu-latest
             target: aarch64-linux-android
             libpath: |
-              **/release/libmemory.so
+              **/release/libsurreal-memory.so
             continue-on-error: false
           - os: macos-latest
             target: x86_64-apple-darwin
             libpath: |
-              **/release/libmemory.dylib
+              **/release/libsurreal-memory.dylib
             continue-on-error: false
           - os: macos-latest
             target: aarch64-apple-darwin
             libpath: |
-              **/release/libmemory.dylib
+              **/release/libsurreal-memory.dylib
             continue-on-error: false
           - os: macos-latest
             target: aarch64-apple-ios
             libpath: |
-              **/release/libmemory.dylib
+              **/release/libsurreal-memory.dylib
             continue-on-error: false
 
     steps:
