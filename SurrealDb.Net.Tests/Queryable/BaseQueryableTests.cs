@@ -1,4 +1,5 @@
-﻿using SurrealDb.Net.Internals.Query;
+﻿using System.Reactive;
+using SurrealDb.Net.Internals.Queryable;
 
 namespace SurrealDb.Net.Tests.Queryable;
 
@@ -52,7 +53,8 @@ public abstract class BaseQueryableTests
             throw new InvalidOperationException("Invalid table name");
         }
 
-        return new QueryGeneratorExpressionVisitor().Visit(queryable.Expression, tableName);
+        return SurrealDbQueryProvider<Unit>.Translate(queryable.Expression, tableName);
+        //return new QueryGeneratorExpressionVisitor().Translate(queryable.Expression, tableName);
     }
 
     private static SurrealDbQueryable<T> CreateQueryable<T>(string table)

@@ -156,7 +156,7 @@ public class OperatorQueryableTests : BaseQueryableTests
             .Should()
             .Be(
                 """
-                SELECT ((State + " ") + ZipCode) FROM address
+                SELECT VALUE ((State + " ") + ZipCode) FROM address
                 """
             );
     }
@@ -171,7 +171,7 @@ public class OperatorQueryableTests : BaseQueryableTests
             .Should()
             .Be(
                 """
-                SELECT (CreatedAt - 4w2d) FROM post
+                SELECT VALUE (CreatedAt - 4w2d) FROM post
                 """
             );
     }
@@ -186,7 +186,7 @@ public class OperatorQueryableTests : BaseQueryableTests
             .Should()
             .Be(
                 """
-                SELECT (Age * 2) FROM user
+                SELECT VALUE (Age * 2) FROM user
                 """
             );
     }
@@ -201,7 +201,7 @@ public class OperatorQueryableTests : BaseQueryableTests
             .Should()
             .Be(
                 """
-                SELECT (Age / 2) FROM user
+                SELECT VALUE (Age / 2) FROM user
                 """
             );
     }
@@ -216,7 +216,7 @@ public class OperatorQueryableTests : BaseQueryableTests
             .Should()
             .Be(
                 """
-                SELECT (Age % 2) FROM user
+                SELECT VALUE (Age % 2) FROM user
                 """
             );
     }

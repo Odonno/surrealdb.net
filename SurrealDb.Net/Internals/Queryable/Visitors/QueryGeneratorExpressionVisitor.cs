@@ -1,24 +1,99 @@
 ﻿using System.Linq.Expressions;
 using System.Text;
 using SurrealDb.Net.Internals.Formatters;
+using SurrealDb.Net.Internals.Queryable.Expressions;
 
-namespace SurrealDb.Net.Internals.Query;
+namespace SurrealDb.Net.Internals.Queryable.Visitors;
 
-internal class QueryGeneratorExpressionVisitor : ExpressionVisitor
+internal class QueryGeneratorExpressionVisitor : SurrealExpressionVisitor
 {
     private string _fromTable = string.Empty;
     private StringBuilder _surqlQueryBuilder = null!;
 
-    public string Visit(Expression expression, string fromTable)
+    public string Translate(Expression expression, string fromTable)
     {
         _fromTable = fromTable;
         _surqlQueryBuilder = new StringBuilder();
 
-        _surqlQueryBuilder.Append($"SELECT * FROM {fromTable}");
+        //_surqlQueryBuilder.Append($"SELECT * FROM {fromTable}");
 
         Visit(expression);
 
         return _surqlQueryBuilder.ToString();
+    }
+
+    private static Expression StripQuotes(Expression node)
+    {
+        while (node.NodeType == ExpressionType.Quote)
+        {
+            node = ((UnaryExpression)node).Operand;
+        }
+
+        return node;
+    }
+
+    protected override Expression VisitSelect(SelectExpression node)
+    {
+        _surqlQueryBuilder.Append("SELECT ");
+        _surqlQueryBuilder.Append("*");
+
+        //foreach (var column in node.Columns)
+        //{
+        //    Visit(column.Expression);
+        //    _surqlQueryBuilder.Append(" AS ");
+        //    _surqlQueryBuilder.Append(column.Name);
+        //    _surqlQueryBuilder.Append(", ");
+        //}
+
+        _surqlQueryBuilder.Append(" FROM ");
+        Visit(node.From);
+        //_surqlQueryBuilder.Append(_fromTable);
+
+        if (node.Where is not null)
+        {
+            _surqlQueryBuilder.Append(" WHERE ");
+            Visit(node.Where);
+        }
+
+        if (node.OrderBy.Count > 0)
+        {
+            _surqlQueryBuilder.Append(" ORDER BY ");
+            for (int index = 0; index < node.OrderBy.Count; index++)
+            {
+                var orderNode = node.OrderBy[index];
+                Visit(orderNode.Expression);
+
+                if (orderNode.OrderType == OrderType.Descending)
+                {
+                    _surqlQueryBuilder.Append("DESC");
+                }
+
+                if (index < node.OrderBy.Count - 1)
+                {
+                    _surqlQueryBuilder.Append(',');
+                }
+            }
+        }
+
+        if (node.Limit is not null)
+        {
+            _surqlQueryBuilder.Append(" LIMIT ");
+            Visit(node.Limit);
+        }
+
+        if (node.Start is not null)
+        {
+            _surqlQueryBuilder.Append(" START ");
+            Visit(node.Start);
+        }
+
+        return node;
+    }
+
+    protected override Expression VisitTable(TableExpression node)
+    {
+        _surqlQueryBuilder.Append(node.Name);
+        return node;
     }
 
     protected override Expression VisitBinary(BinaryExpression node)
@@ -85,9 +160,14 @@ internal class QueryGeneratorExpressionVisitor : ExpressionVisitor
         //return base.VisitBinary(node);
     }
 
+    protected override Expression VisitUnary(UnaryExpression node)
+    {
+        return base.VisitUnary(node);
+    }
+
     protected override Expression VisitConstant(ConstantExpression node)
     {
-        string output = node.Value switch
+        var output = node.Value switch
         {
             null => "null",
             bool value => value ? "true" : "false",
@@ -136,14 +216,20 @@ internal class QueryGeneratorExpressionVisitor : ExpressionVisitor
             //    _surqlQueryBuilder.Append(", ");
             //    Visit(node.Arguments[0]);
             //    break;
-            case var method when method.Name == "Select":
-                _surqlQueryBuilder.Append("SELECT ");
-                Visit(node.Arguments[1]);
-                break;
-            case var method when method.Name == "Where":
-                _surqlQueryBuilder.Append(" WHERE ");
-                Visit(node.Arguments[1]);
-                break;
+            //case var method
+            //    when method.DeclaringType == typeof(System.Linq.Queryable)
+            //        && method.Name == "Select":
+            //    _surqlQueryBuilder.Append("SELECT ");
+            //    Visit(node.Arguments[1]);
+            //    break;
+            //case var method
+            //    when method.DeclaringType == typeof(System.Linq.Queryable)
+            //        && method.Name == "Where":
+            //    _surqlQueryBuilder.Append(" WHERE ");
+            //    LambdaExpression lambda = (LambdaExpression)StripQuotes(node.Arguments[1]);
+            //    Visit(lambda.Body);
+            //    //Visit(node.Arguments[1]);
+            //    break;
             case var method when method.Name == "FromDays" && node.Type == typeof(TimeSpan):
                 var timeSpan = TimeSpan.FromDays(
                     (double)((ConstantExpression)node.Arguments[0]).Value!

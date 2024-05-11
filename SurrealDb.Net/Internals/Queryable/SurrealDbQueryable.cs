@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Linq.Expressions;
 
-namespace SurrealDb.Net.Internals.Query;
+namespace SurrealDb.Net.Internals.Queryable;
 
 internal class SurrealDbQueryable<T> : IOrderedQueryable<T>, IAsyncEnumerable<T>
 {

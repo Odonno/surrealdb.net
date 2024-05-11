@@ -16,7 +16,7 @@ using SurrealDb.Net.Internals.Http;
 using SurrealDb.Net.Internals.Json;
 using SurrealDb.Net.Internals.Models;
 using SurrealDb.Net.Internals.Models.LiveQuery;
-using SurrealDb.Net.Internals.Query;
+using SurrealDb.Net.Internals.Queryable;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;

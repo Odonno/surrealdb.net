@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace SurrealDb.Net.Internals.Query;
+namespace SurrealDb.Net.Internals.Queryable;
 
 internal interface IAsyncQueryProvider : IQueryProvider
 {

@@ -1,22 +1,30 @@
 ﻿using System.Collections.Immutable;
 using System.Linq.Expressions;
+using SurrealDb.Net.Internals.Queryable.Expressions;
+using SurrealDb.Net.Internals.Queryable.Visitors;
 
-namespace SurrealDb.Net.Internals.Query;
+namespace SurrealDb.Net.Internals.Queryable;
 
-// TODO : remove generic T
-internal class SurrealDbQueryProvider<T> : IAsyncQueryProvider
+// TODO : remove generic T?
+
+internal class SurrealDbQueryProvider<T> : ISurrealDbQueryProvider, IAsyncQueryProvider
 {
     private readonly WeakReference<ISurrealDbEngine> _surrealDbEngine;
-    private readonly string _fromTable;
+
+    public string FromTable { get; }
 
     public SurrealDbQueryProvider(ISurrealDbEngine surrealDbEngine, string _table)
     {
         _surrealDbEngine = new WeakReference<ISurrealDbEngine>(surrealDbEngine);
-        _fromTable = _table;
+        FromTable = _table;
     }
 
     public IQueryable CreateQuery(Expression expression)
     {
+        throw new NotSupportedException(
+            $"Non-generic method '{nameof(CreateQuery)}' is not supported. Please use the generic version."
+        );
+
         // TODO : Find a way to avoid Reflection
         // ------------------------------------------------
         //var elementType = expression.Type.GetGenericArguments().First();
@@ -27,7 +35,6 @@ internal class SurrealDbQueryProvider<T> : IAsyncQueryProvider
         //        expression
         //    )!;
         // ------------------------------------------------
-        throw new NotImplementedException();
 
         //Type elementType = TypeSystem.GetElementType(expression.Type);
         //try
@@ -73,15 +80,14 @@ internal class SurrealDbQueryProvider<T> : IAsyncQueryProvider
                 && expression.Type == typeof(SurrealDbQueryable<T>)
             )
             {
-                return (TResult)engine.SelectAll<T>(_fromTable, default).Result.GetEnumerator();
+                return (TResult)engine.SelectAll<T>(FromTable, default).Result.GetEnumerator();
             }
 
             //var query = "SELECT * FROM " + _fromTable;
-            var surrealExpression = new SurrealExpressionVisitor().Visit(expression);
-            string query = new QueryGeneratorExpressionVisitor().Visit(
-                surrealExpression,
-                _fromTable
-            );
+            //var surrealExpression = new SurrealExpressionVisitor().Visit(expression);
+            //string query = new QueryGeneratorExpressionVisitor().Translate(expression, _fromTable);
+
+            string query = Translate(expression, FromTable);
             var result = engine
                 .RawQuery(query, ImmutableDictionary<string, object?>.Empty, default)
                 .Result;
@@ -110,17 +116,22 @@ internal class SurrealDbQueryProvider<T> : IAsyncQueryProvider
             )
             {
                 var result = await engine
-                    .SelectAll<T>(_fromTable, cancellationToken)
+                    .SelectAll<T>(FromTable, cancellationToken)
                     .ConfigureAwait(false);
                 return (TResult)result.GetEnumerator();
             }
 
             //var query = "SELECT * FROM " + _fromTable;
-            var surrealExpression = new SurrealExpressionVisitor().Visit(expression);
-            string query = new QueryGeneratorExpressionVisitor().Visit(
-                surrealExpression,
-                _fromTable
-            );
+            //var surrealExpression = new SurrealExpressionVisitor().Visit(expression);
+            //expression = Evaluator.PartialEval(expression);
+            //var projection = (ProjectionExpression)
+            //    new QueryBinderExpressionVisitor().Bind(expression);
+            //string query = new QueryGeneratorExpressionVisitor().Translate(
+            //    projection.Source,
+            //    _fromTable
+            //);
+            string query = Translate(expression, FromTable);
+
             {
                 var result = await engine
                     .RawQuery(query, ImmutableDictionary<string, object?>.Empty, cancellationToken)
@@ -149,5 +160,17 @@ internal class SurrealDbQueryProvider<T> : IAsyncQueryProvider
         //}
 
         throw new Exception("SurrealDB instance has been disposed.");
+    }
+
+    internal static string Translate(Expression expression, string fromTable)
+    {
+        //var evaluatedExpression = Evaluator.PartialEval(expression);
+        //var selectExpression = (SelectExpression)
+        //    new QueryBinderExpressionVisitor().Bind(evaluatedExpression);
+
+        var selectExpression = (SelectExpression)
+            new QueryBinderExpressionVisitor().Bind(expression);
+
+        return new QueryGeneratorExpressionVisitor().Translate(selectExpression, fromTable);
     }
 }
