@@ -2,32 +2,46 @@
 
 public class FilteringQueryableTests : BaseQueryableTests
 {
-    [Fact]
+    [Test]
     public void ShouldFilterWithStringConstantEquality()
     {
         string query = ToSurql(Posts.Where(p => p.Title == "Title 1"));
 
-        // TODO : Remove the extra parenthesis
         query
             .Should()
             .Be(
                 """
-                SELECT * FROM post WHERE (Title == "Title 1")
+                SELECT content AS Content, created_at AS CreatedAt, id AS Id, status AS Status, title AS Title FROM post WHERE title == "Title 1"
                 """
             );
     }
 
-    [Fact]
+    [Test]
     public void ShouldFilterWithMultipleBooleanLogic()
     {
-        string query = ToSurql(Users.Where(u => (u.IsAdmin && u.IsActive) || u.IsOwner));
+        string query = ToSurql(Users.Where(u => (u.IsAdmin || u.IsOwner) && u.IsActive));
 
-        // TODO : Remove the extra parenthesis
         query
             .Should()
             .Be(
                 """
-                SELECT * FROM user WHERE ((IsAdmin && IsActive) || IsOwner)
+                SELECT Age, id AS Id, IsActive, IsAdmin, IsOwner, Username FROM user WHERE (IsAdmin || IsOwner) && IsActive
+                """
+            );
+    }
+
+    [Test]
+    public void ShouldFilterWithMultiplePredicates()
+    {
+        string query = ToSurql(
+            Posts.Where(p => p.Title == "Title 1").Where(p => p.Status != "DRAFT")
+        );
+
+        query
+            .Should()
+            .Be(
+                """
+                SELECT content AS Content, created_at AS CreatedAt, id AS Id, status AS Status, title AS Title FROM post WHERE title == "Title 1" && status != "DRAFT"
                 """
             );
     }

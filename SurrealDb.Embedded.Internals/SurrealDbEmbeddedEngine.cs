@@ -11,6 +11,7 @@ using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Cbor;
 using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Internals.Models.LiveQuery;
+using SurrealDb.Net.Internals.Queryable;
 using SurrealDb.Net.Internals.Stream;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
@@ -81,7 +82,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
 
             PreConnect();
 
+#pragma warning disable MA0004
             await using var stream = MemoryStreamProvider.MemoryStreamManager.GetStream();
+#pragma warning restore MA0004
 
             await CborSerializer
                 .SerializeAsync(_options, stream, GetCborOptions(), cancellationToken)
@@ -93,7 +96,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
                 throw new SurrealDbException("Failed to retrieve serialized buffer.");
             }
 
-            var taskCompletionSource = new TaskCompletionSource<bool>();
+            var taskCompletionSource = new TaskCompletionSource<bool>(
+                TaskCreationOptions.RunContinuationsAsynchronously
+            );
 
             Action<ByteBuffer> success = (_) =>
             {
@@ -250,7 +255,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
         using var timeoutCts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
         cancellationToken.Register(timeoutCts.Cancel);
 
+#pragma warning disable MA0004
         await using var stream = MemoryStreamProvider.MemoryStreamManager.GetStream();
+#pragma warning restore MA0004
 
         try
         {
@@ -274,7 +281,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
             throw new SurrealDbException("Failed to retrieve serialized buffer.");
         }
 
-        var taskCompletionSource = new TaskCompletionSource<string>();
+        var taskCompletionSource = new TaskCompletionSource<string>(
+            TaskCreationOptions.RunContinuationsAsynchronously
+        );
         timeoutCts.Token.Register(() =>
         {
             taskCompletionSource.TrySetCanceled();
@@ -369,7 +378,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
         using var timeoutCts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
         cancellationToken.Register(timeoutCts.Cancel);
 
-        var taskCompletionSource = new TaskCompletionSource<Unit>();
+        var taskCompletionSource = new TaskCompletionSource<Unit>(
+            TaskCreationOptions.RunContinuationsAsynchronously
+        );
         timeoutCts.Token.Register(() =>
         {
             taskCompletionSource.TrySetCanceled();
@@ -718,10 +729,18 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
             .ConfigureAwait(false);
     }
 
-    public async Task<IEnumerable<T>> Select<T>(string table, CancellationToken cancellationToken)
+    public async Task<IEnumerable<T>> SelectAll<T>(
+        string table,
+        CancellationToken cancellationToken
+    )
     {
         return await SendRequestAsync<IEnumerable<T>>(Method.Select, [table], cancellationToken)
             .ConfigureAwait(false);
+    }
+
+    public IQueryable<T> Select<T>(string? table = null)
+    {
+        return new SurrealDbQueryable<T>(new SurrealDbQueryProvider<T>(this), table);
     }
 
     public async Task<T?> Select<T>(RecordId recordId, CancellationToken cancellationToken)
@@ -1024,7 +1043,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
             throw;
         }
 
+#pragma warning disable MA0004
         await using var stream = MemoryStreamProvider.MemoryStreamManager.GetStream();
+#pragma warning restore MA0004
 
         try
         {
@@ -1053,7 +1074,9 @@ internal sealed partial class SurrealDbEmbeddedEngine : ISurrealDbProviderEngine
             throw new SurrealDbException("Failed to retrieve serialized buffer.");
         }
 
-        var taskCompletionSource = new TaskCompletionSource<T>();
+        var taskCompletionSource = new TaskCompletionSource<T>(
+            TaskCreationOptions.RunContinuationsAsynchronously
+        );
         timeoutCts.Token.Register(() =>
         {
             taskCompletionSource.TrySetCanceled();

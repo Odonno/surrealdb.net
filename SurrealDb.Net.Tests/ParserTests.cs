@@ -1115,7 +1115,7 @@ public class ParserTests
 
         await client.ApplySchemaAsync(SurrealSchemaFile.Uuid);
 
-        var records = await client.Select<GuidRecord>("uuid");
+        var records = await client.Select<GuidRecord>("uuid").ToListAsync();
 
         {
             var noneRecord = records.First(r => r.Name == "none");

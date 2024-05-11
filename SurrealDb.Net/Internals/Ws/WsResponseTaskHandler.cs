@@ -4,7 +4,7 @@ using ConcurrentCollections;
 
 namespace SurrealDb.Net.Internals.Ws;
 
-internal class WsResponseTaskHandler
+internal sealed class WsResponseTaskHandler
     : IEnumerable<KeyValuePair<string, SurrealWsTaskCompletionSource>>
 {
     private static readonly ConcurrentHashSet<string> _allResponseTaskIds = [];
@@ -148,7 +148,7 @@ internal class WsResponseTaskHandler
             }
             else
             {
-                completionTokenSource = new();
+                completionTokenSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
                 _queueSources.Add(priority, completionTokenSource);
             }
         }

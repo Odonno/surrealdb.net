@@ -15,8 +15,8 @@ using SurrealDb.Net.Internals.Constants;
 using SurrealDb.Net.Internals.Extensions;
 using SurrealDb.Net.Internals.Helpers;
 using SurrealDb.Net.Internals.Models.LiveQuery;
+using SurrealDb.Net.Internals.Queryable;
 using SurrealDb.Net.Internals.Stream;
-using SurrealDb.Net.Internals.Query;
 using SurrealDb.Net.Internals.Ws;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
@@ -97,11 +97,13 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
                         if (message.MessageType == WebSocketMessageType.Binary)
                         {
-                            using var stream =
+#pragma warning disable MA0004
+                            await using var stream =
                                 message.Stream
                                 ?? MemoryStreamProvider.MemoryStreamManager.GetStream(
                                     message.Binary!
                                 );
+#pragma warning restore MA0004
 
                             response = await CborSerializer
                                 .DeserializeAsync<ISurrealDbWsResponse>(
@@ -179,6 +181,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             .Subscribe();
 
         _wsClient.DisconnectionHappened.Subscribe(
+#pragma warning disable MA0147
             async (_) =>
             {
                 var endChannelsTasks = new List<Task>();
@@ -213,6 +216,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                     catch { }
                 }
             }
+#pragma warning restore MA0147
         );
     }
 
@@ -405,7 +409,9 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             catch (TimeoutException) { }
         }
 
-        await _wsClient.Stop(WebSocketCloseStatus.NormalClosure, "Client disposed");
+        await _wsClient
+            .Stop(WebSocketCloseStatus.NormalClosure, "Client disposed")
+            .ConfigureAwait(false);
         _receiverSubscription.Dispose();
 
         foreach (var (key, value) in _responseTaskHandler)
@@ -852,9 +858,9 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         return dbResponse.DeserializeEnumerable<T>()!;
     }
 
-    public IQueryable<T> Select<T>(string table)
+    public IQueryable<T> Select<T>(string? table = null)
     {
-        return new SurrealDbQueryable<T>(new SurrealDbQueryProvider<T>(this, table));
+        return new SurrealDbQueryable<T>(new SurrealDbQueryProvider<T>(this), table);
     }
 
     public async Task<T?> Select<T>(RecordId recordId, CancellationToken cancellationToken)
@@ -1433,7 +1439,9 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             Parameters = shouldSendParamsInRequest ? parameters : null,
         };
 
+#pragma warning disable MA0004
         await using var stream = MemoryStreamProvider.MemoryStreamManager.GetStream();
+#pragma warning restore MA0004
 
         try
         {

@@ -124,7 +124,7 @@ public interface ISurrealDbEngine : IDisposable, IAsyncDisposable
         CancellationToken cancellationToken
     );
     Task<IEnumerable<T>> SelectAll<T>(string table, CancellationToken cancellationToken);
-    IQueryable<T> Select<T>(string table);
+    IQueryable<T> Select<T>(string? table = null);
     Task<T?> Select<T>(RecordId recordId, CancellationToken cancellationToken);
     Task<T?> Select<T>(StringRecordId recordId, CancellationToken cancellationToken);
     Task<IEnumerable<TOutput>> Select<TStart, TEnd, TOutput>(

@@ -194,7 +194,7 @@ public class CreateTests
 
             result = await client.Create<Post, Post>(new StringRecordId("post:new"), post, default);
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();

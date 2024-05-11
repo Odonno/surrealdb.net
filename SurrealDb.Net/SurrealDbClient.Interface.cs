@@ -863,7 +863,7 @@ public interface ISurrealDbClient : IDisposable, IAsyncDisposable
     /// <exception cref="HttpRequestException"></exception>
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="SurrealDbException"></exception>
-    IQueryable<T> Select<T>(string table);
+    IQueryable<T> Select<T>(string? table = null);
 
     /// <summary>
     /// Selects a single record.<br />

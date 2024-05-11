@@ -143,7 +143,7 @@ public class DeleteTests
 
             result = await client.Delete(new StringRecordId("post:first"));
 
-            list = await client.Select<Post>("post");
+            list = await client.Select<Post>("post").ToListAsync();
         };
 
         await func.Should().NotThrowAsync();
