@@ -4,6 +4,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ConcurrentCollections;
 using Dahomey.Cbor;
 using Microsoft.IO;
 using Semver;
@@ -52,10 +53,7 @@ internal partial class SurrealDbWsJsonSerializerContext : JsonSerializerContext;
 internal class SurrealDbWsEngine : ISurrealDbEngine
 {
     private static readonly ConcurrentDictionary<string, SurrealDbWsEngine> _wsEngines = new();
-    private static readonly ConcurrentDictionary<
-        string,
-        SurrealWsTaskCompletionSource
-    > _responseTasks = new();
+    private static readonly ConcurrentHashSet<string> _globalResponseTaskIds = new();
     private static readonly RecyclableMemoryStreamManager _memoryStreamManager = new();
 
     private readonly bool _useCbor;
@@ -67,6 +65,8 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     private readonly SurrealDbWsEngineConfig _config = new();
     private readonly WebsocketClient _wsClient;
     private readonly IDisposable _receiverSubscription;
+    private readonly ConcurrentDictionary<string, SurrealWsTaskCompletionSource> _responseTasks =
+        new();
     private readonly ConcurrentDictionary<
         Guid,
         SurrealDbLiveQueryChannelSubscriptions
@@ -74,6 +74,10 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     private readonly Pinger _pinger;
 
     private bool _isInitialized;
+
+#if DEBUG
+    public string Id => _id;
+#endif
 
     public SurrealDbWsEngine(
         SurrealDbClientParams parameters,
@@ -248,6 +252,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                             )
                         )
                         {
+                            _globalResponseTaskIds.TryRemove(surrealDbWsStandardResponse.Id);
                             switch (response)
                             {
                                 case SurrealDbWsOkResponse okResponse:
@@ -276,6 +281,11 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     {
         await SendRequestAsync("authenticate", [jwt.Token], false, cancellationToken)
             .ConfigureAwait(false);
+    }
+
+    public async Task Clear(CancellationToken cancellationToken)
+    {
+        await SendRequestAsync("clear", null, false, cancellationToken).ConfigureAwait(false);
     }
 
     public void Configure(string? ns, string? db, string? username, string? password)
@@ -307,25 +317,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         await _wsClient.StartOrFail().ConfigureAwait(false);
 
-        if (_config.Ns is not null)
-        {
-            await Use(_config.Ns, _config.Db!, cancellationToken).ConfigureAwait(false);
-        }
-
-        if (_config.Auth is BasicAuth basicAuth)
-        {
-            await SignIn(
-                    new RootAuth { Username = basicAuth.Username, Password = basicAuth.Password! },
-                    cancellationToken
-                )
-                .ConfigureAwait(false);
-        }
-
-        if (_config.Auth is BearerAuth bearerAuth)
-        {
-            await Authenticate(new Jwt { Token = bearerAuth.Token }, cancellationToken)
-                .ConfigureAwait(false);
-        }
+        await ApplyConfigurationAsync(cancellationToken).ConfigureAwait(false);
 
         if (_useCbor)
         {
@@ -412,7 +404,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             }
         }
 
-        if (endChannelsTasks.Any())
+        if (endChannelsTasks.Count > 0)
         {
             try
             {
@@ -427,14 +419,10 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         foreach (var (key, value) in _responseTasks)
         {
-            if (
-                value.WsEngineId == _id
-                && _responseTasks.TryRemove(key, out var responseTaskCompletionSource)
-            )
-            {
-                responseTaskCompletionSource.SetCanceled();
-            }
+            _globalResponseTaskIds.TryRemove(key);
+            value.SetCanceled();
         }
+        _responseTasks.Clear();
 
         _wsEngines.TryRemove(_id, out _);
 
@@ -756,6 +744,69 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         return liveQueryChannel;
     }
 
+    public bool TryReset()
+    {
+        try
+        {
+            // Cancel all response tasks
+            foreach (var (key, value) in _responseTasks)
+            {
+                _globalResponseTaskIds.TryRemove(key);
+                value.SetCanceled();
+            }
+            _responseTasks.Clear();
+
+            // Clear server context
+            Clear(default).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            // Reset configuration
+            _config.Reset(_parameters);
+
+            // Apply configuration for connection reuse (neutral state)
+            ApplyConfigurationAsync(default).ConfigureAwait(false).GetAwaiter().GetResult();
+
+            // Close Live Queries
+            var endChannelsTasks = new List<Task>();
+
+            foreach (var (key, value) in _liveQueryChannelSubscriptionsPerQuery)
+            {
+                if (
+                    value.WsEngineId == _id
+                    && _liveQueryChannelSubscriptionsPerQuery.TryRemove(
+                        key,
+                        out var _liveQueryChannelSubscriptions
+                    )
+                )
+                {
+                    foreach (var liveQueryChannel in _liveQueryChannelSubscriptions)
+                    {
+                        var closeTask = CloseLiveQueryAsync(
+                            liveQueryChannel,
+                            SurrealDbLiveQueryClosureReason.ConnectionTerminated
+                        );
+                        endChannelsTasks.Add(closeTask);
+                    }
+                }
+            }
+
+            if (endChannelsTasks.Count > 0)
+            {
+                try
+                {
+                    Task.WhenAll(endChannelsTasks).ConfigureAwait(false).GetAwaiter().GetResult();
+                }
+                catch (SurrealDbException) { }
+                catch (OperationCanceledException) { }
+            }
+
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
     public async Task Unset(string key, CancellationToken cancellationToken)
     {
         if (key is null)
@@ -836,6 +887,29 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         return SurrealDbCborOptions.GetCborSerializerOptions(_parameters.NamingPolicy);
     }
 
+    private async Task ApplyConfigurationAsync(CancellationToken cancellationToken)
+    {
+        if (_config.Ns is not null)
+        {
+            await Use(_config.Ns, _config.Db!, cancellationToken).ConfigureAwait(false);
+        }
+
+        if (_config.Auth is BasicAuth basicAuth)
+        {
+            await SignIn(
+                    new RootAuth { Username = basicAuth.Username, Password = basicAuth.Password! },
+                    cancellationToken
+                )
+                .ConfigureAwait(false);
+        }
+
+        if (_config.Auth is BearerAuth bearerAuth)
+        {
+            await Authenticate(new Jwt { Token = bearerAuth.Token }, cancellationToken)
+                .ConfigureAwait(false);
+        }
+    }
+
     private async Task Ping(CancellationToken cancellationToken)
     {
         if (_wsClient.IsStarted)
@@ -884,7 +958,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 
         cancellationToken.ThrowIfCancellationRequested();
 
-        var taskCompletionSource = new SurrealWsTaskCompletionSource(_id);
+        var taskCompletionSource = new SurrealWsTaskCompletionSource();
 
         string id;
 
@@ -892,7 +966,8 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         do
         {
             id = RandomHelper.CreateRandomId();
-        } while (!_responseTasks.TryAdd(id, taskCompletionSource));
+        } while (!_globalResponseTaskIds.Add(id));
+        _responseTasks.TryAdd(id, taskCompletionSource);
 
         bool shouldSendParamsInRequest = parameters is not null && parameters.Length > 0;
 

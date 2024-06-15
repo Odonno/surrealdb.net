@@ -1,4 +1,5 @@
-﻿using SurrealDb.Net.Internals.Models.LiveQuery;
+﻿using Microsoft.Extensions.ObjectPool;
+using SurrealDb.Net.Internals.Models.LiveQuery;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -7,9 +8,14 @@ using SystemTextJsonPatch;
 
 namespace SurrealDb.Net.Internals;
 
-internal interface ISurrealDbEngine : IDisposable
+internal interface ISurrealDbEngine : IDisposable, IResettable
 {
+#if DEBUG
+    string Id { get; }
+#endif
+
     Task Authenticate(Jwt jwt, CancellationToken cancellationToken);
+    Task Clear(CancellationToken cancellationToken);
     void Configure(string? ns, string? db, string? username, string? password);
     void Configure(string? ns, string? db, string? token = null);
     Task Connect(CancellationToken cancellationToken);

@@ -2,8 +2,10 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.ObjectPool;
 using SurrealDb.Net.Internals;
 using SurrealDb.Net.Internals.Models;
+using SurrealDb.Net.Internals.ObjectPool;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -18,8 +20,11 @@ namespace SurrealDb.Net;
 /// </summary>
 public class SurrealDbClient : ISurrealDbClient
 {
-    private readonly ISurrealDbEngine _engine;
+    private readonly Action? _poolAction;
 
+    internal ISurrealDbEngine Engine { get; }
+
+    // TODO : Retrieve properties from engine
     public Uri Uri { get; }
     public string? NamingPolicy { get; }
 
@@ -91,18 +96,20 @@ public class SurrealDbClient : ISurrealDbClient
         IHttpClientFactory? httpClientFactory = null,
         Action<JsonSerializerOptions>? configureJsonSerializerOptions = null,
         Func<JsonSerializerContext[]>? prependJsonSerializerContexts = null,
-        Func<JsonSerializerContext[]>? appendJsonSerializerContexts = null
+        Func<JsonSerializerContext[]>? appendJsonSerializerContexts = null,
+        Action? poolAction = null
     )
     {
         if (parameters.Endpoint is null)
             throw new ArgumentNullException(nameof(parameters), "The endpoint is required.");
 
+        _poolAction = poolAction;
         Uri = new Uri(parameters.Endpoint);
         NamingPolicy = parameters.NamingPolicy;
 
         var protocol = Uri.Scheme;
 
-        _engine = protocol switch
+        Engine = protocol switch
         {
             "http"
             or "https"
@@ -130,30 +137,43 @@ public class SurrealDbClient : ISurrealDbClient
             Configure(parameters.Ns, parameters.Db, parameters.Token);
     }
 
+    internal SurrealDbClient(
+        SurrealDbClientParams parameters,
+        ISurrealDbEngine engine,
+        Action? poolAction = null
+    )
+    {
+        Uri = new Uri(parameters.Endpoint!);
+        NamingPolicy = parameters.NamingPolicy;
+
+        Engine = engine;
+        _poolAction = poolAction;
+    }
+
     public Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default)
     {
-        return _engine.Authenticate(jwt, cancellationToken);
+        return Engine.Authenticate(jwt, cancellationToken);
     }
 
     public void Configure(string? ns, string? db, string? username, string? password)
     {
-        _engine.Configure(ns, db, username, password);
+        Engine.Configure(ns, db, username, password);
     }
 
     public void Configure(string? ns, string? db, string? token = null)
     {
-        _engine.Configure(ns, db, token);
+        Engine.Configure(ns, db, token);
     }
 
     public Task Connect(CancellationToken cancellationToken = default)
     {
-        return _engine.Connect(cancellationToken);
+        return Engine.Connect(cancellationToken);
     }
 
     public Task<T> Create<T>(T data, CancellationToken cancellationToken = default)
         where T : Record
     {
-        return _engine.Create(data, cancellationToken);
+        return Engine.Create(data, cancellationToken);
     }
 
     public Task<T> Create<T>(
@@ -162,42 +182,49 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.Create(table, data, cancellationToken);
+        return Engine.Create(table, data, cancellationToken);
     }
 
     public Task Delete(string table, CancellationToken cancellationToken = default)
     {
-        return _engine.Delete(table, cancellationToken);
+        return Engine.Delete(table, cancellationToken);
     }
 
     public Task<bool> Delete(Thing thing, CancellationToken cancellationToken = default)
     {
-        return _engine.Delete(thing, cancellationToken);
+        return Engine.Delete(thing, cancellationToken);
     }
 
     public void Dispose()
     {
-        _engine.Dispose();
+        if (_poolAction is not null)
+        {
+            // 💡 Prevent engine disposal as it will be reuse in an object pool
+            _poolAction();
+            return;
+        }
+
+        Engine.Dispose();
     }
 
     public Task<bool> Health(CancellationToken cancellationToken = default)
     {
-        return _engine.Health(cancellationToken);
+        return Engine.Health(cancellationToken);
     }
 
     public Task<T> Info<T>(CancellationToken cancellationToken = default)
     {
-        return _engine.Info<T>(cancellationToken);
+        return Engine.Info<T>(cancellationToken);
     }
 
     public Task Invalidate(CancellationToken cancellationToken = default)
     {
-        return _engine.Invalidate(cancellationToken);
+        return Engine.Invalidate(cancellationToken);
     }
 
     public Task Kill(Guid queryUuid, CancellationToken cancellationToken = default)
     {
-        return _engine.Kill(
+        return Engine.Kill(
             queryUuid,
             SurrealDbLiveQueryClosureReason.QueryKilled,
             cancellationToken
@@ -206,7 +233,7 @@ public class SurrealDbClient : ISurrealDbClient
 
     public SurrealDbLiveQuery<T> ListenLive<T>(Guid queryUuid)
     {
-        return _engine.ListenLive<T>(queryUuid);
+        return Engine.ListenLive<T>(queryUuid);
     }
 
     public Task<SurrealDbLiveQuery<T>> LiveRawQuery<T>(
@@ -215,7 +242,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.LiveRawQuery<T>(
+        return Engine.LiveRawQuery<T>(
             query,
             parameters ?? ImmutableDictionary<string, object?>.Empty,
             cancellationToken
@@ -227,7 +254,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.LiveQuery<T>(query, cancellationToken);
+        return Engine.LiveQuery<T>(query, cancellationToken);
     }
 
     public Task<SurrealDbLiveQuery<T>> LiveTable<T>(
@@ -236,7 +263,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.LiveTable<T>(table, diff, cancellationToken);
+        return Engine.LiveTable<T>(table, diff, cancellationToken);
     }
 
     public Task<TOutput> Merge<TMerge, TOutput>(
@@ -245,7 +272,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         where TMerge : Record
     {
-        return _engine.Merge<TMerge, TOutput>(data, cancellationToken);
+        return Engine.Merge<TMerge, TOutput>(data, cancellationToken);
     }
 
     public Task<T> Merge<T>(
@@ -254,7 +281,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.Merge<T>(thing, data, cancellationToken);
+        return Engine.Merge<T>(thing, data, cancellationToken);
     }
 
     public Task<IEnumerable<TOutput>> MergeAll<TMerge, TOutput>(
@@ -264,7 +291,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         where TMerge : class
     {
-        return _engine.MergeAll<TMerge, TOutput>(table, data, cancellationToken);
+        return Engine.MergeAll<TMerge, TOutput>(table, data, cancellationToken);
     }
 
     public Task<IEnumerable<T>> MergeAll<T>(
@@ -273,7 +300,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.MergeAll<T>(table, data, cancellationToken);
+        return Engine.MergeAll<T>(table, data, cancellationToken);
     }
 
     public Task<T> Patch<T>(
@@ -283,7 +310,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         where T : class
     {
-        return _engine.Patch(thing, patches, cancellationToken);
+        return Engine.Patch(thing, patches, cancellationToken);
     }
 
     public Task<IEnumerable<T>> PatchAll<T>(
@@ -293,7 +320,7 @@ public class SurrealDbClient : ISurrealDbClient
     )
         where T : class
     {
-        return _engine.PatchAll(table, patches, cancellationToken);
+        return Engine.PatchAll(table, patches, cancellationToken);
     }
 
     public Task<SurrealDbResponse> Query(
@@ -301,7 +328,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.Query(query, cancellationToken);
+        return Engine.Query(query, cancellationToken);
     }
 
     public Task<SurrealDbResponse> RawQuery(
@@ -310,7 +337,7 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.RawQuery(
+        return Engine.RawQuery(
             query,
             parameters ?? ImmutableDictionary<string, object?>.Empty,
             cancellationToken
@@ -322,49 +349,49 @@ public class SurrealDbClient : ISurrealDbClient
         CancellationToken cancellationToken = default
     )
     {
-        return _engine.Select<T>(table, cancellationToken);
+        return Engine.Select<T>(table, cancellationToken);
     }
 
     public Task<T?> Select<T>(Thing thing, CancellationToken cancellationToken = default)
     {
-        return _engine.Select<T?>(thing, cancellationToken);
+        return Engine.Select<T?>(thing, cancellationToken);
     }
 
     public Task Set(string key, object value, CancellationToken cancellationToken = default)
     {
-        return _engine.Set(key, value, cancellationToken);
+        return Engine.Set(key, value, cancellationToken);
     }
 
     public Task SignIn(RootAuth root, CancellationToken cancellationToken = default)
     {
-        return _engine.SignIn(root, cancellationToken);
+        return Engine.SignIn(root, cancellationToken);
     }
 
     public Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken = default)
     {
-        return _engine.SignIn(nsAuth, cancellationToken);
+        return Engine.SignIn(nsAuth, cancellationToken);
     }
 
     public Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken = default)
     {
-        return _engine.SignIn(dbAuth, cancellationToken);
+        return Engine.SignIn(dbAuth, cancellationToken);
     }
 
     public Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken = default)
         where T : ScopeAuth
     {
-        return _engine.SignIn(scopeAuth, cancellationToken);
+        return Engine.SignIn(scopeAuth, cancellationToken);
     }
 
     public Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken = default)
         where T : ScopeAuth
     {
-        return _engine.SignUp(scopeAuth, cancellationToken);
+        return Engine.SignUp(scopeAuth, cancellationToken);
     }
 
     public Task Unset(string key, CancellationToken cancellationToken = default)
     {
-        return _engine.Unset(key, cancellationToken);
+        return Engine.Unset(key, cancellationToken);
     }
 
     public Task<IEnumerable<T>> UpdateAll<T>(
@@ -374,22 +401,22 @@ public class SurrealDbClient : ISurrealDbClient
     )
         where T : class
     {
-        return _engine.UpdateAll(table, data, cancellationToken);
+        return Engine.UpdateAll(table, data, cancellationToken);
     }
 
     public Task<T> Upsert<T>(T data, CancellationToken cancellationToken = default)
         where T : Record
     {
-        return _engine.Upsert(data, cancellationToken);
+        return Engine.Upsert(data, cancellationToken);
     }
 
     public Task Use(string ns, string db, CancellationToken cancellationToken = default)
     {
-        return _engine.Use(ns, db, cancellationToken);
+        return Engine.Use(ns, db, cancellationToken);
     }
 
     public Task<string> Version(CancellationToken cancellationToken = default)
     {
-        return _engine.Version(cancellationToken);
+        return Engine.Version(cancellationToken);
     }
 }

@@ -1,7 +1,9 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Bogus;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.ObjectPool;
+using SurrealDb.Net.Internals.ObjectPool;
 using SurrealDb.Net.Models.Auth;
 
 namespace SurrealDb.Net.Tests.Fixtures;
@@ -21,15 +23,32 @@ public class DatabaseInfoFaker : Faker<DatabaseInfo>
     }
 }
 
-public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
+internal class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
 {
     private static readonly DatabaseInfoFaker _databaseInfoFaker = new();
 
     private ServiceProvider? _serviceProvider;
     private DatabaseInfo? _databaseInfo;
 
+    // TODO : Remove to simplify with Configure()/ctor + GetSingleton()
     public SurrealDbClient Create(
         string connectionString,
+        Action<JsonSerializerOptions>? configureJsonSerializerOptions = null,
+        Func<JsonSerializerContext[]>? funcJsonSerializerContexts = null
+    )
+    {
+        Configure(
+            connectionString,
+            ServiceLifetime.Singleton,
+            configureJsonSerializerOptions,
+            funcJsonSerializerContexts
+        );
+        return _serviceProvider!.GetRequiredService<SurrealDbClient>();
+    }
+
+    public SurrealDbClientGenerator Configure(
+        string connectionString,
+        ServiceLifetime lifetime = ServiceLifetime.Singleton,
         Action<JsonSerializerOptions>? configureJsonSerializerOptions = null,
         Func<JsonSerializerContext[]>? funcJsonSerializerContexts = null
     )
@@ -44,13 +63,19 @@ public class SurrealDbClientGenerator : IDisposable, IAsyncDisposable
 
         services.AddSurreal(
             options,
+            lifetime,
             configureJsonSerializerOptions: configureJsonSerializerOptions,
             appendJsonSerializerContexts: funcJsonSerializerContexts
         );
 
         _serviceProvider = services.BuildServiceProvider(validateScopes: true);
 
-        return _serviceProvider.GetRequiredService<SurrealDbClient>();
+        return this;
+    }
+
+    public IServiceScope? CreateScope()
+    {
+        return _serviceProvider?.CreateScope();
     }
 
     public DatabaseInfo GenerateDatabaseInfo()
