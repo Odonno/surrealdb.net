@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using SurrealDb.Net.Internals.Auth;
+﻿using SurrealDb.Net.Internals.Auth;
 using SurrealDb.Net.Internals.Models;
 
 namespace SurrealDb.Net.Internals.Http;
@@ -12,6 +11,11 @@ internal class SurrealDbHttpEngineConfig
 
     private readonly Dictionary<string, object> _parameters = new();
     public IReadOnlyDictionary<string, object> Parameters => _parameters;
+
+    public SurrealDbHttpEngineConfig(SurrealDbClientParams @params)
+    {
+        Reset(@params);
+    }
 
     public void Use(string ns, string? db)
     {

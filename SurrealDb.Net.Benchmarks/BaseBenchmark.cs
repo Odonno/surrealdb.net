@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 using SurrealDb.Net.Benchmarks.Constants;
 
 namespace SurrealDb.Net.Benchmarks;
@@ -29,49 +30,65 @@ public class BaseBenchmark
         return _funcJsonSerializerContexts;
     }
 
-    protected void InitializeSurrealDbClient(ISurrealDbClient client, DatabaseInfo databaseInfo)
+    protected async Task CreatePostTable(string endpoint, DatabaseInfo databaseInfo)
     {
-        client.Configure(databaseInfo.Namespace, databaseInfo.Database, "root", "root");
-    }
+        var options = new SurrealDbOptionsBuilder()
+            .WithEndpoint(endpoint)
+            .WithNamespace(databaseInfo.Namespace)
+            .WithDatabase(databaseInfo.Database)
+            .WithUsername("root")
+            .WithPassword("root")
+            .WithNamingPolicy(NamingPolicy)
+            .Build();
 
-    protected async Task CreatePostTable(string url, DatabaseInfo databaseInfo)
-    {
         var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
+            options,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
-        InitializeSurrealDbClient(client, databaseInfo);
 
         string query = GetPostQueryContent();
         await client.RawQuery(query);
     }
 
-    protected async Task CreateEcommerceTables(string url, DatabaseInfo databaseInfo)
+    protected async Task CreateEcommerceTables(string endpoint, DatabaseInfo databaseInfo)
     {
+        var options = new SurrealDbOptionsBuilder()
+            .WithEndpoint(endpoint)
+            .WithNamespace(databaseInfo.Namespace)
+            .WithDatabase(databaseInfo.Database)
+            .WithUsername("root")
+            .WithPassword("root")
+            .WithNamingPolicy(NamingPolicy)
+            .Build();
+
         var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
+            options,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
-        InitializeSurrealDbClient(client, databaseInfo);
 
         string query = GetEcommerceQueryContent();
         await client.RawQuery(query);
     }
 
     protected async Task<List<GeneratedPost>> SeedData(
-        string url,
+        string endpoint,
         DatabaseInfo databaseInfo,
         int count = 1000
     )
     {
+        var options = new SurrealDbOptionsBuilder()
+            .WithEndpoint(endpoint)
+            .WithNamespace(databaseInfo.Namespace)
+            .WithDatabase(databaseInfo.Database)
+            .WithUsername("root")
+            .WithPassword("root")
+            .WithNamingPolicy(NamingPolicy)
+            .Build();
+
         var client = new SurrealDbClient(
-            url,
-            NamingPolicy,
+            options,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
-        InitializeSurrealDbClient(client, databaseInfo);
 
         var tasks = new List<Task>();
 
@@ -93,12 +110,19 @@ public class BaseBenchmark
 
     protected async Task<Post> GetFirstPost(string httpUrl, DatabaseInfo databaseInfo)
     {
+        var options = new SurrealDbOptionsBuilder()
+            .WithEndpoint(httpUrl)
+            .WithNamespace(databaseInfo.Namespace)
+            .WithDatabase(databaseInfo.Database)
+            .WithUsername("root")
+            .WithPassword("root")
+            .WithNamingPolicy(NamingPolicy)
+            .Build();
+
         var client = new SurrealDbClient(
-            httpUrl,
-            NamingPolicy,
+            options,
             appendJsonSerializerContexts: GetFuncJsonSerializerContexts()
         );
-        InitializeSurrealDbClient(client, databaseInfo);
 
         var posts = await client.Select<Post>("post");
         return posts.First();

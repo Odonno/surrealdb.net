@@ -62,7 +62,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     private readonly Action<JsonSerializerOptions>? _configureJsonSerializerOptions;
     private readonly Func<JsonSerializerContext[]>? _prependJsonSerializerContexts;
     private readonly Func<JsonSerializerContext[]>? _appendJsonSerializerContexts;
-    private readonly SurrealDbWsEngineConfig _config = new();
+    private readonly SurrealDbWsEngineConfig _config;
     private readonly WebsocketClient _wsClient;
     private readonly IDisposable _receiverSubscription;
     private readonly ConcurrentDictionary<string, SurrealWsTaskCompletionSource> _responseTasks =
@@ -100,6 +100,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         _configureJsonSerializerOptions = configureJsonSerializerOptions;
         _prependJsonSerializerContexts = prependJsonSerializerContexts;
         _appendJsonSerializerContexts = appendJsonSerializerContexts;
+        _config = new(_parameters);
 
         var clientWebSocketFactory = _useCbor
             ? new Func<ClientWebSocket>(() =>
@@ -286,26 +287,6 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
     public async Task Clear(CancellationToken cancellationToken)
     {
         await SendRequestAsync("clear", null, false, cancellationToken).ConfigureAwait(false);
-    }
-
-    public void Configure(string? ns, string? db, string? username, string? password)
-    {
-        // 💡 Pre-configuration before connect
-        if (ns is not null)
-            _config.Use(ns, db);
-
-        if (username is not null)
-            _config.SetBasicAuth(username, password);
-    }
-
-    public void Configure(string? ns, string? db, string? token = null)
-    {
-        // 💡 Pre-configuration before connect
-        if (ns is not null)
-            _config.Use(ns, db);
-
-        if (token is not null)
-            _config.SetBearerAuth(token);
     }
 
     public async Task Connect(CancellationToken cancellationToken)
