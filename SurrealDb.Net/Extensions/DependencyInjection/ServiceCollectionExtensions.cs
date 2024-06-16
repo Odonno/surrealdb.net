@@ -273,29 +273,24 @@ public static class ServiceCollectionExtensions
                 );
                 break;
             case ServiceLifetime.Scoped:
-                services.TryAddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
                 services.TryAddSingleton(serviceProvider =>
                 {
-                    var provider = serviceProvider.GetRequiredService<ObjectPoolProvider>();
-                    var policy = new DefaultPooledObjectPolicy<SurrealDbClientPoolContainer>();
-
-                    return provider.Create(policy);
+                    var policy = new AsyncPooledObjectPolicy<SurrealDbClientPoolContainer>();
+                    return new SurrealDbClientPool(policy);
                 });
 
                 services.AddScoped(
                     typeof(T),
                     serviceProvider =>
                     {
-                        var pool = serviceProvider.GetRequiredService<
-                            ObjectPool<SurrealDbClientPoolContainer>
-                        >();
+                        var pool = serviceProvider.GetRequiredService<SurrealDbClientPool>();
                         var container = pool.Get();
 
-                        var poolAction = new Action(() => pool.Return(container));
+                        var poolTask = new Func<Task>(() => pool.ReturnAsync(container));
 
                         if (container.ClientEngine is not null)
                         {
-                            return new SurrealDbClient(@params, container.ClientEngine, poolAction);
+                            return new SurrealDbClient(@params, container.ClientEngine, poolTask);
                         }
 
                         var client = new SurrealDbClient(
@@ -304,7 +299,7 @@ public static class ServiceCollectionExtensions
                             configureJsonSerializerOptions,
                             prependJsonSerializerContexts,
                             appendJsonSerializerContexts,
-                            poolAction
+                            poolTask
                         );
                         container.ClientEngine = client.Engine;
 
@@ -313,29 +308,24 @@ public static class ServiceCollectionExtensions
                 );
                 break;
             case ServiceLifetime.Transient:
-                services.TryAddSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>();
                 services.TryAddSingleton(serviceProvider =>
                 {
-                    var provider = serviceProvider.GetRequiredService<ObjectPoolProvider>();
-                    var policy = new DefaultPooledObjectPolicy<SurrealDbClientPoolContainer>();
-
-                    return provider.Create(policy);
+                    var policy = new AsyncPooledObjectPolicy<SurrealDbClientPoolContainer>();
+                    return new SurrealDbClientPool(policy);
                 });
 
                 services.AddTransient(
                     typeof(T),
                     serviceProvider =>
                     {
-                        var pool = serviceProvider.GetRequiredService<
-                            ObjectPool<SurrealDbClientPoolContainer>
-                        >();
+                        var pool = serviceProvider.GetRequiredService<SurrealDbClientPool>();
                         var container = pool.Get();
 
-                        var poolAction = new Action(() => pool.Return(container));
+                        var poolTask = new Func<Task>(() => pool.ReturnAsync(container));
 
                         if (container.ClientEngine is not null)
                         {
-                            return new SurrealDbClient(@params, container.ClientEngine, poolAction);
+                            return new SurrealDbClient(@params, container.ClientEngine, poolTask);
                         }
 
                         var client = new SurrealDbClient(
@@ -344,7 +334,7 @@ public static class ServiceCollectionExtensions
                             configureJsonSerializerOptions,
                             prependJsonSerializerContexts,
                             appendJsonSerializerContexts,
-                            poolAction
+                            poolTask
                         );
                         container.ClientEngine = client.Engine;
 

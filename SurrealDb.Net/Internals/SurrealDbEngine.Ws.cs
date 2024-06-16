@@ -725,7 +725,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         return liveQueryChannel;
     }
 
-    public bool TryReset()
+    public async Task<bool> TryResetAsync()
     {
         try
         {
@@ -738,13 +738,13 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             _responseTasks.Clear();
 
             // Clear server context
-            Clear(default).ConfigureAwait(false).GetAwaiter().GetResult();
+            await Clear(default).ConfigureAwait(false);
 
             // Reset configuration
             _config.Reset(_parameters);
 
             // Apply configuration for connection reuse (neutral state)
-            ApplyConfigurationAsync(default).ConfigureAwait(false).GetAwaiter().GetResult();
+            await ApplyConfigurationAsync(default).ConfigureAwait(false);
 
             // Close Live Queries
             var endChannelsTasks = new List<Task>();
@@ -774,7 +774,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
             {
                 try
                 {
-                    Task.WhenAll(endChannelsTasks).ConfigureAwait(false).GetAwaiter().GetResult();
+                    await Task.WhenAll(endChannelsTasks).ConfigureAwait(false);
                 }
                 catch (SurrealDbException) { }
                 catch (OperationCanceledException) { }

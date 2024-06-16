@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.ObjectPool;
-using SurrealDb.Net.Internals.Models.LiveQuery;
+﻿using SurrealDb.Net.Internals.Models.LiveQuery;
+using SurrealDb.Net.Internals.ObjectPool;
 using SurrealDb.Net.Models;
 using SurrealDb.Net.Models.Auth;
 using SurrealDb.Net.Models.LiveQuery;
@@ -8,7 +8,7 @@ using SystemTextJsonPatch;
 
 namespace SurrealDb.Net.Internals;
 
-internal interface ISurrealDbEngine : IDisposable, IResettable
+internal interface ISurrealDbEngine : IDisposable, IAsyncResettable
 {
 #if DEBUG
     string Id { get; }

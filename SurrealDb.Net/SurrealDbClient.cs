@@ -20,7 +20,7 @@ namespace SurrealDb.Net;
 /// </summary>
 public class SurrealDbClient : ISurrealDbClient
 {
-    private readonly Action? _poolAction;
+    private readonly Func<Task>? _poolTask;
 
     internal ISurrealDbEngine Engine { get; }
 
@@ -97,13 +97,13 @@ public class SurrealDbClient : ISurrealDbClient
         Action<JsonSerializerOptions>? configureJsonSerializerOptions = null,
         Func<JsonSerializerContext[]>? prependJsonSerializerContexts = null,
         Func<JsonSerializerContext[]>? appendJsonSerializerContexts = null,
-        Action? poolAction = null
+        Func<Task>? poolTask = null
     )
     {
         if (parameters.Endpoint is null)
             throw new ArgumentNullException(nameof(parameters), "The endpoint is required.");
 
-        _poolAction = poolAction;
+        _poolTask = poolTask;
         Uri = new Uri(parameters.Endpoint);
         NamingPolicy = parameters.NamingPolicy;
 
@@ -135,14 +135,14 @@ public class SurrealDbClient : ISurrealDbClient
     internal SurrealDbClient(
         SurrealDbClientParams parameters,
         ISurrealDbEngine engine,
-        Action? poolAction = null
+        Func<Task>? poolTask = null
     )
     {
         Uri = new Uri(parameters.Endpoint!);
         NamingPolicy = parameters.NamingPolicy;
 
         Engine = engine;
-        _poolAction = poolAction;
+        _poolTask = poolTask;
     }
 
     public Task Authenticate(Jwt jwt, CancellationToken cancellationToken = default)
@@ -182,14 +182,19 @@ public class SurrealDbClient : ISurrealDbClient
 
     public void Dispose()
     {
-        if (_poolAction is not null)
+        Engine.Dispose();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_poolTask is not null)
         {
             // 💡 Prevent engine disposal as it will be reuse in an object pool
-            _poolAction();
+            await _poolTask.Invoke().ConfigureAwait(false);
             return;
         }
 
-        Engine.Dispose();
+        Dispose();
     }
 
     public Task<bool> Health(CancellationToken cancellationToken = default)
