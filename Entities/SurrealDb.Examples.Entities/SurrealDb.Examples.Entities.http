@@ -1,0 +1,6 @@
+@SurrealDb.Examples.Entities_HostAddress = http://localhost:5243
+
+GET {{SurrealDb.Examples.Entities_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

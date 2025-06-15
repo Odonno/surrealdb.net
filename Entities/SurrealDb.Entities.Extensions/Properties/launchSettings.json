@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DebugRoslynSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../SurrealDb.Entities.Extensions.Sample/SurrealDb.Entities.Extensions.Sample.csproj"
+    }
+  }
+}

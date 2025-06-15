@@ -96,10 +96,9 @@ public abstract partial class BaseSurrealDbClient
             _ => throw new NotImplementedException(),
         };
 
-        using var wrapper = await CreateCommonHttpWrapperAsync(cancellationToken)
-            .ConfigureAwait(false);
+        var wrapper = await CreateCommonHttpWrapperAsync(cancellationToken).ConfigureAwait(false);
 
-        using var httpContent = SurrealDbHttpEngine.CreateBodyContent(
+        var httpContent = SurrealDbHttpEngine.CreateBodyContent(
             null,
             wrapper.ConfigureCborOptions,
             options ?? new()
@@ -111,7 +110,7 @@ public abstract partial class BaseSurrealDbClient
             ? wrapper.HttpClient.PostAsync(exportUri, httpContent, cancellationToken)
             : wrapper.HttpClient.GetAsync(exportUri, cancellationToken);
 
-        using var response = await httpRequestTask.ConfigureAwait(false);
+        var response = await httpRequestTask.ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
 
 #if NET6_0_OR_GREATER

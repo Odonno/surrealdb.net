@@ -67,6 +67,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Embedded.SurrealK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Embedded.Internals", "SurrealDb.Embedded.Internals\SurrealDb.Embedded.Internals.csproj", "{8ED80F32-D22A-4267-9BDE-865223C99020}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{3875716A-FBDC-4335-B332-0CF8E56AF104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Entities.Extensions", "Entities\SurrealDb.Entities.Extensions\SurrealDb.Entities.Extensions.csproj", "{D010335A-8C0E-48A1-9804-427968B0F767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Entities.Extensions.Tests", "Entities\SurrealDb.Entities.Extensions.Tests\SurrealDb.Entities.Extensions.Tests.csproj", "{D8DB508B-0BF1-494E-B790-29168F5CA771}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurrealDb.Examples.Entities", "Entities\SurrealDb.Examples.Entities\SurrealDb.Examples.Entities.csproj", "{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +165,18 @@ Global
 		{8ED80F32-D22A-4267-9BDE-865223C99020}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED80F32-D22A-4267-9BDE-865223C99020}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED80F32-D22A-4267-9BDE-865223C99020}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D010335A-8C0E-48A1-9804-427968B0F767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D010335A-8C0E-48A1-9804-427968B0F767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D010335A-8C0E-48A1-9804-427968B0F767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D010335A-8C0E-48A1-9804-427968B0F767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8DB508B-0BF1-494E-B790-29168F5CA771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DB508B-0BF1-494E-B790-29168F5CA771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DB508B-0BF1-494E-B790-29168F5CA771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DB508B-0BF1-494E-B790-29168F5CA771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +203,9 @@ Global
 		{94D34588-23C7-40CA-8ADB-6057603DA031} = {ED80259F-C52A-4936-9345-E8E3ABE19FBF}
 		{E7048C18-3B7E-4B00-8550-3FBDF10910E0} = {ED80259F-C52A-4936-9345-E8E3ABE19FBF}
 		{8ED80F32-D22A-4267-9BDE-865223C99020} = {ED80259F-C52A-4936-9345-E8E3ABE19FBF}
+		{D010335A-8C0E-48A1-9804-427968B0F767} = {3875716A-FBDC-4335-B332-0CF8E56AF104}
+		{D8DB508B-0BF1-494E-B790-29168F5CA771} = {3875716A-FBDC-4335-B332-0CF8E56AF104}
+		{DD4EF4BB-6649-4C9B-BE4D-B8150EAE9757} = {3875716A-FBDC-4335-B332-0CF8E56AF104}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70C100EF-E131-45C0-9515-02FC4823BA20}
