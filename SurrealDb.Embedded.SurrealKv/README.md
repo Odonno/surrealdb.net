@@ -61,7 +61,7 @@ public class MyClass
 }
 ```
 
-Note that the default lifetime of this service is `Singleton`. You can override this as follows:
+Note that the default lifetime of this service is `Scoped`. You can override this as follows:
 
 ```csharp
 services.AddSurreal(options, ServiceLifetime.Scoped);
@@ -252,4 +252,4 @@ The list of command-line options is available here: https://csharpier.com/docs/C
 
 #### IDE integration
 
-CSharpier supports [multiple code editors](https://csharpier.com/docs/Editors), including Visual Studio, Jetbrains Rider, VSCode and Neovim. You will be able to run format on file save after configuring the settings in your IDE. 
+CSharpier supports [multiple code editors](https://csharpier.com/docs/Editors), including Visual Studio, Jetbrains Rider, VSCode and Neovim. You will be able to run format on file save after configuring the settings in your IDE.
