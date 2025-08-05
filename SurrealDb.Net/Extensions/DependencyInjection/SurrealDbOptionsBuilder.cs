@@ -11,7 +11,6 @@ public sealed class SurrealDbOptionsBuilder
     private string? _username;
     private string? _password;
     private string? _token;
-    private string? _namingPolicy;
     private bool _sensitiveDataLoggingEnabled;
 
     /// <summary>
@@ -209,12 +208,6 @@ public sealed class SurrealDbOptionsBuilder
                 _token = valueSpan.ToString();
                 return;
             }
-            if (key.Equals("namingPolicy", StringComparison.OrdinalIgnoreCase))
-            {
-                string value = valueSpan.ToString();
-                EnsuresCorrectNamingPolicy(value, nameof(connectionString));
-                _namingPolicy = value;
-            }
         }
 
         void ResetForNextIteration()
@@ -335,29 +328,6 @@ public sealed class SurrealDbOptionsBuilder
         return this;
     }
 
-    public SurrealDbOptionsBuilder WithNamingPolicy(string namingPolicy)
-    {
-        EnsuresCorrectNamingPolicy(namingPolicy, nameof(namingPolicy));
-
-        _namingPolicy = namingPolicy;
-        return this;
-    }
-
-    private static void EnsuresCorrectNamingPolicy(string namingPolicy, string argumentName)
-    {
-        if (string.IsNullOrWhiteSpace(namingPolicy))
-        {
-            return;
-        }
-
-        if (SurrealDbOptionsValidation.IsValidNamingPolicy(namingPolicy))
-        {
-            return;
-        }
-
-        throw new ArgumentException($"Invalid naming policy: {namingPolicy}", argumentName);
-    }
-
     /// <summary>
     /// Enables application data to be included in logs.
     /// This typically include parameter values set for SURQL queries, and parameters sent via any client methods.
@@ -383,7 +353,6 @@ public sealed class SurrealDbOptionsBuilder
             Username = _username,
             Password = _password,
             Token = _token,
-            NamingPolicy = _namingPolicy,
             Logging = new() { SensitiveDataLoggingEnabled = _sensitiveDataLoggingEnabled },
         };
     }

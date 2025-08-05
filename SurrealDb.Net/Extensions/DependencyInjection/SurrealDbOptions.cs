@@ -40,13 +40,6 @@ public sealed class SurrealDbOptions
     public string? Token { get; set; }
 
     /// <summary>
-    /// Naming policy used to interact with the database.
-    /// It will change the default NamingPolicy of the <see cref="ISurrealDbClient"/> used.
-    /// Valid options are "CamelCase", "SnakeCaseLower", "SnakeCaseUpper", "KebabCaseLower" and "KebabCaseUpper".
-    /// </summary>
-    public string? NamingPolicy { get; set; }
-
-    /// <summary>
     /// Indicates if the options are made to use a SurrealDB instance in embedded mode.
     /// Supported embedded modes are <c>mem://</c>, <c>rocksdb://</c> and <c>surrealkv://</c>.
     /// </summary>
@@ -62,6 +55,11 @@ public sealed class SurrealDbOptions
 
     public SurrealDbOptions() { }
 
+    public SurrealDbOptions(string endpoint)
+    {
+        Endpoint = endpoint;
+    }
+
     public SurrealDbOptions(SurrealDbOptions clone)
     {
         Endpoint = clone.Endpoint;
@@ -70,14 +68,7 @@ public sealed class SurrealDbOptions
         Username = clone.Username;
         Password = clone.Password;
         Token = clone.Token;
-        NamingPolicy = clone.NamingPolicy;
         Logging = clone.Logging;
-    }
-
-    public SurrealDbOptions(string endpoint, string? namingPolicy = null)
-    {
-        Endpoint = endpoint;
-        NamingPolicy = namingPolicy;
     }
 
     public static SurrealDbOptionsBuilder Create()
