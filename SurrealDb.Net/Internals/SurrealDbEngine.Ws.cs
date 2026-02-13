@@ -1649,6 +1649,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
 #else
             await SendInnerRequestAsync(request).ConfigureAwait(false);
 #endif
+
             var result = await taskCompletionSource.Task.ConfigureAwait(false);
 
 #if NET7_0_OR_GREATER

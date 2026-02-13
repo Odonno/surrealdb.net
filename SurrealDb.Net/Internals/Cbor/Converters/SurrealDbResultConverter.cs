@@ -97,6 +97,10 @@ internal class SurrealDbResultConverter : CborConverterBase<ISurrealDbResult>
             if (key.SequenceEqual("type"u8))
             {
                 var typeString = reader.ReadString();
+                if (typeString is null)
+                {
+                    continue;
+                }
                 type =
                     SurrealDbResponseTypeExtensions.From(typeString)
                     ?? throw new CborException($"'{typeString}' is not a valid result type.");

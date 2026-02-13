@@ -30,6 +30,7 @@ internal class SurrealDbWsResponseConverter : CborConverterBase<ISurrealDbWsResp
         string? rootId = null;
         SurrealDbWsErrorResponseContent? errorContent = null;
         ReadOnlyMemory<byte>? result = null;
+        string? type = null;
 
         while (reader.MoveNextMapItem(ref remainingItemCount))
         {
@@ -50,6 +51,12 @@ internal class SurrealDbWsResponseConverter : CborConverterBase<ISurrealDbWsResp
             if (key.SequenceEqual("result"u8))
             {
                 result = reader.ReadDataItemAsMemory();
+                continue;
+            }
+
+            if (key.SequenceEqual("type"u8))
+            {
+                type = reader.ReadString();
                 continue;
             }
 
@@ -80,7 +87,7 @@ internal class SurrealDbWsResponseConverter : CborConverterBase<ISurrealDbWsResp
                 _options
             );
 
-            if (content.Action == LiveQueryConstants.KILLED)
+            if (content.Action == LiveQueryActionConstants.KILLED)
             {
                 return new SurrealDbWsKilledResponse();
             }
