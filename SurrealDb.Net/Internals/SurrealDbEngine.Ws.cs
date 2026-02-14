@@ -293,18 +293,18 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         );
     }
 
-    public Task Authenticate(Jwt jwt, CancellationToken cancellationToken)
+    public Task Authenticate(Tokens tokens, CancellationToken cancellationToken)
     {
-        return Authenticate(jwt, SurrealDbWsRequestPriority.Normal, cancellationToken);
+        return Authenticate(tokens, SurrealDbWsRequestPriority.Normal, cancellationToken);
     }
 
     private async Task Authenticate(
-        Jwt jwt,
+        Tokens tokens,
         SurrealDbWsRequestPriority priority,
         CancellationToken cancellationToken
     )
     {
-        await SendRequestAsync("authenticate", [jwt.Token], priority, cancellationToken)
+        await SendRequestAsync("authenticate", [tokens.Access], priority, cancellationToken)
             .ConfigureAwait(false);
     }
 
@@ -1014,7 +1014,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         _config.SetSystemAuth(systemAuth);
     }
 
-    public async Task<Jwt> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken)
+    public async Task<Tokens> SignIn(NamespaceAuth nsAuth, CancellationToken cancellationToken)
     {
         var dbResponse = await SendRequestAsync(
                 "signin",
@@ -1023,14 +1023,14 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                 cancellationToken
             )
             .ConfigureAwait(false);
-        var token = dbResponse.GetValue<string>();
+        var tokens = dbResponse.GetValue<Tokens>()!;
 
         _config.SetSystemAuth(nsAuth);
 
-        return new Jwt(token!);
+        return tokens;
     }
 
-    public async Task<Jwt> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken)
+    public async Task<Tokens> SignIn(DatabaseAuth dbAuth, CancellationToken cancellationToken)
     {
         var dbResponse = await SendRequestAsync(
                 "signin",
@@ -1039,14 +1039,14 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                 cancellationToken
             )
             .ConfigureAwait(false);
-        var token = dbResponse.GetValue<string>();
+        var tokens = dbResponse.GetValue<Tokens>()!;
 
         _config.SetSystemAuth(dbAuth);
 
-        return new Jwt(token!);
+        return tokens;
     }
 
-    public async Task<Jwt> SignIn<T>(T scopeAuth, CancellationToken cancellationToken)
+    public async Task<Tokens> SignIn<T>(T scopeAuth, CancellationToken cancellationToken)
         where T : ScopeAuth
     {
         var dbResponse = await SendRequestAsync(
@@ -1056,14 +1056,14 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                 cancellationToken
             )
             .ConfigureAwait(false);
-        var token = dbResponse.GetValue<string>();
+        var tokens = dbResponse.GetValue<Tokens>()!;
 
-        _config.SetBearerAuth(token!);
+        _config.SetBearerAuth(tokens.Access);
 
-        return new Jwt(token!);
+        return tokens;
     }
 
-    public async Task<Jwt> SignUp<T>(T scopeAuth, CancellationToken cancellationToken)
+    public async Task<Tokens> SignUp<T>(T scopeAuth, CancellationToken cancellationToken)
         where T : ScopeAuth
     {
         var dbResponse = await SendRequestAsync(
@@ -1073,11 +1073,11 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
                 cancellationToken
             )
             .ConfigureAwait(false);
-        var token = dbResponse.GetValue<string>();
+        var tokens = dbResponse.GetValue<Tokens>()!;
 
-        _config.SetBearerAuth(token!);
+        _config.SetBearerAuth(tokens.Access);
 
-        return new Jwt(token!);
+        return tokens;
     }
 
     public SurrealDbLiveQueryChannel SubscribeToLiveQuery(Guid id)
@@ -1507,7 +1507,7 @@ internal class SurrealDbWsEngine : ISurrealDbEngine
         if (_config.Auth is BearerAuth bearerAuth)
         {
             await Authenticate(
-                    new Jwt(bearerAuth.Token),
+                    new Tokens(bearerAuth.Token),
                     SurrealDbWsRequestPriority.High,
                     cancellationToken
                 )
