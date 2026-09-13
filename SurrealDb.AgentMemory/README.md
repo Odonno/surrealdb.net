@@ -157,7 +157,7 @@ using SurrealDb.AgentMemory.Client;
 var api = new DefaultApi(
     NullLogger<DefaultApi>.Instance,
     new HttpClient { BaseAddress = new Uri("https://agent-memory.example.com/") },
-    new JsonSerializerOptionsProvider(AgentMemoryJson.DefaultOptions),
+    new JsonSerializerOptionsProvider(AgentMemoryJsonExtensions.DefaultOptions),
     new DefaultApiEvents(),
     tokenProvider /* TokenProvider<BearerToken> of your choosing */
 );

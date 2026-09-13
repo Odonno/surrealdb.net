@@ -1,43 +1,19 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
+using SurrealDb.AgentMemory.Client;
 
 namespace SurrealDb.AgentMemory;
 
 /// <summary>
-/// Default <see cref="JsonSerializerOptions"/> with every converter the OpenAPI generator
-/// emitted (<c>XxxJsonConverter</c> in the <c>Model</c> and <c>Client</c> namespaces) registered.
-/// The generator does not attach these converters via attributes, so without them several
-/// models (e.g. <c>CitationJson</c>) cannot be deserialized by System.Text.Json.
+/// Default <see cref="JsonSerializerOptions"/> backed by the source-generated <see cref="AgentMemoryJsonContext"/>:
+/// every converter the OpenAPI generator emitted (<c>XxxJsonConverter</c> in the <c>Model</c> and <c>Client</c>
+/// namespaces) is registered explicitly, and every model resolves through source-generated metadata instead of
+/// reflection — trim- and NativeAOT-safe. The generator does not attach these converters via attributes, so
+/// without them several models (e.g. <c>CitationJson</c>) cannot be deserialized by System.Text.Json.
 /// </summary>
 public static class AgentMemoryJsonExtensions
 {
-    private static readonly Lazy<JsonSerializerOptions> Default = new(CreateDefault);
-
     /// <summary>
     /// Shared default options.
     /// </summary>
-    public static JsonSerializerOptions DefaultOptions => Default.Value;
-
-    private static JsonSerializerOptions CreateDefault()
-    {
-        var options = new JsonSerializerOptions();
-
-        foreach (var type in typeof(AgentMemoryJsonExtensions).Assembly.GetTypes())
-        {
-            if (
-                type.IsAbstract
-                || !typeof(JsonConverter).IsAssignableFrom(type)
-                || type.GetConstructor(Type.EmptyTypes) is null
-                || type.Namespace
-                    is not ("SurrealDb.AgentMemory.Model" or "SurrealDb.AgentMemory.Client")
-            )
-            {
-                continue;
-            }
-
-            options.Converters.Add((JsonConverter)Activator.CreateInstance(type)!);
-        }
-
-        return options;
-    }
+    public static JsonSerializerOptions DefaultOptions => AgentMemoryJsonContext.Default.Options;
 }

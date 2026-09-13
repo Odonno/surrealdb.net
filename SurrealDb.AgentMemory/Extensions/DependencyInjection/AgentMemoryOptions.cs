@@ -28,6 +28,8 @@ public sealed class AgentMemoryOptions
     /// Optional JSON serializer options.
     /// When unset, the generated model converters are registered automatically (see <see cref="AgentMemoryJsonExtensions.DefaultOptions"/>);
     /// supply your own only if you need additional converters.
+    /// Note that under trimming/NativeAOT a custom instance must carry its own <see cref="System.Text.Json.Serialization.JsonSerializerContext"/> resolver
+    /// — copy <see cref="AgentMemoryJsonExtensions.DefaultOptions"/> as a starting point rather than building one from scratch.
     /// </summary>
     public JsonSerializerOptions? JsonSerializerOptions { get; set; }
 }

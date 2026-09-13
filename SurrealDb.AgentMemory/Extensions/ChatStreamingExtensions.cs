@@ -45,7 +45,7 @@ public static class ChatStreamingExtensions
         );
         httpRequest.Headers.Accept.ParseAdd("text/event-stream");
         httpRequest.Content = new StringContent(
-            JsonSerializer.Serialize(request, JsonOptions),
+            JsonSerializer.Serialize(request, JsonOptions.GetTypeInfo(typeof(ChatRequestJson))),
             Encoding.UTF8,
             "application/json"
         );
@@ -159,7 +159,11 @@ public static class ChatStreamingExtensions
     {
         try
         {
-            return JsonSerializer.Deserialize<T>(element.GetRawText(), JsonOptions);
+            return (T?)
+                JsonSerializer.Deserialize(
+                    element.GetRawText(),
+                    JsonOptions.GetTypeInfo(typeof(T))
+                );
         }
         catch (JsonException)
         {

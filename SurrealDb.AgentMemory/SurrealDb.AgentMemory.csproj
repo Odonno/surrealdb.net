@@ -8,6 +8,8 @@
     <Description>The official Agent Memory client for C#.</Description>
     <PackageTags>SurrealDB Surreal AgentMemory</PackageTags>
     <Version>0.2.1</Version>
+    
+    <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
 
   <ItemGroup>

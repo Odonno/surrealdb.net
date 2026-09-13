@@ -35,7 +35,7 @@ namespace SurrealDb.AgentMemory.Model
         /// <param name="kind">kind</param>
         /// <param name="name">name</param>
         [JsonConstructor]
-        public ResourceRefOneOf(string entityType, KindEnum kind, string name)
+        public ResourceRefOneOf(string entityType, ResourceRefOneOfKindEnum kind, string name)
         {
             EntityType = entityType;
             Kind = kind;
@@ -48,7 +48,7 @@ namespace SurrealDb.AgentMemory.Model
         /// <summary>
         /// Defines Kind
         /// </summary>
-        public enum KindEnum
+        public enum ResourceRefOneOfKindEnum
         {
             /// <summary>
             /// Enum Entity for value: entity
@@ -57,41 +57,41 @@ namespace SurrealDb.AgentMemory.Model
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResourceRefOneOfKindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static KindEnum KindEnumFromString(string value)
+        public static ResourceRefOneOfKindEnum KindEnumFromString(string value)
         {
             if (value.Equals("entity"))
-                return KindEnum.Entity;
+                return ResourceRefOneOfKindEnum.Entity;
 
-            throw new NotImplementedException($"Could not convert value to type KindEnum: '{value}'");
+            throw new NotImplementedException($"Could not convert value to type ResourceRefOneOfKindEnum: '{value}'");
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResourceRefOneOfKindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static KindEnum? KindEnumFromStringOrDefault(string value)
+        public static ResourceRefOneOfKindEnum? KindEnumFromStringOrDefault(string value)
         {
             if (value.Equals("entity"))
-                return KindEnum.Entity;
+                return ResourceRefOneOfKindEnum.Entity;
 
             return null;
         }
 
         /// <summary>
-        /// Converts the <see cref="KindEnum"/> to the json value
+        /// Converts the <see cref="ResourceRefOneOfKindEnum"/> to the json value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static string KindEnumToJsonValue(KindEnum value)
+        public static string KindEnumToJsonValue(ResourceRefOneOfKindEnum value)
         {
-            if (value == KindEnum.Entity)
+            if (value == ResourceRefOneOfKindEnum.Entity)
                 return "entity";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
@@ -101,7 +101,7 @@ namespace SurrealDb.AgentMemory.Model
         /// Gets or Sets Kind
         /// </summary>
         [JsonPropertyName("kind")]
-        public KindEnum Kind { get; set; }
+        public ResourceRefOneOfKindEnum Kind { get; set; }
 
         /// <summary>
         /// Gets or Sets EntityType
@@ -174,7 +174,7 @@ namespace SurrealDb.AgentMemory.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string> entityType = default;
-            Option<ResourceRefOneOf.KindEnum?> kind = default;
+            Option<ResourceRefOneOf.ResourceRefOneOfKindEnum?> kind = default;
             Option<string> name = default;
 
             while (utf8JsonReader.Read())
@@ -199,10 +199,10 @@ namespace SurrealDb.AgentMemory.Model
                             string kindRawValue = utf8JsonReader.GetString();
                             if (kindRawValue != null)
                             {
-                                ResourceRefOneOf.KindEnum? kindValue = ResourceRefOneOf.KindEnumFromStringOrDefault(kindRawValue);
+                                ResourceRefOneOf.ResourceRefOneOfKindEnum? kindValue = ResourceRefOneOf.KindEnumFromStringOrDefault(kindRawValue);
                                 if (kindValue == null)
                                     throw new JsonException();
-                                kind = new Option<ResourceRefOneOf.KindEnum?>(kindValue);
+                                kind = new Option<ResourceRefOneOf.ResourceRefOneOfKindEnum?>(kindValue);
                             }
                             break;
                         case "name":

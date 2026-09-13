@@ -36,7 +36,7 @@ namespace SurrealDb.AgentMemory.Model
         /// <param name="position">position</param>
         /// <param name="turnId">turnId</param>
         [JsonConstructor]
-        public ResourceRefOneOf5(KindEnum kind, string sessionId, Option<long?> position = default, Option<string> turnId = default)
+        public ResourceRefOneOf5(ResourceRefOneOf5KindEnum kind, string sessionId, Option<long?> position = default, Option<string> turnId = default)
         {
             Kind = kind;
             SessionId = sessionId;
@@ -50,7 +50,7 @@ namespace SurrealDb.AgentMemory.Model
         /// <summary>
         /// Defines Kind
         /// </summary>
-        public enum KindEnum
+        public enum ResourceRefOneOf5KindEnum
         {
             /// <summary>
             /// Enum Session for value: session
@@ -59,41 +59,41 @@ namespace SurrealDb.AgentMemory.Model
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResourceRefOneOf5KindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static KindEnum KindEnumFromString(string value)
+        public static ResourceRefOneOf5KindEnum KindEnumFromString(string value)
         {
             if (value.Equals("session"))
-                return KindEnum.Session;
+                return ResourceRefOneOf5KindEnum.Session;
 
-            throw new NotImplementedException($"Could not convert value to type KindEnum: '{value}'");
+            throw new NotImplementedException($"Could not convert value to type ResourceRefOneOf5KindEnum: '{value}'");
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResourceRefOneOf5KindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static KindEnum? KindEnumFromStringOrDefault(string value)
+        public static ResourceRefOneOf5KindEnum? KindEnumFromStringOrDefault(string value)
         {
             if (value.Equals("session"))
-                return KindEnum.Session;
+                return ResourceRefOneOf5KindEnum.Session;
 
             return null;
         }
 
         /// <summary>
-        /// Converts the <see cref="KindEnum"/> to the json value
+        /// Converts the <see cref="ResourceRefOneOf5KindEnum"/> to the json value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static string KindEnumToJsonValue(KindEnum value)
+        public static string KindEnumToJsonValue(ResourceRefOneOf5KindEnum value)
         {
-            if (value == KindEnum.Session)
+            if (value == ResourceRefOneOf5KindEnum.Session)
                 return "session";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
@@ -103,7 +103,7 @@ namespace SurrealDb.AgentMemory.Model
         /// Gets or Sets Kind
         /// </summary>
         [JsonPropertyName("kind")]
-        public KindEnum Kind { get; set; }
+        public ResourceRefOneOf5KindEnum Kind { get; set; }
 
         /// <summary>
         /// Gets or Sets SessionId
@@ -196,7 +196,7 @@ namespace SurrealDb.AgentMemory.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<ResourceRefOneOf5.KindEnum?> kind = default;
+            Option<ResourceRefOneOf5.ResourceRefOneOf5KindEnum?> kind = default;
             Option<string> sessionId = default;
             Option<long?> position = default;
             Option<string> turnId = default;
@@ -220,10 +220,10 @@ namespace SurrealDb.AgentMemory.Model
                             string kindRawValue = utf8JsonReader.GetString();
                             if (kindRawValue != null)
                             {
-                                ResourceRefOneOf5.KindEnum? kindValue = ResourceRefOneOf5.KindEnumFromStringOrDefault(kindRawValue);
+                                ResourceRefOneOf5.ResourceRefOneOf5KindEnum? kindValue = ResourceRefOneOf5.KindEnumFromStringOrDefault(kindRawValue);
                                 if (kindValue == null)
                                     throw new JsonException();
-                                kind = new Option<ResourceRefOneOf5.KindEnum?>(kindValue);
+                                kind = new Option<ResourceRefOneOf5.ResourceRefOneOf5KindEnum?>(kindValue);
                             }
                             break;
                         case "sessionId":

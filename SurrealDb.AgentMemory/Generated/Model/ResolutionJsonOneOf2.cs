@@ -33,7 +33,7 @@ namespace SurrealDb.AgentMemory.Model
         /// </summary>
         /// <param name="kind">kind</param>
         [JsonConstructor]
-        public ResolutionJsonOneOf2(KindEnum kind)
+        public ResolutionJsonOneOf2(ResolutionJsonOneOf2KindEnum kind)
         {
             Kind = kind;
             OnCreated();
@@ -44,7 +44,7 @@ namespace SurrealDb.AgentMemory.Model
         /// <summary>
         /// Defines Kind
         /// </summary>
-        public enum KindEnum
+        public enum ResolutionJsonOneOf2KindEnum
         {
             /// <summary>
             /// Enum Topic for value: topic
@@ -53,41 +53,41 @@ namespace SurrealDb.AgentMemory.Model
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResolutionJsonOneOf2KindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static KindEnum KindEnumFromString(string value)
+        public static ResolutionJsonOneOf2KindEnum KindEnumFromString(string value)
         {
             if (value.Equals("topic"))
-                return KindEnum.Topic;
+                return ResolutionJsonOneOf2KindEnum.Topic;
 
-            throw new NotImplementedException($"Could not convert value to type KindEnum: '{value}'");
+            throw new NotImplementedException($"Could not convert value to type ResolutionJsonOneOf2KindEnum: '{value}'");
         }
 
         /// <summary>
-        /// Returns a <see cref="KindEnum"/>
+        /// Returns a <see cref="ResolutionJsonOneOf2KindEnum"/>
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static KindEnum? KindEnumFromStringOrDefault(string value)
+        public static ResolutionJsonOneOf2KindEnum? KindEnumFromStringOrDefault(string value)
         {
             if (value.Equals("topic"))
-                return KindEnum.Topic;
+                return ResolutionJsonOneOf2KindEnum.Topic;
 
             return null;
         }
 
         /// <summary>
-        /// Converts the <see cref="KindEnum"/> to the json value
+        /// Converts the <see cref="ResolutionJsonOneOf2KindEnum"/> to the json value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public static string KindEnumToJsonValue(KindEnum value)
+        public static string KindEnumToJsonValue(ResolutionJsonOneOf2KindEnum value)
         {
-            if (value == KindEnum.Topic)
+            if (value == ResolutionJsonOneOf2KindEnum.Topic)
                 return "topic";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
@@ -97,7 +97,7 @@ namespace SurrealDb.AgentMemory.Model
         /// Gets or Sets Kind
         /// </summary>
         [JsonPropertyName("kind")]
-        public KindEnum Kind { get; set; }
+        public ResolutionJsonOneOf2KindEnum Kind { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -155,7 +155,7 @@ namespace SurrealDb.AgentMemory.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<ResolutionJsonOneOf2.KindEnum?> kind = default;
+            Option<ResolutionJsonOneOf2.ResolutionJsonOneOf2KindEnum?> kind = default;
 
             while (utf8JsonReader.Read())
             {
@@ -176,10 +176,10 @@ namespace SurrealDb.AgentMemory.Model
                             string kindRawValue = utf8JsonReader.GetString();
                             if (kindRawValue != null)
                             {
-                                ResolutionJsonOneOf2.KindEnum? kindValue = ResolutionJsonOneOf2.KindEnumFromStringOrDefault(kindRawValue);
+                                ResolutionJsonOneOf2.ResolutionJsonOneOf2KindEnum? kindValue = ResolutionJsonOneOf2.KindEnumFromStringOrDefault(kindRawValue);
                                 if (kindValue == null)
                                     throw new JsonException();
-                                kind = new Option<ResolutionJsonOneOf2.KindEnum?>(kindValue);
+                                kind = new Option<ResolutionJsonOneOf2.ResolutionJsonOneOf2KindEnum?>(kindValue);
                             }
                             break;
                         default:
