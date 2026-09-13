@@ -22,7 +22,7 @@ public static class AgentMemoryPaginationExtensions
     /// <param name="pageOf">Selects the <see cref="PageMeta"/> block from a response.</param>
     /// <param name="cancellationToken">Cancels the walk.</param>
     public static async IAsyncEnumerable<TPage> WalkPagesAsync<TPage>(
-        this DefaultApi api,
+        this AgentMemoryApi api,
         Func<string?, CancellationToken, Task<TPage>> fetchPage,
         Func<TPage, PageMeta?> pageOf,
         [EnumeratorCancellation] CancellationToken cancellationToken = default
@@ -81,7 +81,7 @@ public static class AgentMemoryPaginationExtensions
     /// <paramref name="max"/> stops the walk once that many rows are in hand (the result can still overshoot by up to one page, because pages arrive whole).
     /// </summary>
     public static async Task<List<TRow>> CollectPagesAsync<TPage, TRow>(
-        this DefaultApi api,
+        this AgentMemoryApi api,
         Func<string?, CancellationToken, Task<TPage>> fetchPage,
         Func<TPage, PageMeta?> pageOf,
         Func<TPage, IEnumerable<TRow>?> rowsOf,

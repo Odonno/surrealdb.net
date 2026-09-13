@@ -26,7 +26,7 @@ public static class ChatStreamingExtensions
     /// <param name="request">The chat request; <c>Stream</c> is forced to <see langword="true"/>.</param>
     /// <param name="cancellationToken">Cancels the stream.</param>
     public static async IAsyncEnumerable<ChatChunk> StreamChatAsync(
-        this DefaultApi api,
+        this AgentMemoryApi api,
         string contextId,
         ChatRequestJson request,
         [EnumeratorCancellation] CancellationToken cancellationToken = default
@@ -65,11 +65,7 @@ public static class ChatStreamingExtensions
         response.EnsureSuccessStatusCode();
 
         await using var stream = await response
-            .Content.ReadAsStreamAsync(
-#if NET8_0_OR_GREATER
-                cancellationToken
-#endif
-            )
+            .Content.ReadAsStreamAsync(cancellationToken)
             .ConfigureAwait(false);
 
         await foreach (

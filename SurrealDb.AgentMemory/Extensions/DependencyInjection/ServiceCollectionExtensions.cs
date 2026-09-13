@@ -13,7 +13,7 @@ public static class ServiceCollectionExtensions
     private const string HttpClientNamePrefix = "SurrealDb.AgentMemory";
 
     /// <summary>
-    /// Registers the Agent Memory client (as <see cref="IDefaultApi"/>) configured from <paramref name="configure"/>.
+    /// Registers the Agent Memory client (as <see cref="IAgentMemoryApi"/>) configured from <paramref name="configure"/>.
     /// Returns the <see cref="IHttpClientBuilder"/> so callers can add their own handlers or resilience policies.
     /// </summary>
     /// <param name="services">The service collection.</param>
@@ -35,14 +35,14 @@ public static class ServiceCollectionExtensions
                 options.JsonSerializerOptions ?? AgentMemoryJsonExtensions.DefaultOptions
             )
         );
-        services.AddSingleton<DefaultApiEvents>();
-        services.AddTransient<IDefaultApi>(sp => sp.GetRequiredService<DefaultApi>());
+        services.AddSingleton<AgentMemoryApiEvents>();
+        services.AddTransient<IAgentMemoryApi>(sp => sp.GetRequiredService<AgentMemoryApi>());
 
-        return services.AddHttpClient<DefaultApi>(client => ConfigureClient(client, options));
+        return services.AddHttpClient<AgentMemoryApi>(client => ConfigureClient(client, options));
     }
 
     /// <summary>
-    /// Registers a keyed Agent Memory client: resolvable via <c>[FromKeyedServices(name)] IDefaultApi</c> or <c>provider.GetRequiredKeyedService&lt;IDefaultApi&gt;(name)</c>.
+    /// Registers a keyed Agent Memory client: resolvable via <c>[FromKeyedServices(name)] IAgentMemoryApi</c> or <c>provider.GetRequiredKeyedService&lt;IAgentMemoryApi&gt;(name)</c>.
     /// Useful when an application talks to several Agent Memory deployments or contexts.
     /// </summary>
     /// <param name="services">The service collection.</param>
@@ -70,23 +70,25 @@ public static class ServiceCollectionExtensions
                     options.JsonSerializerOptions ?? AgentMemoryJsonExtensions.DefaultOptions
                 )
         );
-        services.AddKeyedSingleton<DefaultApiEvents>(name);
-        services.AddKeyedTransient<DefaultApi>(name, CreateApi(httpClientName));
-        services.AddKeyedTransient<IDefaultApi>(
+        services.AddKeyedSingleton<AgentMemoryApiEvents>(name);
+        services.AddKeyedTransient<AgentMemoryApi>(name, CreateApi(httpClientName));
+        services.AddKeyedTransient<IAgentMemoryApi>(
             name,
-            (sp, key) => sp.GetRequiredKeyedService<DefaultApi>(key)
+            (sp, key) => sp.GetRequiredKeyedService<AgentMemoryApi>(key)
         );
 
         return services.AddHttpClient(httpClientName, client => ConfigureClient(client, options));
     }
 
-    private static Func<IServiceProvider, object?, DefaultApi> CreateApi(string httpClientName) =>
+    private static Func<IServiceProvider, object?, AgentMemoryApi> CreateApi(
+        string httpClientName
+    ) =>
         (sp, key) =>
-            new DefaultApi(
-                sp.GetRequiredService<ILogger<DefaultApi>>(),
+            new AgentMemoryApi(
+                sp.GetRequiredService<ILogger<AgentMemoryApi>>(),
                 sp.GetRequiredService<IHttpClientFactory>().CreateClient(httpClientName),
                 sp.GetRequiredKeyedService<JsonSerializerOptionsProvider>(key),
-                sp.GetRequiredKeyedService<DefaultApiEvents>(key),
+                sp.GetRequiredKeyedService<AgentMemoryApiEvents>(key),
                 sp.GetRequiredKeyedService<TokenProvider<BearerToken>>(key)
             );
 

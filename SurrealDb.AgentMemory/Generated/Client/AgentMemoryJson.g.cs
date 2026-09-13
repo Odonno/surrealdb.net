@@ -44,6 +44,8 @@ namespace SurrealDb.AgentMemory.Client;
     typeof(CorrectionSummaryJsonJsonConverter),
     typeof(CoverageJsonJsonConverter),
     typeof(CreateSessionRequestJsonJsonConverter),
+    typeof(DateOnlyJsonConverter),
+    typeof(DateOnlyNullableJsonConverter),
     typeof(DateTimeJsonConverter),
     typeof(DateTimeNullableJsonConverter),
     typeof(DecisionKindJsonConverter),

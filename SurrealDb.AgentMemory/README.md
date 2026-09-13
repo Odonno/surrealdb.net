@@ -30,7 +30,7 @@ builder.Services.AddAgentMemory(options =>
 ```
 
 ```csharp
-public class MemoryService(DefaultApi api)
+public class MemoryService(AgentMemoryApi api)
 {
     public Task<IUploadDocumentApiResponse> UploadAsync(Stream pdf) =>
         api.UploadDocumentAsync(
@@ -121,8 +121,8 @@ builder.Services.AddKeyedAgentMemory("prod",  o => { o.Endpoint = "https://mem.a
 builder.Services.AddKeyedAgentMemory("staging", o => { o.Endpoint = "https://staging.acme.io"; o.ApiKey = stageKey; });
 
 public class MyService(
-    [FromKeyedServices("prod")] DefaultApi prod,
-    [FromKeyedServices("staging")] DefaultApi staging)
+    [FromKeyedServices("prod")] AgentMemoryApi prod,
+    [FromKeyedServices("staging")] AgentMemoryApi staging)
 { /* ... */ }
 ```
 
@@ -154,11 +154,11 @@ using SurrealDb.AgentMemory;
 using SurrealDb.AgentMemory.Api;
 using SurrealDb.AgentMemory.Client;
 
-var api = new DefaultApi(
-    NullLogger<DefaultApi>.Instance,
+var api = new AgentMemoryApi(
+    NullLogger<AgentMemoryApi>.Instance,
     new HttpClient { BaseAddress = new Uri("https://agent-memory.example.com/") },
     new JsonSerializerOptionsProvider(AgentMemoryJsonExtensions.DefaultOptions),
-    new DefaultApiEvents(),
+    new AgentMemoryApiEvents(),
     tokenProvider /* TokenProvider<BearerToken> of your choosing */
 );
 ```

@@ -5,13 +5,29 @@
 set -eu
 
 OUT="$(mktemp -d)"
-trap 'rm -rf "$OUT"' EXIT
+TAGGED="$(mktemp)"
+CONFIG="$(mktemp)"
+trap 'rm -rf "$OUT" "$TAGGED" "$CONFIG"' EXIT
+
+# The spec's operations carry no tags, so the generator hardcodes the api class name
+# (DefaultApi, see DefaultCodegen.toApiName). Tag every operation with the tag the spec
+# itself already declares at root level ("Agent Memory", "Agent Memory knowledge layer")
+# via a temporary spec file — spec/openapi.json stays untouched — so the class comes out
+# as AgentMemoryApi / IAgentMemoryApi. Drop this when the upstream spec tags its operations.
+node -e '
+const fs = require("fs");
+const spec = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+for (const item of Object.values(spec.paths || {}))
+    for (const m of ["get", "put", "post", "delete", "options", "head", "patch", "trace"])
+        if (item[m]) item[m].tags = ["Agent Memory"];
+fs.writeFileSync(process.argv[2], JSON.stringify(spec, null, 2));
+' spec/openapi.json "$TAGGED"
 
 openapi-generator-cli generate \
     -g csharp \
-    -i spec/openapi.json \
+    -i "$TAGGED" \
     -o "$OUT" \
-    --additional-properties 'library=generichost,packageName=SurrealDb.AgentMemory,packageVersion=0.2.1,targetFramework=netstandard2.1;net8.0;net9.0;net10.0,nullableReferenceTypes=true,netCoreProjectFile=true,optionalProjectFile=false,optionalAssemblyInfo=false'
+    --additional-properties 'library=generichost,packageName=SurrealDb.AgentMemory,packageVersion=0.2.1,nullableReferenceTypes=true,netCoreProjectFile=true,optionalProjectFile=false,optionalAssemblyInfo=false'
 
 rm -rf Generated
 mkdir -p Generated
