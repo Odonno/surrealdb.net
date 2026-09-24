@@ -154,7 +154,7 @@ namespace SurrealDb.AgentMemory.Client;
     typeof(ResolutionJsonOneOfJsonConverter),
     typeof(ResolveUncertaintyRequestJsonJsonConverter),
     typeof(ResolveUncertaintyResponseJsonJsonConverter),
-    typeof(ResourceRefJsonConverter),
+    typeof(ResourceRefDiscriminatedJsonConverter),
     typeof(ResourceRefOneOf1JsonConverter),
     typeof(ResourceRefOneOf2JsonConverter),
     typeof(ResourceRefOneOf3JsonConverter),
@@ -393,6 +393,22 @@ namespace SurrealDb.AgentMemory.Client;
 [JsonSerializable(typeof(UploadMetadataJson))]
 [JsonSerializable(typeof(UploadResponse))]
 [JsonSerializable(typeof(WhoamiJson))]
+[JsonSerializable(typeof(BatchExtractionMode?))]
+[JsonSerializable(typeof(DecisionKind?))]
+[JsonSerializable(typeof(DocumentStatus?))]
+[JsonSerializable(typeof(GraphEdgeKind?))]
+[JsonSerializable(typeof(InferMode?))]
+[JsonSerializable(typeof(InjectionKind?))]
+[JsonSerializable(typeof(MemoryCategory?))]
+[JsonSerializable(typeof(MemoryQueryMode?))]
+[JsonSerializable(typeof(QueryKind?))]
+[JsonSerializable(typeof(QueryMode?))]
+[JsonSerializable(typeof(ResultKind?))]
+[JsonSerializable(typeof(Tier?))]
+[JsonSerializable(typeof(TraceKind?))]
+[JsonSerializable(typeof(TurnRole?))]
+[JsonSerializable(typeof(DateTime))]
+[JsonSerializable(typeof(DateTime?))]
 [JsonSerializable(typeof(Dictionary<string, List<string>>))]
 [JsonSerializable(typeof(Dictionary<string, long>))]
 [JsonSerializable(typeof(List<ActionDetailJson>))]

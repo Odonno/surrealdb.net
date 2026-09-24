@@ -62,10 +62,16 @@ MODELS="$(
         | grep -v 'JsonConverter$' \
         | sort -u
 )"
+ENUMS="$(
+    grep -rhoE '^    public enum [A-Za-z0-9_]+' Generated/Model \
+        | awk '{ print $NF }' \
+        | sort -u
+)"
 CONVERTERS="$(
     grep -rhoE '^    public (partial )?class [A-Za-z0-9_]+' Generated/Model Generated/Client \
         | awk '{ print $NF }' \
         | grep 'JsonConverter$' \
+        | sed 's/^ResourceRefJsonConverter$/ResourceRefDiscriminatedJsonConverter/' \
         | sort -u
 )"
 # Closed generics (de)serialized inside converters (List<X>, Dictionary<...>) are never
@@ -103,6 +109,14 @@ HEADER
     printf '    typeof(%s),\n' $CONVERTERS
     printf '})]\n'
     printf '[JsonSerializable(typeof(%s))]\n' $MODELS
+    # Generated converters deserialize nullable enum fields directly (e.g. Tier?).
+    # Root these closed types as well; enum roots alone do not provide their metadata.
+    for enum in $ENUMS; do
+        printf '[JsonSerializable(typeof(%s?))]\n' "$enum"
+    done
+    # DateTime is parsed directly by generated converters but is not a model root.
+    printf '[JsonSerializable(typeof(DateTime))]\n'
+    printf '[JsonSerializable(typeof(DateTime?))]\n'
     # line-wise (not word-split) — generic type args contain spaces
     printf '%s\n' "$GENERICS" | while IFS= read -r g; do
         printf '[JsonSerializable(typeof(%s))]\n' "$g"
